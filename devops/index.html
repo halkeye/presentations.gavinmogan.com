@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Devops</title>
+
+		<meta name="description" content="">
+		<meta name="author" content="Gavin Mogan">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section class="center">
+          <h1>Devops, The future is friendly</h1>
+					<p>
+						<small>Created by <a href="http://gavinmogan.com">Gavin Mogan</a> / <a href="http://twitter.com/halkeye">@halkeye</a></small>
+          </p>
+				</section>
+
+				<section>
+					<h2>Dev Ops</h2>
+          <img src="./img/devops-all-the-things.png" />
+				</section>
+
+				<section>
+          <h2>What is devops?</h2>
+          <div style="text-align: left">
+            <p class="fragment"><b>Short Answer</b>: No Idea</p>
+            <p class="fragment"><b>Long Answer</b>: Nooooooo iiiiideeeeaaaaa</p>
+            <p class="fragment">Not really clearly defined. I think of devops as movement towards people being informed and incontrol.</p>
+            <p class="fragment">Agile System Administration / Agile Operations</p>
+          </div>
+				</section>
+
+        <section>
+          <h2>Toss over the fence mentality</h2>
+          <img src="./img/toss-the-fence.png" />
+        </section>
+
+        <section>
+          <h2>What does devops mean to me?</h2>
+          <ul>
+            <li>
+              Repeatable Infrastructure
+              <ul><li>Any box, at any time, should be easily rebuildable</li></ul>
+            </li>
+            <li>
+              Versioned configs
+              <ul><li>Configs shouldn’t be manually edited on a box</li></ul>
+            </li>
+            <li>
+              Unit tests
+              <ul><li>Confidence in code being deployed</li></ul>
+            </li>
+            <li>
+              Automated Deploys
+              <ul><li>Ex: Capistrano</li></ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Why?</h2>
+          <ul>
+            <li>Consistency
+              <ul>
+                <li>Confidence in infrastructure</li>
+                <li>Confidence that code will work between environments</li>
+              </ul>
+            </li>
+            <li>
+              Auditable
+              <ul>
+                <li>When did this change?</li>
+                <li>Why did it change?</li>
+              </ul>
+            </li>
+            <li>Repetable</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>The Old Days</h2>
+          <ul>
+            <li>"Put this Code Live, here’s a tarball"</li>
+            <li>"Run these queries"</li>
+            <li>"What rollback?"</li>
+            <li>Security?</li>
+            <li>High Availability?</li>
+            <li>Scalability?</li>
+            <li>"Worked on my box"</li>
+          </ul>
+        </section>
+
+        <section>
+          <ul>
+            <li>Measure Everything</li>
+            <li>No manual changes</li>
+            <li>Test everything</li>
+            <li>Version everything</li>
+            <li>Automate everything</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Code Wise</h2>
+          <p>More day to day documentation in code repo</p>
+          <ul>
+            <li>What server(s) is it on?</li>
+            <li>What database does it talk to?</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Automating Deployments</h2>
+          <ul>
+            <li>
+              Lower learning curve
+              <ul>
+                <li>Each app launches the same way, no matter the language or requirements</li>
+                <li>Server lists are committed in configs, so always up to date</li>
+              </ul>
+            </li>
+            <li>
+              Consistency
+              <ul><li>One persons launch will be identical to another persons launch</li></ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>How is this accomplished?</h2>
+          <p>Continuous Integration Builds</p>
+          <ul>
+            <li>Build packaged up code the same way every time.</li>
+            <li>Replayable (can build older versions)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Always Deploy?</h2>
+          <ul>
+            <li>Just because you are confident you can deploy, shouldn’t mean you should do so constantly.</li>
+            <li>No longer scary to deploy</li>
+            <li>Small changes are less scary than monolitic changes</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Story Time</h2>
+          <ul>
+            <li>Xbox Live</li>
+            <li>Capistrano with alex</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Question</h2>
+          <p>If you needed to find out how valdes was doing how would you?</p>
+          <ul>
+            <li class="fragment">No Ticket, No problem?</li>
+            <li class="fragment">Ping it?</li>
+            <li class="fragment">SSH in, use uptime/top?</li>
+            <li class="fragment">Check nginx access/error logs?</li>
+          </ul>
+        </section>
+
+        <section>
+          <h1>Questions?</h1>
+        </section>
+
+        <section>
+          <h2>What we are missing</h2>
+          <p>Staging and Prod are not super different, but are different.</p>
+          <ul>
+            <li>Go isn’t load balanced in staging</li>
+            <li>Hard to rebalance apps (bookmarks are evil)</li>
+          </ul>
+        </section>
+
+        <section>
+          <img src="./img/layout-design.png" />
+        </section>
+
+        <section>
+          <h2>Ideal Infrastructure</h2>
+          <ul>
+            <li>Monitored (up/down)
+              <ul><li>Sensu? Nagios</li></ul>
+            </li>
+            <li>
+              Monitored (Statistics)
+              <ul>
+                <li>Statsd? Graphite?</li>
+                <li># of logins? # of uploads? Etc</li>
+              </ul>
+            </li>
+            <li>
+              Centralized Logging
+              <ul>
+                <li>Less of a need to go “what server is this on?”</li>
+                <li>Fluentd?</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Lofty Ideal Infrastructure</h2>
+          <ul>
+            <li>
+              Scalable Cloud design
+              <ul>
+                <li>Servers are all identical/pools of servers</li>
+                <li>Each server can run any app.</li>
+                <li>Docker? (Make it heroku like)</li>
+              </ul>
+            </li>
+            <li>
+              Load balancer we control in front of all apps
+              <ul><li>HAProxy?</li></ul>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Puppet</h2>
+          <img src="./img/puppet.png" />
+        </section>
+
+        <section>
+          <h2>Monitoring - Sensu / Uchiwa</h2>
+          <img src="./img/uchiwa.png" />
+        </section>
+
+        <section>
+          <h2>Monitoring - Sensu / Uchiwa</h2>
+          <ul>
+            <li>Sensu scales well, pushes not pulls</li>
+            <li>Can collect metrics for graphite/others</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Graphite / Graphana</h2>
+          <img src="./img/graphite.png" />
+        </section>
+
+        <section>
+          <h2>Graphite / Graphana</h2>
+          <ul>
+            <li>Designed to scale really easily</li>
+            <li>Any recorded metric can be graphed</li>
+            <li>Libraries for every language (very simple protocol)</li>
+            <li>statsd outputs graphite easily</li>
+            <li>Lots of math support, eg: holt winters forecasting, time shifting, derivative</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>ElasticSearch + Fluentd/logstash + Kibana</h2>
+          <img src="./img/logstash.png" />
+        </section>
+
+        <section>
+          <h2>ElasticSearch + Fluentd/logstash + Kibana</h2>
+          <ul>
+            <li>Centralized Logging
+              <ul>
+                <li>No longer care what server is running what app</li>
+                <li>Searchable</li>
+                <li>Filterable</li>
+                <li>Queryable</li>
+              </ul>
+            </li>
+            <li>New to me - last job was just looking into it as I was leaving</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Links / More Info</h2>
+          <ul>
+            <li><a href="http://devopsreactions.tumblr.com/">http://devopsreactions.tumblr.com/</a></li>
+            <li><a href="http://www.slideshare.net/KrisBuytaert/devops-the-future-is-here-its-not-evenly-distributed-yet">http://www.slideshare.net/KrisBuytaert/devops-the-future-is-here-its-not-evenly-distributed-yet</a></li>
+            <li><a href="http://theagileadmin.com/what-is-devops/">http://theagileadmin.com/what-is-devops/</a></li>
+          </ul>
+        </section>
+
+				<section style="text-align: center;" class="center">
+					<h1>THE END</h1>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

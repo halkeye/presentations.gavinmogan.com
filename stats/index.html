@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+    <title>Stats</title>
+
+		<meta name="description" content="Simple internal presentation on what can be done with stats/knowing">
+		<meta name="author" content="Gavin Mogan">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/league.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+          <img src="./img/the-more-you-know.gif" />
+          <h1>Stats and Metrics</h1>
+          <h3>The more you know</h3>
+					<p>
+						<small>Created by <a href="http://gavinmogan.com">Gavin Mogan</a> / <a href="http://twitter.com/halkeye">@halkeye</a></small>
+          </p>
+				</section>
+
+				<section>
+          <h2>Better to know, than not to know</h2>
+          <ul>
+            <li>"How long has this been happening?"</li>
+            <li>"How many concurrent connections before cpu starts to spin out of control?"</li>
+            <li>"How long to videos take to process?"</li>
+            <li>"How many videos are uploaded after Joe does one of his announcements?"</li>
+          </ul>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+          <h2>Many many components</h2>
+          <div style="float: right">
+            <img src="./img/building-blocks.jpg" style="float: right" />
+          </div>
+          <div>Almost all can be used separately, but I think 1 is required, two are nice to have, and 1 is just slick.</div>
+				</section>
+
+				<section>
+          <h2>Components</h2>
+          <ul>
+            <li>
+              Graphite
+              <ul>
+                <li>Stats Storage Engine. Numeric values only. Has aggregation, rollups, tons of ways to pull out numbers</li>
+              </ul>
+            </li>
+            <li>
+              Collectd
+              <ul>
+                <li>Regularly (10s) collect system information</li>
+              </ul>
+            </li>
+            <li>
+              Statsd
+              <ul>
+                <li>Collect data from apps. # of logins, uploads, etc</li>
+              </ul>
+            </li>
+            <li>
+              Grafana
+              <ul>
+                <li>SO PRETTY! ENHANCE! ENHANCE!</li>
+              </ul>
+            </li>
+          </ul>
+				</section>
+
+				<section>
+          <h2>Collectd</h2>
+          <ul>
+            <li>Collects stats at regular intervals (10s by default)</li>
+            <li>Out of the box, system information</li>
+            <li>Can write to graphite</li>
+            <li>Can collect custom info, but I’ve found it easier/better to go graphite directly.</li>
+          </ul>
+				</section>
+
+				<section>
+					<h2>Statsd</h2>
+          <ul>
+            <li>Daemon that collects stat pushes at it</li>
+            <li>Runs over UDP so shouldn’t block your app</li>
+            <li>
+              Many stat options:
+              <ul>
+                <li>Timings (how long a query took)</li>
+                <li>Absolute values (number of results returned)</li>
+                <li>Incremental Values (every login)</li>
+              </ul>
+            </li>
+            <li>
+              Many backend options
+              <ul>
+                <li>Graphite</li>
+                <li>Others</li>
+              </ul>
+            </li>
+            <li>Client libraries in pretty much every language</li>
+          </ul>
+				</section>
+        <section>
+          <img src="./img/stats.png" style="float: right" />
+          <p>Demos later. Its very pretty</p>
+          <a href="http://play.grafana.org/dashboard/db/templated-graphs-nested">http://play.grafana.org/dashboard/db/templated-graphs-nested</a>
+        </section>
+
+        <section>
+          <h2>I wanna see some stuff!</h2>
+          <p>Lets go!</p>
+          <img src="./img/let-it-go.gif" />
+
+          <aside class="notes">
+            http://localhost:6003/
+            http://localhost:6004/dashboard/db/habitat-media
+            http://localhost:6080/habitat_media/media/1
+            http://play.grafana.org/dashboard/db/templated-graphs-nested
+            http://play.grafana.org/dashboard/db/annotations
+            echo "local.random.diceroll 4 `date +%s`" | nc -q0 ${SERVER} ${PORT}
+          </aside>
+        </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
