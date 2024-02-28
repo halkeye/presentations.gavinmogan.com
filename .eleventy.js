@@ -39,6 +39,7 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPassthroughCopy({
     "./public/": "/",
     "./attachments/": "/assets/",
+    "./static/assets/": "/assets/",
     // "./node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css"
   });
 
@@ -74,7 +75,10 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPlugin(pluginSyntaxHighlight, {
     preAttributes: {tabindex: 0}
   });
+
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+
+  eleventyConfig.addPlugin(metagen);
 
   // Filters
   eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
