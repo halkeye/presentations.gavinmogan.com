@@ -6,10 +6,10 @@ tags:
   - Internal
   - Telus
 date: 2015-01-01
-link: https://presentations.gavinmogan.com/devops/
+link: /decks/devops/
 links:
   - type: slides
-    url: https://presentations.gavinmogan.com/devops/
+    url: /decks/devops/
 ---
 
 Encouraged by my manager at the time, we decided to share what I thought devops meant and specifically what it would mean for the team.

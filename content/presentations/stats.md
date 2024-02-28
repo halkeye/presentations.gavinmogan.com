@@ -6,10 +6,10 @@ tags:
   - Telus
 date: 2015-05-01
 image: /assets/presentations-stats.png
-link: https://presentations.gavinmogan.com/stats/
+link: /decks/stats/
 links:
   - type: slides
-    url: https://presentations.gavinmogan.com/stats/
+    url: /decks/stats/
 ---
 
 Tried to share some of the knowledge I had gained from previous jobs about collecting information.

@@ -6,10 +6,10 @@ tags:
   - Internal
   - Telus
 date: 2015-03-01
-link: https://presentations.gavinmogan.com/linux101/
+link: /decks/linux101/
 links:
   - type: slides
-    url: https://presentations.gavinmogan.com/linux101/
+    url: /decks/linux101/
 ---
 
 Internal work presentation to share some day to day CLI linux knowledge I had with users who were mostly windows users.
