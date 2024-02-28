@@ -1,0 +1,41 @@
+---
+layout: layouts/base.njk
+---
+
+<div class="h-full">
+
+  <a role="button" class="btn" href="../">
+    <svg class="w-5 h-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+    </svg>
+    Go back
+  </a>
+
+  <div class="h-full flex items-center justify-center">
+    <div class="card w-2/5 bg-base-100 shadow-xl">
+      <figure>
+        {% toImageTag image, title, 300 %}
+      </figure>
+      <div class="card-body">
+        <h2 class="card-title">
+          <a href="{{link}}">{{ title }}</a>
+          <div class="badge badge-secondary"><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate('MMM yyyy') }}</time></div>
+        </h2>
+        {{ content | safe }}
+        <div class="card-actions justify-end">
+          {% for tag in tags | filterTagList %}
+          <div class="badge badge-outline">{{ tag | ucFirst }}</div>
+          {% endfor %}
+        </div>
+        {% if links %}
+        <div class="card-actions justify-end">
+          {% for link in links %}
+          <a role="button" href="{{link.url}}" class="btn {% if loop.first %}btn-primary{% else %}btn-secondary{% endif %}">{{ link.type | ucFirst }}</a>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>

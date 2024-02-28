@@ -1,0 +1,8 @@
+# When links are available using HTTPS, treat HTTP links as errors.
+require_https = true
+
+# Exclude these filesystem paths from getting checked.
+exclude_path = ["decks/", "_site/decks/"]
+
+# Exclude URLs and mail addresses from checking (supports regex).
+exclude = ['^https://www\.linkedin\.com', '^https://web\.archive\.org/web/']

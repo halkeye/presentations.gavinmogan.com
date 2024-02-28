@@ -1,0 +1,34 @@
+{
+  "name": "presentations.gavinmogan.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx eleventy && npx tailwindcss -i ./_includes/tailwind.css -o ./_site/tailwind.css --minify",
+    "dev": "npm-run-all -l --parallel dev:eleventy dev:tailwind",
+    "dev:eleventy": "eleventy --serve --port 8000 --watch",
+    "dev:tailwind": "tailwindcss -i ./_includes/tailwind.css -o ./_site/tailwind.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/halkeye/presentations.gavinmogan.com.git"
+  },
+  "keywords": [],
+  "author": "Gavin Mogan <npm@gavinmogan.com> (https://www.gavinmogan.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/halkeye/presentations.gavinmogan.com/issues"
+  },
+  "homepage": "https://github.com/halkeye/presentations.gavinmogan.com#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-img": "^3.1.8",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "daisyui": "^4.7.2",
+    "luxon": "^3.2.1",
+    "markdown-it-anchor": "^8.6.6",
+    "markdown-it-eleventy-img": "^0.10.1",
+    "npm-run-all": "^4.1.5",
+    "tailwindcss": "^3.4.1"
+  }
+}

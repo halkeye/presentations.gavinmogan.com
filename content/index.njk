@@ -1,0 +1,19 @@
+---
+title: Presentations
+layout: layouts/home.njk
+---
+<section>
+{% for p in collections.presentations %}
+  <div class="card">
+    <div class="card__img">
+      <a href="{{ p.url }}">
+        {% toImageTag p.data.image, p.data.title, 300 %}
+        <div class="card__overlay">
+          <h2>{{ p.data.title }}</h2>
+          <p>{{ p.data.tags | filterTagList | join(", ") }}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+{% endfor %}
+</section>
