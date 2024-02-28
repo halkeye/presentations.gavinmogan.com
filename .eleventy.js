@@ -1,20 +1,25 @@
 const {DateTime} = require("luxon");
 const path = require('path');
 
+const postcss = require('postcss');
+const tailwindcss = require('tailwindcss');
+const autoprefixer = require('autoprefixer');
+
 const markdownItImage = require("markdown-it-eleventy-img");
 const Image = require("@11ty/eleventy-img");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const {EleventyHtmlBasePlugin} = require("@11ty/eleventy");
 
-const toImageTag = async (src = 'static/assets/noimage.jpg', alt = "", width = 300) => {
+const toImageTag = async (src = 'static/assets/noimage.jpg', alt = "", widths = [300], extraAttributes = {}) => {
   if (!src) {
     src = "static/assets/noimage.jpg";
   }
 
   let attributes = {
     src: src.replace('/assets/', 'static/assets/'),
-    widths: [width],
+    widths: widths,
     alt: alt || "",
+    ...extraAttributes
   }
   const imageOptions = {
     // We only need the original width and format
@@ -36,6 +41,16 @@ const toImageTag = async (src = 'static/assets/noimage.jpg', alt = "", width = 3
 };
 
 module.exports = eleventyConfig => {
+  eleventyConfig.addNunjucksAsyncFilter('postcss', (cssCode, done) => {
+    postcss([tailwindcss(require('./tailwind.config.js')), autoprefixer()])
+      .process(cssCode, {from: './_includes/tailwind.css'})
+      .then(
+        (r) => done(null, r.css),
+        (e) => done(e, null)
+      );
+  });
+  eleventyConfig.addWatchTarget('_includes/**/*.css');
+
   eleventyConfig.addPassthroughCopy({
     "./public/": "/",
     "./attachments/": "/assets/",
@@ -105,7 +120,7 @@ module.exports = eleventyConfig => {
   })
 
   eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
-    return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
+    return (tags || []).filter(tag => ["all", "presentations"].indexOf(tag) === -1);
   });
 
   return {

@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx eleventy && npx tailwindcss -i ./_includes/tailwind.css -o ./_site/tailwind.css --minify",
-    "dev": "npm-run-all -l --parallel dev:eleventy dev:tailwind",
-    "dev:eleventy": "eleventy --serve --port 8000 --watch",
-    "dev:tailwind": "tailwindcss -i ./_includes/tailwind.css -o ./_site/tailwind.css --watch"
+    "build": "npx eleventy",
+    "dev": "eleventy --serve --port 8000 --watch"
   },
   "repository": {
     "type": "git",
@@ -24,11 +22,13 @@
     "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-img": "^3.1.8",
     "@11ty/eleventy-plugin-syntaxhighlight": "^4.2.0",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.17",
     "daisyui": "^4.7.2",
     "luxon": "^3.2.1",
     "markdown-it-anchor": "^8.6.6",
     "markdown-it-eleventy-img": "^0.10.1",
-    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1"
   }
 }

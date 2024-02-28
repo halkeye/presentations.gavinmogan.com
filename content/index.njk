@@ -2,18 +2,30 @@
 title: Presentations
 layout: layouts/home.njk
 ---
-<section>
-{% for p in collections.presentations %}
-  <div class="card">
-    <div class="card__img">
-      <a href="{{ p.url }}">
-        {% toImageTag p.data.image, p.data.title, 300 %}
-        <div class="card__overlay">
-          <h2>{{ p.data.title }}</h2>
-          <p>{{ p.data.tags | filterTagList | join(", ") }}</p>
-        </div>
-      </a>
+<div class="p-24 flex flex-wrap items-center justify-center">
+  {%- for p in collections.presentations %}
+  <div class="flex-initial card w-96 h-90 bg-slate-600 shadow-xl m-4 p-2">
+    <figure class="h-60">
+      <a href="{{ p.url }}">{% toImageTag p.data.image, p.data.title, [300] %}</a>
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">
+        <a href="{{ p.url }}">{{ p.data.title }}</a>
+      </h2>
+      <div class="card-actions justify-end">
+        {% for tag in p.data.tags | filterTagList %}
+        <div class="badge badge-outline">{{ tag | ucFirst }}</div>
+        {% endfor %}
+      </div>
+      {% if links %}
+      <div class="card-actions justify-end">
+        {% for link in p.data.links %}
+        <a role="button" href="{{link.url}}" class="btn {% if loop.first %}btn-primary{% else %}btn-secondary{% endif %}">{{ link.type | ucFirst }}</a>
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
   </div>
-{% endfor %}
-</section>
+  {%- endfor %}
+</div>
+

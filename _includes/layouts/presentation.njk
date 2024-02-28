@@ -11,9 +11,9 @@ layout: layouts/base.njk
   </a>
 
   <div class="h-full flex items-center justify-center">
-    <div class="card w-2/5 bg-base-100 shadow-xl">
+    <div class="card md:w-2/5 bg-slate-600 shadow-xl p-2">
       <figure>
-        <a href="{{link}}">{% toImageTag image, title, 300 %}</a>
+        <a href="{{link}}">{% toImageTag image, title, [300] %}</a>
       </figure>
       <div class="card-body">
         <h2 class="card-title">
