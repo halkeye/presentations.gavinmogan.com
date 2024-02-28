@@ -9,22 +9,24 @@
 		<meta name="generator" content="{{ eleventy.generator }}">
 		<link rel="stylesheet" href="/tailwind.css"/>
 		<meta name="title" content="{{ title or metadata.title }}">
+
 		<meta property="og:type" content="website">
-		<meta property="og:url" content="https://presentations.gavinmogan.com{{ page.url }}">
+		<meta property="og:url" content="{{ page.url | absoluteUrl}}">
 		<meta property="og:locale" content="en_US">
 		<meta property="og:title" content="{{ title or metadata.title }}">
 		{%- if image %}
-		<meta property="og:image" content="https://presentations.gavinmogan.com{{ image }}">
+		<meta property="og:image" content="{{ image | absoluteUrl }}">
 		{%- endif %}
 		<meta property="og:image:alt" content="{{ title or metadata.title }}">
 		<meta name="twitter:card" content="summary">
-		<meta name="twitter:url" content="https://presentations.gavinmogan.com/codecoffee-why-not-testing/">
+		<meta name="twitter:url" content="{{ page.url | absoluteUrl}}">
 		<meta name="twitter:title" content="{{ title or metadata.title }}">
 		{%- if image %}
-		<meta name="twitter:image" content="https://presentations.gavinmogan.com{{ image }}">
+		<meta name="twitter:image" content="{{ image | absoluteUrl }}">
 		{%- endif %}
 		<meta name="twitter:image:alt" content="{{ title or metadata.title }}">
-		<link rel="canonical" href="https://presentations.gavinmogan.com{{ page.url }}">
+		<link rel="canonical" href="{{ page.url | absoluteUrl }}">
+
 
 		<style>
 			{% include "public/css/index.css" %}

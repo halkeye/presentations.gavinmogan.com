@@ -47,6 +47,17 @@ module.exports = eleventyConfig => {
 
   eleventyConfig.addAsyncShortcode('toImageTag', toImageTag)
 
+  eleventyConfig.addFilter("absoluteUrl", function (url = "") {
+    const baseUrl = process.env.OVERRIDE_BASE_URL || `https://presentations.gavinmogan.com`;
+
+    try {
+      return new URL(url, baseUrl).href;
+    } catch (err) {
+      console.error(err);
+      return url;
+    }
+  });
+
   eleventyConfig.addFilter("toUpperCase", value => value.toUpperCase())
 
   eleventyConfig.addFilter("ucFirst", value => value.charAt(0).toUpperCase() + value.slice(1))

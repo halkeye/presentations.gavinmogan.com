@@ -15,6 +15,7 @@ permissions:
 
 env:
   LYCHEE_OUTPUT: lychee/out.md
+  OVERRIDE_BASE_URL: "/"
   WORKFLOW_ISSUE_TITLE: "Link Checker Dashboard 🔗"
 
 jobs:
