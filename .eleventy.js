@@ -78,8 +78,6 @@ module.exports = eleventyConfig => {
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
 
-  eleventyConfig.addPlugin(metagen);
-
   // Filters
   eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
     // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
