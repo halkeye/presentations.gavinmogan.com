@@ -1,14 +1,14 @@
-const {DateTime} = require("luxon");
-const path = require('path');
+import { DateTime } from "luxon";
+import { join, dirname } from 'path';
 
-const postcss = require('postcss');
-const tailwindcss = require('tailwindcss');
-const autoprefixer = require('autoprefixer');
+import postcss from 'postcss';
+import tailwindcss from '@tailwindcss/postcss';
+import autoprefixer from 'autoprefixer';
 
-const markdownItImage = require("markdown-it-eleventy-img");
-const Image = require("@11ty/eleventy-img");
-const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const {EleventyHtmlBasePlugin} = require("@11ty/eleventy");
+import markdownItImage from "markdown-it-eleventy-img";
+import Image, { generateHTML } from "@11ty/eleventy-img";
+import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import { EleventyHtmlBasePlugin } from "@11ty/eleventy";
 
 const toImageTag = async (src = 'static/assets/noimage.jpg', alt = "", widths = [300], extraAttributes = {}) => {
   if (!src) {
@@ -32,7 +32,7 @@ const toImageTag = async (src = 'static/assets/noimage.jpg', alt = "", widths = 
   };
   // generate images, while this is async we don’t wait
   let metadata = await Image(attributes.src, imageOptions);
-  return Image.generateHTML(metadata, {
+  return generateHTML(metadata, {
     sizes: '100vw',
     loading: 'lazy',
     decoding: 'async',
@@ -40,9 +40,16 @@ const toImageTag = async (src = 'static/assets/noimage.jpg', alt = "", widths = 
   });
 };
 
-module.exports = eleventyConfig => {
-  eleventyConfig.addNunjucksAsyncFilter('postcss', (cssCode, done) => {
-    postcss([tailwindcss(require('./tailwind.config.js')), autoprefixer()])
+export default eleventyConfig => {
+
+  eleventyConfig.addPassthroughCopy({
+      "node_modules/reveal.js/dist": "assets/reveal/",
+      "node_modules/reveal.js/plugin": "assets/reveal/plugin",
+  });
+
+  eleventyConfig.addNunjucksAsyncFilter('postcss', async (cssCode, done) => {
+    const config = await import('./tailwind.config.mjs')
+    postcss([tailwindcss(config), autoprefixer()])
       .process(cssCode, {from: './_includes/tailwind.css'})
       .then(
         (r) => done(null, r.css),
@@ -80,11 +87,11 @@ module.exports = eleventyConfig => {
   // Customize Markdown library settings:
   eleventyConfig.amendLibrary("md", mdLib => {
     mdLib.use(markdownItImage, {
-      resolvePath: (filepath, env) => path.join(path.dirname(env.page.inputPath), filepath),
+      resolvePath: (filepath, env) => join(dirname(env.page.inputPath), filepath),
       imgOptions: {
         widths: [800, 500, 300],
         urlPath: "/images/",
-        outputDir: path.join("_site", "images"),
+        outputDir: join("_site", "images"),
         formats: ["avif", "webp", "jpeg"]
       },
       globalAttributes: {
