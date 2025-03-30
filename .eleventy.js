@@ -41,6 +41,11 @@ const toImageTag = async (src = 'static/assets/noimage.jpg', alt = "", widths = 
 };
 
 module.exports = eleventyConfig => {
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/reveal.js/dist": "assets/reveal/",
+    "node_modules/reveal.js/plugin": "assets/reveal/plugin",
+  });
+
   eleventyConfig.addNunjucksAsyncFilter('postcss', (cssCode, done) => {
     postcss([tailwindcss(require('./tailwind.config.js')), autoprefixer()])
       .process(cssCode, {from: './_includes/tailwind.css'})

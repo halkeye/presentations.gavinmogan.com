@@ -30,5 +30,8 @@
     "markdown-it-eleventy-img": "^0.10.1",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1"
+  },
+  "dependencies": {
+    "reveal.js": "^5.2.1"
   }
 }
