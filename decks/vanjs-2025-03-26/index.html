@@ -274,29 +274,29 @@
       </section>
 
       <section>
-        <h2>More Complex Wildcards</h2>
-        <pre><code data-trim data-noescape>$ ls /apps/local/{nginx,ruby}</code></pre>
-        <p>It is the same as:</p>
-        <pre><code data-trim data-noescape>$ ls /apps/local/nginx /apps/local/ruby</code></pre>
-        <pre><code data-trim data-noescape>$ mkdir [a-e]</code></pre>
-        <p>Makes a,b,c,d,e directories</p>
-      </section>
-
-      <section>
         <h2>Serious wildcards</h2>
-        <p>find is super powerful, Check man pages</p>
         <p>Find all directories</p>
         <pre><code data-trim data-noescape>$ find -type d</code></pre>
         <p>Find all files</p>
         <pre><code data-trim data-noescape>$ find -type f</code></pre>
-        <p>Find all files ending in log</p>
-        <pre><code data-trim data-noescape>$ find -name '*.log'</code></pre>
-        <pre><code data-trim data-noescape>$ find -name '*.log' -exec ls {} \;</code></pre>
-        <pre><code data-trim data-noescape>$ find -name '*.log' -exec ls {} +</code></pre>
+        <p>Find all files ending in log (+</p>
+        <pre><code data-trim data-noescape>
+          $ find -name '*.log' # find all files ending in .log
+          $ find -name '*.log' -exec ls {} \; # executes a command for each file
+          $ find -name '*.log' -exec ls {} + # appends all files to one command
+        </code></pre>
+        <p>Run something in a directory with logs</p>
+        <pre><code data-trim data-noescape>$ find /var/log -name '*.log' -execdir pwd \;</code></pre>
+
+        <aside class="notes">
+          Find can do a crazy amount of Stuff
+          Researching this, I learned the recommendation is to use execdir when you can these days. Probably to avoid trying to do weird pipes... Speaking of
+        </aside>
       </section>
 
       <section>
         <h2>Power of pipes</h2>
+        <img src="./mario-go-down-in-tube-wave.gif" alt="Mario going down a pipe and waving" width="300" />
         <p>With a few combos you can do anything</p>
       </section>
 
@@ -307,7 +307,7 @@
         <p>Pull out parts of a line</p>
         <pre><code data-trim data-noescape>ack / cut</code></pre>
         <p>Reorder items</p>
-        <pre><code data-trim data-noescape>uniq / Sort</code></pre>
+        <pre><code data-trim data-noescape>uniq / sort</code></pre>
         <p>Loops</p>
         <pre><code data-trim data-noescape>for</code></pre>
       </section>
@@ -324,32 +324,6 @@
       </section>
 
       <section>
-        <h2>Bang Bang</h2>
-        <pre><code data-trim data-noescape>$ yum install tig
-  You need to be root to perform this command.</code></pre>
-        <pre><code data-trim data-noescape>$ sudo !!</code></pre>
-        <pre><code data-trim data-noescape>$ sudo yum install tig</code></pre>
-      </section>
-
-      <section>
-        <h2>What are others doing?</h2>
-        <p>Literally who is logged in to this box right now.</p>
-        <p>Lists user accounts and when they log in.</p>
-        <pre><code data-trim data-noescape>$ who</code></pre>
-        <p>Lists who is online and what they are doing.</p>
-        <pre><code data-trim data-noescape>$ w</code></pre>
-      </section>
-
-      <section>
-        <h2>Testing HTTP</h2>
-        <p>Curl and wget work kinda the same, but under different designs.</p>
-        <p>Wget is great at downloading files.</p>
-        <pre><code data-trim data-noescape>$ wget http://i.imgur.com/Ia48QDR.jpg</code></pre>
-        <p>Curl is better at retrieving content.</p>
-        <pre><code data-trim data-noescape>$ curl http://jenkins/job/test-workflow/api/json?pretty=true</code></pre>
-      </section>
-
-      <section>
         <h2>For Loops</h2>
         <pre><code data-trim data-noescape>for i in $(seq 1 10); do echo $i; done</code></pre>
         <pre><code data-trim data-noescape>for i in gavin likes pie; do mkdir $i; done</code></pre>
@@ -361,7 +335,7 @@
         <p>Sed, perl, python, etc</p>
         <p>I prefer perl pie</p>
         <pre><code data-trim data-noescape>$ echo "Gavin likes Pie" > file.txt</code></pre>
-        <pre><code data-trim data-noescape>$ perl -pi -e 's/Gavin/Phil/' file.txt</code></pre>
+        <pre><code data-trim data-noescape>$ perl -pi -e 's/Gavin/Bibi/' file.txt</code></pre>
         <pre><code data-trim data-noescape>$ cat file.txt</code></pre>
       </section>
 
@@ -372,6 +346,16 @@
         <p>Enable debugging right now</p>
         <pre><code data-trim data-noescape>$ set -x</code></pre>
       </section>
+
+      <section>
+        <h2>Testing HTTP</h2>
+        <p>Curl and wget work kinda the same, but under different designs.</p>
+        <p>Wget is great at downloading files.</p>
+        <pre><code data-trim data-noescape>$ wget http://i.imgur.com/Ia48QDR.jpg</code></pre>
+        <p>Curl is better at retrieving content.</p>
+        <pre><code data-trim data-noescape>$ curl http://jenkins/job/test-workflow/api/json?pretty=true</code></pre>
+      </section>
+
 
       <section>
         <h2>SSH</h2>
