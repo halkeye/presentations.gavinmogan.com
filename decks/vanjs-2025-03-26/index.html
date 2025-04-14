@@ -41,27 +41,27 @@
           I'm Gavin. I am a Senior Software Developer at digitalocean. I've been doing this a long long time in tech terms. More than 5 whole years.
 
           Today I'm planning on covering the basics of the command line and linux, so it becomes a lot less intimidating. Don't worry if you know everything about linux already, as I guarentee with no money back, that you will still learn one thing new. I know this because when I looked at my past presentations, I learned new things.
-
-          I also want to be up front that I have a referral code  for digitalocean that i'll show at the end for people can use if they want to play around with anything without risking thier own computer. Nothing i'm covering is dangerous, but i like giving people oppertunties. If you already have an account, the code won't work, so come talk to rodrigo or myself who can help figure something out.
         </aside>
       </section>
-      <section>
-        <pre><code data-trim data-noescape>
-            console.log('Hello, World!');
-        </code></pre>
-      </section>
 
       <section>
-        <h2>Conventions</h2>
+        <h2>Upfront notes</h2>
         <ul>
-          <li>Generally, Linux doesn’t care what order CLI parameters are in. GNU Standard. Unix does</li>
-          <li>Double Dash for long arguments (find being a notable exception)</li>
-          <li>Double Dash by itself also commonly means ends of arguments</li>
+          <li>Talking about linux. Rest are similar</li>
+          <li class="fragment">$ is usually a shell prompt</li>
+          <li class="fragment">Generally, Linux doesn't care what order CLI parameters are in.</li>
+          <li class="fragment">Double Dash for long arguments (find being a notable exception)</li>
+          <li class="fragment">Double Dash by itself also commonly means ends of arguments</li>
         </ul>
+        <aside class="notes">
+          This presentation will focus on the linux cli as I know it better, but mac cli, and windows with wsl, and even to some degrees powershell all have overlaps.
+
+          I will be using $ to represent the shell prompt. This is a common convention, but not universal. If you see a $ at the start of a line, it means that is a command you can run in your shell.
+        </aside>
       </section>
 
       <section>
-        <h2>Getting Help</h2>
+        <h2>Getting Help (Offline non stackoverflow/ai version)</h2>
         <ul>
           <li>
             Most commands have a man page
@@ -91,6 +91,11 @@
           <li><b><kbd>Ctrl</kbd>+<kbd>a</kbd></b> - Move to start of line</li>
           <li><b><kbd>Ctrl</kbd>+<kbd>e</kbd></b> - Move to end of line</li>
         </ul>
+        <aside class="notes">
+          Again, these are common shortcuts in the default terminal. In linux default is bash in emacs mode. I believe on mac it is zsh, but these should all work the same.
+
+          I did work at one company that had the shells defaulting to vi mode. I have no idea why they did it, and none of these worked. If you work at one of those companies, I can tell you how to switch it for a single session, but its probably not worth it.
+        </aside>
       </section>
 
       <section>
@@ -103,13 +108,20 @@
             <pre><code data-trim data-noescape>
               $ pwd
               /home/gavinm
-            </code></pre>
-            <pre><code data-trim data-noescape>
+
               $ echo $PWD
               /home/gavinm
             </pre></code>
           </div>
         </div>
+        <aside class="notes">
+          Okay lets get started.
+          You can't really do anything if you don't know where you are. Most terminals will start you off in your home directory. On linux that is slash home, on mac its slash users, but you can configure it differently. I have some friends that have differnent terminal profiles that start them in different directories. Vscode would be another one that drops you somewhere else, so its worth knowing where you are.
+
+          There is the pwd command, and the PWD variable.
+
+          pwd stands for print working directory, so i'm not sure why there's a variable for it. Outside of the cli, it also might be called cwd, which is current working directory.
+        </aside>
       </section>
 
       <section>
