@@ -3,7 +3,7 @@ title: Presentations
 layout: layouts/home.njk
 ---
 <div class="p-24 flex flex-wrap items-center justify-center">
-  {%- for p in collections.presentations %}
+  {%- for p in collections.presentations | sort(attribute="data.date") | reverse %}
   <div class="flex-initial card w-96 h-90 bg-slate-600 shadow-xl m-4 p-2">
     <figure class="h-60">
       <a href="{{ p.url }}">{% toImageTag p.data.image, p.data.title, [300] %}</a>

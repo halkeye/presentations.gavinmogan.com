@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="/assets/reveal/reveal.css" />
   <link rel="stylesheet" href="/assets/reveal/theme/dracula.css" />
   <link rel="stylesheet" href="/assets/reveal/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="./kbd.min.css" />
   <title>The CLI isn't as scary as you think - VanJS - April 16th, 2025</title>
 </head>
 
@@ -29,7 +30,12 @@
           <img src="./Sammy08.png" alt="Digital Ocean Mascot, Sammy the Shark, holding a heart ballon" width="100" style="vertical-align: middle;" />
         </p>
         <p><a href="https://www.gavinmogan.com">https://www.gavinmogan.com</a></p>
-        <p><img src="./avatar.original.png" alt="Avatar" width="300" /></p>
+        <p>
+          <div style="position: relative">
+            <img src="./avatar.original.png" alt="Avatar" width="300" />
+            <img src="./7ea8c5f825a565577854af73c8dac2ea.png" alt="Easter Egg" width="100" style="position: absolute; width: 5%; top: 12%; left: 39%; opacity: 0.33;" />
+          </div>
+        </p>
         <aside class="notes">
           Hey everyone,
           I'm Gavin. I am a Senior Software Developer at digitalocean. I've been doing this a long long time in tech terms. More than 5 whole years.
@@ -39,6 +45,358 @@
           I also want to be up front that I have a referral code  for digitalocean that i'll show at the end for people can use if they want to play around with anything without risking thier own computer. Nothing i'm covering is dangerous, but i like giving people oppertunties. If you already have an account, the code won't work, so come talk to rodrigo or myself who can help figure something out.
         </aside>
       </section>
+      <section>
+        <pre><code data-trim data-noescape>
+            console.log('Hello, World!');
+        </code></pre>
+      </section>
+
+      <section>
+        <h2>Conventions</h2>
+        <ul>
+          <li>Generally, Linux doesn’t care what order CLI parameters are in. GNU Standard. Unix does</li>
+          <li>Double Dash for long arguments (find being a notable exception)</li>
+          <li>Double Dash by itself also commonly means ends of arguments</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Getting Help</h2>
+        <ul>
+          <li>
+            Most commands have a man page
+            <pre><code data-trim data-noescape>$ man find</code></pre>
+          </li>
+          <li>
+            Shell functions only have help
+            <pre><code data-trim data-noescape>$ help for</code></pre>
+          </li>
+          <li>
+            Sometimes --help will return things
+            <pre><code data-trim data-noescape>$ ls --help</code></pre>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Keyboard Shortcuts</h2>
+        <ul>
+          <li><b><kbd>Ctrl</kbd>+<kbd>r</kbd></b> - Reverse search through your bash history (My fav)</li>
+          <li><b><kbd>Up</kbd> / <kbd>Down</kbd></b> - Prev/next in history</li>
+          
+          <li><b><kbd>Ctrl</kbd>+<kbd>w</kbd></b> - Delete previous word</li>
+          <li><b><kbd>Ctrl</kbd>+<kbd>k</kbd></b> - Delete rest of line</li>
+          <li><b><kbd>Ctrl</kbd>+<kbd>u</kbd></b> - Delete entire line</li>
+          
+          <li><b><kbd>Ctrl</kbd>+<kbd>a</kbd></b> - Move to start of line</li>
+          <li><b><kbd>Ctrl</kbd>+<kbd>e</kbd></b> - Move to end of line</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Where am I?</h2>
+        <div>
+          <div style="float: right">
+            <img src="./northeastern.png" width="150" />
+          </div>
+          <div style="width: 80%">
+            <pre><code data-trim data-noescape>
+              $ pwd
+              /home/gavinm
+            </code></pre>
+            <pre><code data-trim data-noescape>
+              $ echo $PWD
+              /home/gavinm
+            </pre></code>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>How to Change Directory</h2>
+        <ul>
+          <li>
+            Linux uses forward slash - / as folder separator
+            <pre><code data-trim data-noescape>$ cd /home/gavinm</code></pre>
+          </li>
+          <li>
+            Spaces and other characters should be escaped or quoted
+            <pre><code data-trim data-noescape>$ cd /home/gavinm/Project\ Dir</code></pre>
+            <pre><code data-trim data-noescape>$ cd "/home/gavinm/Project Dir"</code></pre>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>Get back there</h2>
+
+        <pre><code data-trim data-noescape>
+        $ pwd
+        /home/gavinm
+        </code></pre>
+
+        <pre><code data-trim data-noescape>
+        $ cd /home/gavinm/Develop
+        $ pwd
+        /home/gavinm/Develop
+
+        $ cd -
+        $ pwd
+        /home/gavinm
+        </pre></code>
+      </section>
+
+      <section>
+        <h2>Home Directories</h2>
+        <pre><code data-trim data-noescape>
+          $ cd
+          /home/gavinm
+        </code></pre>
+        <pre><code data-trim data-noescape>
+          $ cd ~
+          /home/gavinm
+        </pre></code>
+        <pre><code data-trim data-noescape>
+          $ cd $HOME
+          /home/gavinm
+        </pre></code>
+        Another users home dir
+        <pre><code data-trim data-noescape>
+          $ cd ~halkeye
+          /home/halkeye
+        </pre></code>
+      </section>
+
+      <section>
+        <h2>What is in this directory?</h2>
+        <img src="./dir.png" style="width: 40%; float: right" />
+        <div style="width: 60%">
+          <p>Simple Directory Listing</h3>
+          <pre><code data-trim data-noescape>$ ls</code></pre>
+          <p>Long Listing</h3>
+          <pre><code data-trim data-noescape>$ ls -l</pre></code>
+          <p>Descending(r) by Time(t)</h3>
+          <pre><code data-trim data-noescape>$ ls -ltr</pre></code>
+          <p>Hidden files</h3>
+          <pre><code data-trim data-noescape>$ ls -a</pre></code>
+        </div>
+        <aside class="notes">
+          Note, I'm using some customizations to make this more colorful
+        </aside>
+      </section>
+
+      <section>
+        <h2>When am I?</h2>
+        <div>
+          <div style="float: right">
+            <img src="./Pink_Easter_Egg_PNG_Clipart-removebg-preview.png" width="50" />
+          </div>
+          <div style="width: 80%">
+            <pre><code data-trim data-noescape>
+              $ TZ=America/Vancouver date
+              Sun Apr 20 12:00:00 PDT 2025
+            </code></pre>
+          </div>
+          <div style="width: 80%" class="fragment">
+            <p>Note: time command times a command, not time of day</p>
+            <pre><code data-trim data-noescape>
+              $ time sleep 30s
+              sleep 30s  0.00s user 0.00s system 0% cpu 28.108 total
+            </code></pre>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>What's happened recently?</h2>
+        <p>Head will give you the first n lines</p>
+        <pre><code data-trim data-noescape>$ head -n 2 /var/log/nginx/presentations.gavinmogan.com.access.log
+  presentations.gavinmogan.com:80 108.172.217.87 - - [24/Jun/2015:07:02:03 +0000] "GET /stats/ HTTP/1.1" 200 5566 "http://odin.kodekoan.com:4080/halkeye/gavinmogan.com/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36" "108.172.217.87"
+  presentations.gavinmogan.com:80 108.172.217.87 - - [24/Jun/2015:07:02:03 +0000] "GET /stats/css/reveal.css HTTP/1.1" 200 48591 "http://presentations.gavinmogan.com/stats/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36" "108.172.217.87"
+  </code></pre>
+        <p>Tail will give you the last n lines</p>
+        <pre><code data-trim data-noescape>$ tail -n 2 /var/log/nginx/presentations.gavinmogan.com.access.log
+  presentations.gavinmogan.com:80 162.158.64.218 - - [27/Jun/2015:03:35:46 +0000] "HEAD / HTTP/1.1" 403 166 "-" "Mozilla/5.0 (compatible; CloudFlare-AlwaysOnline/1.0; +http://www.cloudflare.com/always-online)" "162.158.64.218"
+  presentations.gavinmogan.com:80 162.158.64.218 - - [27/Jun/2015:03:35:46 +0000] "GET / HTTP/1.1" 403 345 "-" "Mozilla/5.0 (compatible; CloudFlare-AlwaysOnline/1.0; +http://www.cloudflare.com/always-online) AppleWebKit/534.34" "162.158.64.218"
+  </code></pre>
+        <p>Common Options</p>
+        <ul>
+          <li><b>-f</b> will keep tailing</li>
+          <li><b>-F</b> will restart tailing if file is truncated</li>
+          <li><b>-n #num#</b> will only print out #num# number of lines</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Create Edit Update Destroy</h2>
+        <ul>
+          <li>cat &lt;file&gt; - outputs contents</li>
+          <li>tac &lt;file&gt; - outputs contents in reverse directory</li>
+          <li>less &lt;file&gt; - outputs content (controlled)</li>
+          <li>rm &lt;file&gt; - Remove a file</li>
+          <li>rmdir &lt;dir&gt; - Remove an empty directory</li>
+          <li>mkdir &lt;dir&gt; - Create a directory (mkdir -p as bonus)</li>
+          <li>mkdir -p &lt;dir/subdir/subdir2&gt; - Create all the directories required to make the full path (and doesn't error if already exists)</li>
+          <li>touch &lt;file&gt; - update timestamp/create empty file</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Whats going on?</h2>
+        <ul>
+          <li>ps xf -A (My Favourite)</li>
+          <li>ps aux (Very portable)
+            <ul>
+              <li>More w's with ps = more wide</li>
+              <li>ps auxwww</li>
+            </ul>
+          </li>
+          <li>pstree</li>
+          <li>top</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Redirection</h2>
+        <p>Output to file</p>
+        <pre><code data-trim data-noescape>$ echo "hi" > file.txt</code></pre>
+        <p>Errors to file</p>
+        <pre><code data-trim data-noescape>$ curl http://fake.server 2> errors.txt</code></pre>
+        <p>Input from file</p>
+        <pre><code data-trim data-noescape>$ mysql < import.sql </code></pre>
+      </section>
+
+      <section>
+        <h2>Wildcards</h2>
+        <pre><code data-trim data-noescape>$ tail -F ~/Develop/*/logs/development.log</code></pre>
+        <p>Will look find all directories that have a logs directory underneath it.</p>
+        <pre><code data-trim data-noescape>$ tail -F ~/Develop/*/logs/*.log</code></pre>
+        <p>Will find all log files under all directories that have a log directory (one level deep)</p>
+      </section>
+
+      <section>
+        <h2>More Complex Wildcards</h2>
+        <pre><code data-trim data-noescape>$ ls /apps/local/{nginx,ruby}</code></pre>
+        <p>It is the same as:</p>
+        <pre><code data-trim data-noescape>$ ls /apps/local/nginx /apps/local/ruby</code></pre>
+        <pre><code data-trim data-noescape>$ mkdir [a-e]</code></pre>
+        <p>Makes a,b,c,d,e directories</p>
+      </section>
+
+      <section>
+        <h2>Serious wildcards</h2>
+        <p>find is super powerful, Check man pages</p>
+        <p>Find all directories</p>
+        <pre><code data-trim data-noescape>$ find -type d</code></pre>
+        <p>Find all files</p>
+        <pre><code data-trim data-noescape>$ find -type f</code></pre>
+        <p>Find all files ending in log</p>
+        <pre><code data-trim data-noescape>$ find -name '*.log'</code></pre>
+        <pre><code data-trim data-noescape>$ find -name '*.log' -exec ls {} \;</code></pre>
+        <pre><code data-trim data-noescape>$ find -name '*.log' -exec ls {} +</code></pre>
+      </section>
+
+      <section>
+        <h2>Power of pipes</h2>
+        <p>With a few combos you can do anything</p>
+      </section>
+
+      <section>
+        <h2>Some Good Pipes</h2>
+        <p>Filter out text</p>
+        <pre><code data-trim data-noescape>grep</code></pre>
+        <p>Pull out parts of a line</p>
+        <pre><code data-trim data-noescape>ack / cut</code></pre>
+        <p>Reorder items</p>
+        <pre><code data-trim data-noescape>uniq / Sort</code></pre>
+        <p>Loops</p>
+        <pre><code data-trim data-noescape>for</code></pre>
+      </section>
+
+      <section>
+        <h2>Grep and Awk Can Do anything</h2>
+        <pre><code data-trim data-noescape>grep /favicon.ico access.log</code></pre>
+        <pre><code data-trim data-noescape>long output</code></pre>
+        <pre><code data-trim data-noescape>grep /favicon.ico access.log | awk '{print $17}'</code></pre>
+        <pre><code data-trim data-noescape>AppleWebKit/537.36</code></pre>
+        <pre><code data-trim data-noescape>grep /favicon.ico access.log | awk -F'"' '{print $6}'</code></pre>
+        <pre><code data-trim data-noescape>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.111 Safari/537.36</code></pre>
+        <p>Add sort and uniq pipes</p>
+      </section>
+
+      <section>
+        <h2>Bang Bang</h2>
+        <pre><code data-trim data-noescape>$ yum install tig
+  You need to be root to perform this command.</code></pre>
+        <pre><code data-trim data-noescape>$ sudo !!</code></pre>
+        <pre><code data-trim data-noescape>$ sudo yum install tig</code></pre>
+      </section>
+
+      <section>
+        <h2>What are others doing?</h2>
+        <p>Literally who is logged in to this box right now.</p>
+        <p>Lists user accounts and when they log in.</p>
+        <pre><code data-trim data-noescape>$ who</code></pre>
+        <p>Lists who is online and what they are doing.</p>
+        <pre><code data-trim data-noescape>$ w</code></pre>
+      </section>
+
+      <section>
+        <h2>Testing HTTP</h2>
+        <p>Curl and wget work kinda the same, but under different designs.</p>
+        <p>Wget is great at downloading files.</p>
+        <pre><code data-trim data-noescape>$ wget http://i.imgur.com/Ia48QDR.jpg</code></pre>
+        <p>Curl is better at retrieving content.</p>
+        <pre><code data-trim data-noescape>$ curl http://jenkins/job/test-workflow/api/json?pretty=true</code></pre>
+      </section>
+
+      <section>
+        <h2>For Loops</h2>
+        <pre><code data-trim data-noescape>for i in $(seq 1 10); do echo $i; done</code></pre>
+        <pre><code data-trim data-noescape>for i in gavin likes pie; do mkdir $i; done</code></pre>
+        <pre><code data-trim data-noescape>for i in *; do mv $i $i.bak; done</code></pre>
+      </section>
+
+      <section>
+        <h2>Search and Replace</h2>
+        <p>Sed, perl, python, etc</p>
+        <p>I prefer perl pie</p>
+        <pre><code data-trim data-noescape>$ echo "Gavin likes Pie" > file.txt</code></pre>
+        <pre><code data-trim data-noescape>$ perl -pi -e 's/Gavin/Phil/' file.txt</code></pre>
+        <pre><code data-trim data-noescape>$ cat file.txt</code></pre>
+      </section>
+
+      <section>
+        <h2>Debugging</h2>
+        <p>Run a script in debug mode</p>
+        <pre><code data-trim data-noescape>$ bash -x script.sh</code></pre>
+        <p>Enable debugging right now</p>
+        <pre><code data-trim data-noescape>$ set -x</code></pre>
+      </section>
+
+      <section>
+        <h2>SSH</h2>
+        <p>What are ssh keys?</p>
+        <p>Why would you want them?</p>
+        <p>How do you use them?</p>
+        <pre><code data-trim data-noescape>man ssh_config</code></pre>
+      </section>
+
+      <section>
+        <h1>The End</h1>
+        <p class="fragment">
+          https://m.do.co/c/7d6859326b6a
+
+          <a href="https://www.digitalocean.com/?refcode=7d6859326b6a&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>
+        </p>
+        <aside class="notes">
+          As promised. If you want to try things out in a safe environment, feel free to use my referral code and create a droplet. If you already have an account, come talk to me or rodrigo and we can help you out.
+        </aside>
+      </section>
+
+      <section class="r-fit-text">
+        <h1>Extra Stuffsssss</h1>
+      </section>
+
       <section>
         <h2 class="r-fit-text">FIT TEXT</h2>
         <h2 class="r-fit-text">CAN BE USED FOR MULTIPLE HEADLINES</h2>
@@ -71,22 +429,6 @@
             * VSCode
             * Hyper.is
         </textarea>
-      </section>
-      <section>
-        <pre><code data-trim data-noescape>
-            console.log('Hello, World!');
-          </code></pre>
-      </section>
-      <section>
-        <h1>How do I get started?</h1>
-        <p class="fragment">
-          https://m.do.co/c/7d6859326b6a
-
-          <a href="https://www.digitalocean.com/?refcode=7d6859326b6a&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>
-        </p>
-        <aside class="notes">
-          So before I get started while I think everything I'm going to cover today will be safe, I understand how scary this can be, so if you want to test it out in a risk free environment, you are welcome to use my digital ocean referral code to get yourself credits. This only applies to new accounts, but we got approval for people with existing accounts, so you can come chat with rodrigo or myself and we can get you some credits to try things out.
-        </aside>
       </section>
     </div>
   </div>
