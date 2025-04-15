@@ -47,35 +47,43 @@
       <section>
         <h2>Upfront notes</h2>
         <ul>
-          <li>Talking about linux. Rest are similar</li>
+          <li class="fragment">Talking about linux. Rest are similar</li>
           <li class="fragment">$ is usually a shell prompt</li>
           <li class="fragment">Generally, Linux doesn't care what order CLI parameters are in.</li>
-          <li class="fragment">Double Dash for long arguments (find being a notable exception)</li>
-          <li class="fragment">Double Dash by itself also commonly means ends of arguments</li>
         </ul>
         <aside class="notes">
-          This presentation will focus on the linux cli as I know it better, but mac cli, and windows with wsl, and even to some degrees powershell all have overlaps.
+          Okay, a few notes before we get started. 
 
-          I will be using $ to represent the shell prompt. This is a common convention, but not universal. If you see a $ at the start of a line, it means that is a command you can run in your shell.
+          I'll be upfront. I like to tell stories while presenting, but its hard to come up with a good narative, at least for the earlier stuff, so I'll appoligize in advance that some slides will be a bit jarring, but it will be worth it.
+
+          While I know most developers these days, at least front end ones, will end up using a mac, I'm going to cover linux as I know it the best, and but mac cli, and windows with wsl, and even to some degrees powershell all have overlaps so everything should be transferable.
+
+          Whenever you see a dollar sign followed by a command, its usually to indicate a command prompt. I've stuck with that convention here.
+
+          Upfront linux usually doesn't care about order of arguments, though some older mac versions do. So if something I cover doesn't work, try switching the order of the arguments.
         </aside>
       </section>
 
       <section>
-        <h2>Getting Help (Offline non stackoverflow/ai version)</h2>
+        <h2>Getting Help</h2> 
+        <p>Offline version</p>
         <ul>
-          <li>
+          <li class="fragment">
             Most commands have a man page
             <pre><code data-trim data-noescape>$ man find</code></pre>
           </li>
-          <li>
+          <li class="fragment">
             Shell functions only have help
             <pre><code data-trim data-noescape>$ help for</code></pre>
           </li>
-          <li>
+          <li class="fragment">
             Sometimes --help will return things
             <pre><code data-trim data-noescape>$ ls --help</code></pre>
           </li>
         </ul>
+        <aside class="notes">
+          I'm old enough that when I saw a thread on stackoverflow where someone replied in a comment that they looked up help in chatgpt I was so confused.
+        </aside>
       </section>
 
       <section>
@@ -92,9 +100,22 @@
           <li><b><kbd>Ctrl</kbd>+<kbd>e</kbd></b> - Move to end of line</li>
         </ul>
         <aside class="notes">
-          Again, these are common shortcuts in the default terminal. In linux default is bash in emacs mode. I believe on mac it is zsh, but these should all work the same.
+          Some of my fav keyboard shortcuts. They should all work in the default terminal as bash is in emacs modes.
 
-          I did work at one company that had the shells defaulting to vi mode. I have no idea why they did it, and none of these worked. If you work at one of those companies, I can tell you how to switch it for a single session, but its probably not worth it.
+          The biggest life changer for me was reverse search. Most people get started in the terminal by typing out everything every time. Then you quickly realize that if you hit up or down, you can go back through previously typed out commands.
+
+          But ctrl+r, thats where speed starts to kick in. 
+        </aside>
+      </section>
+
+      <section>
+        <h2>Keyboard Shortcuts</h2>
+        <p><kbd>Ctrl</kbd>+<kbd>r</kbd> - Reverse search through your bash history</p>
+        <video data-autoplay src="./ctrl-r.mp4" alt="Ctrl R screencast"></video>
+        <aside class="notes">
+          So on my little contrived demo here, you can see some past commands. Then I hit ctrl+r, and type out npm, to search back through my history, and run the same command as before. In this case, since its the last command, its probably easier to just hit up, but for when you have a larger history, this is way easier than trying to think about how many commands ago you ran something.
+
+          There are tools out there to make this even better though.
         </aside>
       </section>
 
@@ -115,8 +136,9 @@
           </div>
         </div>
         <aside class="notes">
-          Okay lets get started.
-          You can't really do anything if you don't know where you are. Most terminals will start you off in your home directory. On linux that is slash home, on mac its slash users, but you can configure it differently. I have some friends that have differnent terminal profiles that start them in different directories. Vscode would be another one that drops you somewhere else, so its worth knowing where you are.
+          Okay next up.
+
+          You can't really do anything if you don't know where you are. Most terminals will start you off in your home directory. On linux that is slash home, on mac its slash users, but you can configure it differently. I have some friends that have different terminal profiles that start them in different directories. Vscode would be another one that drops you somewhere else, so its worth knowing where you are.
 
           There is the pwd command, and the PWD variable.
 
@@ -126,17 +148,26 @@
 
       <section>
         <h2>How to Change Directory</h2>
+        <p>Most OSes uses forward slash - <code>/</code> as folder separator</p>
         <ul>
-          <li>
-            Linux uses forward slash - / as folder separator
-            <pre><code data-trim data-noescape>$ cd /home/gavinm</code></pre>
-          </li>
-          <li>
+          <li class="fragment"><pre><code data-trim data-noescape>$ git</code></pre></li>
+          <li class="fragment"><pre><code data-trim data-noescape>$ cd /home/gavinm/git</code></pre></li>
+          <li class="fragment">
             Spaces and other characters should be escaped or quoted
             <pre><code data-trim data-noescape>$ cd /home/gavinm/Project\ Dir</code></pre>
             <pre><code data-trim data-noescape>$ cd "/home/gavinm/Project Dir"</code></pre>
           </li>
         </ul>
+        <aside class="notes">
+          Now that you know where you are, you need to get to where you want to go.
+
+          Just like with urls, there are relative and absolute paths.
+
+          If it starts with a slash, its an absolute path. 
+          
+          If it doesn't, then its probably a relative path.
+
+          And finally, if your path contains special characters like spaces, you'll want to add backslash, or wrap everything in quotes.
       </section>
       <section>
         <h2>Get back there</h2>
