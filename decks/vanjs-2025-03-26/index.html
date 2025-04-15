@@ -306,6 +306,27 @@
       </section>
 
       <section>
+        <h2>Chaining</h2>
+        <pre><code data-trim data-noescape>true && echo true</code></pre>
+        <pre><code data-trim data-noescape>false || echo false</code></pre>
+        <pre><code data-trim data-noescape>false; echo always</code></pre>
+        <aside class="notes">
+          So at a basic level, bash has boolean operators live javascript. So you can do two ampersands and only run the second command if the first one succeeds. Two ors if it fails, and a semicolon that just splits up two statements. And yes, before someone corrects me to say its not actually success based, I'm not going cover error codes today.
+        </aside>
+      </section>        
+
+      <section>
+        <h2>if and while statements</h2>
+        <pre><code data-trim data-noescape>if true; then echo "its-a-me-truethy"; fi</code></pre>
+        <pre><code data-trim data-noescape>while true; do echo "its-a-me-truethy"; done</code></pre>
+        <pre><code data-trim data-noescape>for i in a b c; do echo $i; done</code></pre>
+
+        <aside class="notes">
+          Bash does have a lot of control statements. The ones I use the most are really if, while and for. I'll be covering for in detail in later slides. And if shouldn't really be a surprise to people. While loops are actually really useful in bash. The one i've seen the most is wait for something to startup. So while sql server isn't running, sleep and check again.
+        </aside>
+      </section>
+
+      <section>
         <h2>Serious wildcards</h2>
         <p>Find all directories</p>
         <pre><code data-trim data-noescape>$ find -type d</code></pre>
@@ -424,6 +445,23 @@
         $ cat file.txt
         Bibi likes pie
         </code></pre>
+      </section>
+
+      <section>
+        <h2>Real world example</h2>
+        <pre class="fragment"><code data-trim data-noescape>
+          for i in $(git ls-files -m); do
+            jsonlint $i && git add $i;
+          done
+        </code></pre>
+        <aside class="notes">
+        Real example time.
+        I was making changes to a lot of json files, and when i do that, i often will forget to add or remove a comma. Instead of commiting, creating a pr, having tests fail, and repeating, I decided to only stage the files in git if they were valid.
+        :click:
+        So I created a little for loop that looped through all git files that were modified. Run them through jsonlint. And if they are considered valid, git add them.
+        After that I could look at files that were left and go in and fix them.
+        Just shows that you can build on the basics real quick.
+        </aside>
       </section>
 
       <section>
