@@ -426,6 +426,29 @@
       </section>
 
       <section>
+        <h2>Non standard tools - JQ</h2>
+        <p><a href="https://jqlang.org/">https://jqlang.org/</a></p>
+        <pre><code data-trim data-noescape>
+        $ curl -qs 'https://jsonplaceholder.typicode.com/todos/1' | jq '.'
+        {
+          "userId": 1,
+          "id": 1,
+          "title": "delectus aut autem",
+          "completed": false
+        }
+        $ curl -qs 'https://jsonplaceholder.typicode.com/todos/1' | jq '.id'
+        1
+        $ curl -qs 'https://jsonplaceholder.typicode.com/todos/1' | jq '.completed'
+        false
+        </code></pre>
+        <aside class="notes">
+          JQ is something I probably end up using every day in one way or another. I would say the most common is to pretty print json text. You can, as shown here, curl and pipe to jq. 
+          Next most common for me has to be pulling out specific info. It can handle properties, as shown, but so much more, like arrays both numeric index, or filtering by other criteria.
+          Its also really great at producing content that can go into a for loop.
+        </aside>
+      </section>
+
+      <section>
         <h1>The End</h1>
         <p class="fragment">
           <a href="https://www.digitalocean.com/?refcode=7d6859326b6a&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"> https://m.do.co/c/7d6859326b6a <img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>
