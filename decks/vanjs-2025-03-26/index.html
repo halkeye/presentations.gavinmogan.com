@@ -449,6 +449,37 @@
       </section>
 
       <section>
+        <h2>Non standard tools - gron</h2>
+        <p><a href="https://github.com/tomnomnom/gron">https://github.com/tomnomnom/gron</a></p>
+        <pre><code data-trim data-noescape>
+        $ curl -qs 'https://jsonplaceholder.typicode.com/todos/1' | gron
+        json = {};
+        json.completed = false;
+        json.id = 1;
+        json.title = "delectus aut autem";
+        json.userId = 1;
+        </code></pre>
+        <aside class="notes">
+          Gron is a tool I really want to use more. It tries to make json more grepable by flattening everything out.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Eg curl + jq + gron</h2>
+        <pre><code data-trim data-noescape>
+        $ curl -qs 'https://jsonplaceholder.typicode.com/todos' | jq '[.[] | select(.completed == true)][0]' | gron
+        json = {};
+        json.completed = true;
+        json.id = 4;
+        json.title = "et porro tempora";
+        json.userId = 1;
+        </code></pre>
+        <aside class="notes">
+          so you can start combining them. Filter through jq, then flatten with gron.
+        </aside>
+      </section>
+
+      <section>
         <h1>The End</h1>
         <p class="fragment">
           <a href="https://www.digitalocean.com/?refcode=7d6859326b6a&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"> https://m.do.co/c/7d6859326b6a <img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>
