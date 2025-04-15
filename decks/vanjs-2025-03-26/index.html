@@ -150,14 +150,21 @@
       <section>
         <h2>How to Change Directory</h2>
         <p>Most OSes uses forward slash - <code>/</code> as folder separator</p>
-        <ul>
-          <li class="fragment"><pre><code data-trim data-noescape>$ git</code></pre></li>
-          <li class="fragment"><pre><code data-trim data-noescape>$ cd /home/gavinm/git</code></pre></li>
-          <li class="fragment">
+          <pre class="fragment"><code data-trim data-noescape>
+            $ cd git
+            $ pwd
+            /home/gavinm/git
+            $ cd /home/gavinm/git2
+            $ pwd
+            /home/gavinm/git2
+          </code></pre>
+          <div class="fragment">
             Spaces and other characters should be escaped or quoted
-            <pre><code data-trim data-noescape>$ cd /home/gavinm/Project\ Dir</code></pre>
-            <pre><code data-trim data-noescape>$ cd "/home/gavinm/Project Dir"</code></pre>
-          </li>
+            <pre><code data-trim data-noescape>
+              $ cd /home/gavinm/Project\ Dir
+              $ cd "/home/gavinm/Project Dir"
+            </code></pre>
+          </div>
         </ul>
         <aside class="notes">
           Now that you know where you are, you need to get to where you want to go.
@@ -410,20 +417,12 @@
       </section>
 
       <section>
-        <h2>Debugging</h2>
-        <p>Run a script in debug mode</p>
-        <pre><code data-trim data-noescape>$ bash -x script.sh</code></pre>
-        <p>Enable debugging right now</p>
-        <pre><code data-trim data-noescape>$ set -x</code></pre>
-      </section>
-
-      <section>
         <h2>Testing HTTP</h2>
         <p>Curl and wget work kinda the same, but under different designs.</p>
         <p>Wget is great at downloading files.</p>
         <pre><code data-trim data-noescape>$ wget http://i.imgur.com/Ia48QDR.jpg</code></pre>
         <p>Curl is better at retrieving content.</p>
-        <pre><code data-trim data-noescape>$ curl http://jenkins/job/test-workflow/api/json?pretty=true</code></pre>
+        <pre><code data-trim data-noescape>$ curl https://httpcodes-8pkfp.ondigitalocean.app/json/404</code></pre>
       </section>
 
       <section>
@@ -441,6 +440,14 @@
       <section>
         <h1>Extra Stuffsssss</h1>
         <p>Slides that were already done but decided against bringing them up</p> 
+      </section>
+
+      <section>
+        <h2>Debugging</h2>
+        <p>Run a script in debug mode</p>
+        <pre><code data-trim data-noescape>$ bash -x script.sh</code></pre>
+        <p>Enable debugging right now</p>
+        <pre><code data-trim data-noescape>$ set -x</code></pre>
       </section>
 
       <section>
