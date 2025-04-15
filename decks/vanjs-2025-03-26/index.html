@@ -50,6 +50,7 @@
           <li class="fragment">Talking about linux. Rest are similar</li>
           <li class="fragment">$ is usually a shell prompt</li>
           <li class="fragment">Generally, Linux doesn't care what order CLI parameters are in.</li>
+          <li class="fragment">Linux tools, like npm packages, like to do one thing and do them well.</li>
         </ul>
         <aside class="notes">
           Okay, a few notes before we get started. 
@@ -257,7 +258,7 @@
         <h2>Create Edit Update Destroy</h2>
         <pre><code data-trim>
           cat &lt;file&gt; # outputs contents
-          tac &lt;file&gt; # outputs contents in reverse directory
+          tac &lt;file&gt; # outputs contents in reverse order
           less &lt;file&gt; # outputs content (controlled)
           rm &lt;file&gt; # Remove a file
           rmdir &lt;dir&gt; # Remove an empty directory
@@ -281,10 +282,10 @@
 
       <section>
         <h2>Wildcards</h2>
-        <pre><code data-trim data-noescape>$ tail -F ~/Develop/*/logs/development.log</code></pre>
         <p>Will look find all directories that have a logs directory underneath it.</p>
-        <pre><code data-trim data-noescape>$ tail -F ~/Develop/*/logs/*.log</code></pre>
+        <pre><code data-trim data-noescape>$ tail -F ~/Develop/*/logs/development.log</code></pre>
         <p>Will find all log files under all directories that have a log directory (one level deep)</p>
+        <pre><code data-trim data-noescape>$ tail -F ~/Develop/*/logs/*.log</code></pre>
       </section>
 
       <section>
@@ -293,7 +294,7 @@
         <pre><code data-trim data-noescape>$ find -type d</code></pre>
         <p>Find all files</p>
         <pre><code data-trim data-noescape>$ find -type f</code></pre>
-        <p>Find all files ending in log (+</p>
+        <p>Find all files ending in log</p>
         <pre><code data-trim data-noescape>
           $ find -name '*.log' # find all files ending in .log
           $ find -name '*.log' -exec ls {} \; # executes a command for each file
@@ -328,29 +329,84 @@
 
       <section>
         <h2>Grep and Awk Can Do anything</h2>
-        <pre><code data-trim data-noescape>grep /favicon.ico access.log</code></pre>
-        <pre><code data-trim data-noescape>long output</code></pre>
-        <pre><code data-trim data-noescape>grep /favicon.ico access.log | awk '{print $17}'</code></pre>
-        <pre><code data-trim data-noescape>AppleWebKit/537.36</code></pre>
-        <pre><code data-trim data-noescape>grep /favicon.ico access.log | awk -F'"' '{print $6}'</code></pre>
-        <pre><code data-trim data-noescape>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.111 Safari/537.36</code></pre>
-        <p>Add sort and uniq pipes</p>
+        <pre class="fragment"><code data-trim data-noescape>
+          $ grep /favicon.ico access.log
+          # long output
+        </code></pre>
+        <pre class="fragment"><code data-trim data-noescape>
+          $ grep /favicon.ico access.log | awk '{print $17}'
+          AppleWebKit/537.36
+        </code></pre>
+        <pre class="fragment"><code data-trim data-noescape>
+          $ grep /favicon.ico access.log | awk -F'"' '{print $6}'
+          Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.111 Safari/537.36
+        </code></pre>
+        <aside class="notes">
+          For example. Lets say you have a web server access log. It has a line every time someone hits your server. You don't want to look through every line yourself, thats crazy. But you can narrow it down and look for anyone grabbing the fav icon. Thats still a lot of output. but from there, we can just grab one field. By default awk splits on spaces, so you can just grab part of the user agent, but with just one flag, you can grab the entire user agent.
+          If you pipe that into sort and uniq, you can actually start doing a bit of analysis, like finding out how many unique browsers hit your server and grabbed the favicon.
+        </aside>
       </section>
 
       <section>
         <h2>For Loops</h2>
-        <pre><code data-trim data-noescape>for i in $(seq 1 10); do echo $i; done</code></pre>
-        <pre><code data-trim data-noescape>for i in gavin likes pie; do mkdir $i; done</code></pre>
-        <pre><code data-trim data-noescape>for i in *; do mv $i $i.bak; done</code></pre>
+        <pre><code data-trim data-noescape>
+          $ for i in gavin likes pie; do mkdir $i; done
+          $ ls -l
+          drwxr-xr-x 2 1000 1000 4096 Apr 15 04:23 gavin
+          drwxr-xr-x 2 1000 1000 4096 Apr 15 04:23 likes
+          drwxr-xr-x 2 1000 1000 4096 Apr 15 04:23 pie
+        </code></pre>
+        <aside class="notes">
+          Next up is for loops. For takes in a variable, and then a list of values. So for this example, I make 3 directories. Gavin. Likes. Pie....cause I do. I've used things like this when I want to run the same command on multiple servers. But for can take in data from other sources too
+        </aside>
+      </section>
+
+      <section>
+        <h2>For Loops - wildcards</h2>
+        <pre class="fragment"><code data-trim data-noescape>
+          $ for i in *; do mv $i $i.bak; done
+          $ ls -l
+          drwxr-xr-x 2 1000 1000 4096 Apr 15 04:23 gavin.bak
+          drwxr-xr-x 2 1000 1000 4096 Apr 15 04:23 likes.bak
+          drwxr-xr-x 2 1000 1000 4096 Apr 15 04:23 pie.bak
+        </code></pre>
+        <aside class="notes">
+          And one option for that is just straight up shell wildcards. So for example, I can say for each file in this directory, rename the file to file dot bak. Yes there are better ways to do it, but they don't show off the power of for loops.
+        </aside>
+      </section>
+
+      <section>
+        <h2>For Loops - subshells</h2>
+        <pre class="fragment"><code data-trim data-noescape>
+          $ for i in $(seq 1 10); do echo $i; done
+          1
+          2
+          3
+          4
+          5
+          6
+          7
+          8
+          9
+          10
+        </code></pre>
+        <aside class="notes">
+          You can also use sub shells. Sub shells are wrapped in dollar sign and parentheses. Seq is a cool command that just outputs numbers from start to finish. There's actually a bunch of options like padding it with 0s, but not really the point here.
+        </aside>
       </section>
 
       <section>
         <h2>Search and Replace</h2>
         <p>Sed, perl, python, etc</p>
         <p>I prefer perl pie</p>
-        <pre><code data-trim data-noescape>$ echo "Gavin likes Pie" > file.txt</code></pre>
-        <pre><code data-trim data-noescape>$ perl -pi -e 's/Gavin/Bibi/' file.txt</code></pre>
-        <pre><code data-trim data-noescape>$ cat file.txt</code></pre>
+        <pre><code data-trim data-noescape>
+        $ echo "Gavin likes pie" > file.txt
+        $ cat file.txt
+        Gavin likes pie
+        $ perl -pi -e 's/Gavin/Bibi/' file.txt
+        $ cat file.txt
+        Bibi likes pie
+        </code></pre>
       </section>
 
       <section>
@@ -370,15 +426,6 @@
         <pre><code data-trim data-noescape>$ curl http://jenkins/job/test-workflow/api/json?pretty=true</code></pre>
       </section>
 
-
-      <section>
-        <h2>SSH</h2>
-        <p>What are ssh keys?</p>
-        <p>Why would you want them?</p>
-        <p>How do you use them?</p>
-        <pre><code data-trim data-noescape>man ssh_config</code></pre>
-      </section>
-
       <section>
         <h1>The End</h1>
         <p class="fragment">
@@ -386,12 +433,22 @@
         </p>
         <aside class="notes">
           As promised. If you want to try things out in a safe environment, feel free to use my referral code and create a droplet. If you already have an account, come talk to me or rodrigo and we can help you out.
+
+          I also had to cut so many things to make room for other things I really wanted to bring up. Some of which are fully fleshed out slides, some are just point form notes. Feel free to poke around the deck or ask me more.
         </aside>
       </section>
 
       <section>
         <h1>Extra Stuffsssss</h1>
         <p>Slides that were already done but decided against bringing them up</p> 
+      </section>
+
+      <section>
+        <h2>SSH</h2>
+        <p>What are ssh keys?</p>
+        <p>Why would you want them?</p>
+        <p>How do you use them?</p>
+        <pre><code data-trim data-noescape>man ssh_config</code></pre>
       </section>
 
       <section>
