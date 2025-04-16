@@ -508,6 +508,24 @@
       </section>
 
       <section>
+        <h2>Real World Example - Find and Replace multiple files</h2>
+        <pre><code data-trim data-noescape>
+          grep -r onedr0p . | \
+            awk -F: '{print $1}' | \
+            xargs perl -pi -e 's#ghcr.io/onedr0p#ghcr.io/home-operations#g'
+        </code></pre>
+        <aside class="notes">
+          for the last few weeks I've been trying to remember to write down various oneliners I end up using over and over again. Every time I do there's more and more things I felt I should have covered.
+          I included this one because xargs is so powerful.
+          So in this case. Search all files for the phrase onedrop.
+          split on the colon so I just get the filename.
+          then using xargs, pass each filename into perl pie.
+          <br />
+          Yes apparently I could have used grep dash l, which would have just given me the filename, but for whatever reason I always remember this pattern, and I can apply it in all kinds of ways.
+        </aside>
+      </section>
+
+      <section>
         <h2>Non standard tools - JQ</h2>
         <p><a href="https://jqlang.org/">https://jqlang.org/</a></p>
         <pre><code data-trim data-noescape>
