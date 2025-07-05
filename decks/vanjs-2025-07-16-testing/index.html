@@ -8,16 +8,16 @@
   <link rel="stylesheet" href="/assets/reveal/theme/dracula.css" />
   <link rel="stylesheet" href="/assets/reveal/plugin/highlight/monokai.css">
   <link rel="stylesheet" href="./kbd.min.css" />
-  <title>Testing is for Chumps - VanJS - July 16th, 2025</title>
+  <title>Testing testing gotta get down on testing - VanJS - July 16th, 2025</title>
 </head>
 
 <body>
   <div class="reveal">
     <div class="slides">
-      <section data-transition="zoom">
-        <h1 class="r-fit-text">Testing is for Chumps</h1>
+      <section>
+        <img class="r-stretch" src="./gottagetdown.jpg" alt="Testing testing gotta get down on testing" />
         <h2>VanJS</h2>
-        <h3>April 16th, 2025</h3>
+        <h3>July 16th, 2025</h3>
       </section>
       <section>
         <h2>Gavin Mogan</h2>
@@ -29,20 +29,56 @@
         <p><a href="https://www.gavinmogan.com">https://www.gavinmogan.com</a></p>
         <p>
         <div style="position: relative">
-          <img src="./avatar.original.png" alt="Avatar" width="400" />
+          <img class="r-stretch" src="./avatar.original.png" alt="Avatar" width="400"
+            alt="photo of child gavin in 1982 sitting infront of a computer at the time" />
         </div>
         </p>
         <aside class="notes">
           Hey everyone,
-          I'm Gavin. I am a Senior Software Developer at Digital Ocean, currently on the billing team. I've been there
-          just over 5 years now.
-
-          Today I'm planning on covering the basics of the command line and linux, so it becomes a lot less
-          intimidating. Dont worry about about remembering everything, as this is more about exposing to ideas, and my
-          slides are downloadable. Don't worry if you know everything about linux already, as I guarantee with no money
-          back, that you will still learn one thing new. I know this because when I looked at my past presentations, I
-          learned some things I forgot about.
+          I'm Gavin. I am a Senior Software Developer at Digital Ocean, currently on the billing team. I don't really do
+          javascript that much anymore but I have always just loved vanjs so here I am. I've been there almost 5 years
+          now, which is forever in software developers terms.
         </aside>
+      </section>
+      <section>
+        <h2>Why should you listen to me?</h2>
+        <ul>
+          <li class="fragment">You probably shouldn't.</li>
+          <li class="fragment">I've made so many mistakes so you don't have to.</li>
+          <li class="fragment">Worked at several testing compainies.</li>
+          <li class="fragment">Was on the board for the open source project Jenkins, which is often used to run tests.
+          </li>
+          <li class="fragment">Been interviewed about testing on podcasts.</li>
+        </ul>
+      </section>
+      <section data-auto-animate>
+        <h2>What is it good for?</h2>
+        <div class="r-stack">
+          <div class="fragment current-visible" data-fragment-index="0">
+            <h3>Confidence</h3>
+            <ul>
+              <li>in future changes</li>
+              <li>current changes</li>
+              <li>refactors</li>
+              <li>been told its guards for ai</li>
+            </ul>
+          </div>
+          <div class="fragment fade-out" data-fragment-index="0">
+            <h3>Documentation</h3>
+            <ul>
+              <li>Why does this function return this?</li>
+              <li>What does real world input look like?</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section data-auto-animate>
+        <h2>What is it good for?</h2>
+        <h3>Documentation</h3>
+        <ul>
+          <li>Why does this function return this?</li>
+          <li>What does real world input look like?</li>
+        </ul>
       </section>
     </div>
   </div>
@@ -54,6 +90,8 @@
 
   <script>
     Reveal.initialize({
+      // view: 'scroll',
+      // scrollProgress: true,
       controls: true,
       progress: true,
       history: true,

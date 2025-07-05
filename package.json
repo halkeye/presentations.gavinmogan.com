@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "npx eleventy",
-    "dev": "eleventy --serve --port 8000 --watch"
+    "dev": "eleventy --serve --port 8000 --watch",
+    "dev:decks": "npx live-server --port=8000 --no-browser ."
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "@tailwindcss/typography": "^0.5.10",
     "autoprefixer": "^10.4.17",
     "daisyui": "^4.7.2",
+    "live-server": "^1.2.2",
     "luxon": "^3.2.1",
     "markdown-it-anchor": "^8.6.6",
     "markdown-it-eleventy-img": "^0.10.1",
