@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="{{ metadata.language }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="/assets/reveal/reveal.css" />
+  <link rel="stylesheet" href="/assets/reveal/theme/dracula.css" />
+  <link rel="stylesheet" href="/assets/reveal/plugin/highlight/monokai.css">
+  <link rel="stylesheet" href="./kbd.min.css" />
+  <style>
+    figure {
+      display: block;
+    }
+
+    figcaption {
+      text-align: center;
+    }
+
+    ul {
+      width: 100%;
+    }
+
+    .row {
+      display: flex
+    }
+
+    .column {
+      flex: 1;
+      margin-right: 10px;
+    }
+  </style>
+  <title>Why not testing? (April 2016)</title>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>Gavin Mogan</h2>
+        <p>Code Monkey @ Sauce Labs</p>
+        <p><a href="https://twitter.com/halkeye">@halkeye</a></p>
+        <p><a href="https://www.gavinmogan.com">https://www.gavinmogan.com</a></p>
+        <div style="position: relative">
+          <img class="r-stretch" src="./avatar.original.png" alt="Avatar" width="400"
+            alt="photo of child gavin in 1982 sitting infront of a computer at the time" />
+        </div>
+        <aside class="notes">
+          Hi
+
+          I'm Gavin and I work at one of tonight's sponsors, Sauce Labs.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Why not testing?</h2>
+        <img class="r-stretch" src="./page01.gif" />
+        <aside class="notes">
+          <p>Hi</p>
+          <p>I'm Gavin and I work at one of tonight's sponsors, Sauce Labs.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2>First Job?</h2>
+        <div style="display: flex">
+          <ul style="flex: 75%; margin-right: 10px; margin: auto;">
+            <li>Low pay</li>
+            <li>Develop Live</li>
+            <li>No source control</li>
+            <li>No testing</li>
+          </ul>
+          <figure style="flex: 25%; margin-left: 10px;">
+            <img class="r-stretch" src="./page2.gif" />
+            <figcaption>Gross</figcaption>
+          </figure>
+        </div>
+        <aside class="notes">
+          <p>Hi</p>
+          <p>I'm Gavin and I work at one of tonight's sponsors, Sauce Labs.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h3>gavin.pl</h3>
+        <pre><code data-trim data-noescape>
+            use Inhouse::Library;
+            use JSON;
+
+            $user = Inhouse::Library::createUser({
+            &nbsp;&nbsp;username => "zoidberg",
+            &nbsp;&nbsp;password => "doctor"
+            });
+
+            print JSON::to_json($user);
+          </code></pre>
+        <h3>gavin.js</h3>
+        <pre><code data-trim data-noescape>
+            const Users = require('./models/users.js');
+
+            Users.createUser({
+            &nbsp;&nbsp;username => "zoidberg",
+            &nbsp;&nbsp;password => "doctor"
+            }).then(function(user) {
+            &nbsp;&nbsp;console.log($user);
+            });
+          </code></pre>
+        <aside class="notes">
+          <p>At the time, I got in the habit of creating gavin files to test things locally before attempting to deploy
+            them.</p>
+          <p>Little did I know this would lead down a path of testing.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2>Gavin asks you</h2>
+        <img class="r-stretch" src="./page4.gif" />
+        <aside class="notes">
+          <p>Okay.. Time for me to ask you a question.</p>
+          <p>Hands up if you develop on a daily basis?</p>
+          <p>Okay, keep your hands up if you actually write tests for your code.</p>
+        </aside>
+      </section>
+
+      <section>
+        <img class="r-stretch" src="./testing_pyramid.png" />
+        <p>(Gavin draws the best)</p>
+        <aside class="notes">
+          <p>So moving into a bit more formalized topic...</p>
+
+          <p>Here we have the testing pyramid.
+            You can find many variations of the same thing but this one I lovingly created.</p>
+
+          <p>The idea is that you spend most of your time writing unit tests. They are discrete chunks of tests that
+            confirm small pieces of code.</p>
+
+          <p>Next up you have integration tests. Those typically will reach out to other systems. They are slower. Take
+            more time to setup.</p>
+
+          <p>Lastly you have the complete end to end tests. They are the slowest to run, so you don't want to do them
+            all the time.
+            Sauce Labs actually specializes in this layer when you are doing web testing.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2>Indirect Pros</h2>
+        <ul>
+          <li>Learning Codebases
+            <ul>
+              <li>New Hire can write tests</li>
+              <li>Tests are always up to date when compared to documentation</li>
+              <li>When/why is this code supposed to be used.</li>
+            </ul>
+          </li>
+        </ul>
+        <aside class="notes">
+          <p>So why should you write tests?</p>
+
+          <p>When I was a developer at telus, I was quickly put on a legacy project and was told to get up to speed.</p>
+
+          <p>I was lucky enough to convince them to spend a couple weeks writing tests.</p>
+
+          <p>By the time I was finished, not only did I know all the models and db schema inside and out, but I actually
+            found a few bugs and dead code.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h3> "We need time to test" </h3>
+        <ul style="width: 100%">
+          <li>Often leads to features being shipped that have never been used</li>
+          <li>Blame others (QA) when things don't get caught</li>
+        </ul>
+        <p></p>
+        <h3> Why not testing first? </h3>
+        <ul style="width: 100%">
+          <li>Helps you think about design</li>
+          <li>Lets you fail fast</li>
+          <li>Write failing test first, then code</li>
+          <li>Refactoring later isn't scary</li>
+        </ul>
+        <aside class="notes">
+          <p>This is actually one of my biggest pet peeves. If you haven't written any tests, its really not done yet.
+            So time shouldn't be a factor. But I do understand time crunches and project managers.</p>
+
+          <p>I'm by no means perfect, I leave a bunch of testing till late in my development. But my development these
+            days tends to span a day or two, so testing is still really early considering.</p>
+
+          <p>There are some ways to convince people though. There are tons of studies on how writing tests actually
+            increases development speed. I feel like it has a lot to do with peace of mind. Don't need to be afraid of
+            trying something because you have a safety net of tests.</p>
+          <p>---
+
+          <p>Failing fast means you can try something without working on all the boiler plate around it.</p>
+
+          <p>Add function takes two numbers, 1 and 2, does it equal 3? Cool works, does it throw an exception? boo</p>
+
+          <p>Failing tests help prevent false positives. Testing javascript callbacks especially lead to this.</p>
+        </aside>
+      </section>
+
+      <section>
+        <img class="r-stretch" src="./page7.gif" />
+        <aside class="notes">
+          <p>No, no reason, last few slides have just had a ton of text.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2> How do I run tests? </h2>
+        <div class="row">
+          <div class="column">
+            <h3>Javascript</h3>
+            <ul>
+              <li>grunt/gulp/etc</li>
+              <li>mocha (with watch)</li>
+              <li>qunit</li>
+              <li>many many more</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Ruby</h3>
+            <ul>
+              <li>guard</li>
+              <li>rake</li>
+              <li>rspec</li>
+              <li>minitest</li>
+              <li>unittest</li>
+              <li>many many more</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Python</h3>
+            <ul>
+              <li>nose</li>
+              <li>unittests</li>
+              <li>many many more</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>IDEs</h3>
+            <ul>
+              <li>IdeaJ</li>
+              <li>Sublime/Atom</li>
+              <li>many many more</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>How do I run tests? </p>
+
+          <p>The list of tooling and frameworks is ever growing bigger. I can't stress enough there's no right way of
+            testing, just the way that works the perfect or best for you.</p>
+
+          <p>Generally there are two categories. Often frameworks will fall into both but not always.</p>
+
+          <p>Grunt, gulp, and guard all specialize in running tasks, so they are great at re-running the entire test
+            suite when files are changed. I personally have mine setup to beep at me when things fail so I don't have to
+            keep an eye on it.</p>
+
+          <p>Mocha, qunit, rspec, and others are more the testing frameworks. They are how you write the tests. How you
+            see the results, etc.</p>
+        </aside>
+      </section>
+
+      <section>
+        <img class="r-stretch" src="./mocha.png" />
+        <aside class="notes">
+          <p>Here you can mocha running in javascript and outputting results. Very simple.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2>No, more automated!</h2>
+        <div class="row">
+          <div class="column">
+            <h3>Javascript</h3>
+            <img class="r-stretch" src="./mocha.png" />
+          </div>
+          <div class="column">
+            <ul>
+              <li>Jenkins</li>
+              <li>Travis-ci (.org)</li>
+              <li>Circle CI</li>
+              <li>Bamboo</li>
+              <li>Team City</li>
+              <li>Visual Studio Online (VSTS)</li>
+              <li>more more more</li>
+            </ul>
+          </div>
+        </div>
+
+        <aside class="notes">
+          <p>Lots of people run automated tests. Sometimes referred to as continuous integration.</p>
+
+          <p>My personal favourite two are travis ci and jenkins.</p>
+
+          <p>Travis-ci is great for open source projects. Its 100% free, and you can do whatever you want.</p>
+
+          <p>Jenkins is better for when you have a large collection of projects.</p>
+
+          <p>Sauce labs, as well as myself for my own person projects, use a mixture of both</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2> Where do I start testing </h2>
+
+        <div class="row">
+          <div class="column">
+            <ul>
+              <li>Convert simple scripts into tests</li>
+              <li>Generally anything you care about</li>
+              <li>API Return values</li>
+              <li>Public methods</li>
+              <li>Small discreet units</li>
+            </ul>
+          </div>
+          <div class="column">
+            <img src="./zoidberg_fire.gif" class="float: right" />
+          </div>
+        </div>
+
+        <aside class="notes">
+          <p>As I said earlier. Start by taking a script or segment you'd normally try out on its own, and make it into
+            its own full test.</p>
+
+          <p>On my team at sauce, for our rest apis. If its in a test, we are allow to use it in other components. It's
+            considered a guaranteed return value. </p>
+
+          <p>I originally started with bugs. If I had a bug report, I'd make a test for it so I could prove how it
+            happened, and help prevent it from happening again in the future.</p>
+
+          <p>In my opinion, Its very tempting to setup a complete environment, fake users, fake posts, fake everything.
+            But the bigger the more complicated the test the harder it will to maintain. </p>
+
+          <p>Big tests are really good, but they can come later.</p>
+
+          <p>That doesn't mean no bugs occur, but its a start.</p>
+
+          <p>At the start, there's really no wrong way of testing. When you start to have a lot of tests, then it makes
+            sense to worry about how long they take, and combining if necessary.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2> How do I test? </h2>
+        <p>Really easy.</p>
+        <ol>
+          <li class="fragment">Run some code</li>
+          <li class="fragment">Check the value</li>
+        </ol>
+        <pre class="fragment"><code data-trim data-noescape class="language-perl">
+            test "should save article with title" do
+            &nbsp;&nbsp;article = Article.new(title => "Gavin's Article")
+            &nbsp;&nbsp;assert article.save
+            end
+
+            test "should load with the same title" do
+            &nbsp;&nbsp;# create new article
+            &nbsp;&nbsp;created_article = Article.create(title => "Gavin's Better Article")
+            &nbsp;&nbsp;assert_not_null created_article
+            &nbsp;&nbsp;# load from DB
+            &nbsp;&nbsp;loaded_article = Article.find(created_article.id)
+            &nbsp;&nbsp;# check values
+            &nbsp;&nbsp;assert_not_null loaded_article
+            &nbsp;&nbsp;assert_equal loaded_article.title, "Gavin's Better Article"
+            end
+          </code></pre>
+
+        <aside class="notes">
+          <p>Okay, so lets see how you actually test.</p>
+
+          <p>Step 1, run some code</p>
+          <p>Step 2, Check the value.</p>
+
+          <p>As you can see here, testing actually can be quite simple. </p>
+
+          <p>When we refactored the whole system's database engine. We knew that inputting a certain set of data, we'd
+            get a certain set back out. How it worked in between wasn't important.</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2>E2E Tests</h2>
+        <ul>
+          <li>Usually involve setting up a complete environment</li>
+          <li>Websites will actually automate browsers for testing</li>
+          <li>Mobile apps will test in emulators or real devices with real apps</li>
+          <li>Talking to a fully setup backend. Hopefully not production code, but certainly possible</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Example</h2>
+        <a href="https://github.com/saucelabs-sample-test-frameworks/JS-Mocha-WD.js"
+          target="_blank">https://github.com/saucelabs-sample-test-frameworks/JS-Mocha-WD.js</a>
+        <div class="row">
+          <div class="column">
+            <img src="./js-mocha-wd-input.png" />
+          </div>
+          <div class="column">
+            <img src="./js-mocha-wd-output.gif" />
+          </div>
+        </div>
+        <aside class="notes">
+          <p>Okay, How many of you write UI or e2e tests?</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2> More Information </h2>
+        <ul>
+          <li>Selenium - Website Testing / Automation
+            <ul>
+              <li>http://www.seleniumhq.org/</li>
+            </ul>
+          </li>
+          <li>Appium - Mobile (And more) / Automation
+            <ul>
+              <li>http://appium.io/</li>
+              <li>Android</li>
+              <li>IOS</li>
+              <li>Universal Windows Platform</li>
+            </ul>
+          </li>
+          <li>Xamarin
+            <ul>
+              <li>(Let other speaker talk about it)</li>
+            </ul>
+          </li>
+        </ul>
+        <aside class="notes">
+          <p>I have a bunch of stickers for saucelabs and appium</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2>Thanks</h2>
+        <p>Gavin Mogan</p>
+        <p><a href="https://twitter.com/halkeye">@halkeye</a></p>
+        <p><a href="https://www.gavinmogan.com">https://www.gavinmogan.com</a></p>
+        <div style="position: relative">
+          <img class="r-stretch" src="./avatar.original.png" alt="Avatar" width="400"
+            alt="photo of child gavin in 1982 sitting infront of a computer at the time" />
+        </div>
+        <aside class="notes">
+          <p>Thanks for your time everyone. I hope people learned at least something. Feel free to hit me up by email,
+            or on twitter, or come up and say hi after all the talks.</p>
+
+          <p>I'll try and make sure I post my slides to the meetup asap.</p>
+        </aside>
+      </section>
+    </div>
+  </div>
+
+  <script src="/assets/reveal/reveal.js"></script>
+  <script src="/assets/reveal/plugin/highlight/highlight.js"></script>
+  <script src="/assets/reveal/plugin/notes/notes.js"></script>
+  <script src="/assets/reveal/plugin/markdown/markdown.js"></script>
+
+  <script>
+    Reveal.initialize({
+      // view: 'scroll',
+      // scrollProgress: true,
+      controls: true,
+      progress: true,
+      history: true,
+      slideNumber: false,
+      plugins: [RevealNotes, RevealHighlight, RevealMarkdown]
+    });
+  </script>
+</body>
+
+</html>
