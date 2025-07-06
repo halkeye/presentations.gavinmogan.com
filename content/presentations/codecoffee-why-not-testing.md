@@ -1,13 +1,13 @@
 ---
 title: "Why not Testing? (April 2016)"
 date: "2016-04-14"
-link: https://slides.com/halkeye/why-not-testing
+link: /decks/why-not-testing-april-2016/
 image: /assets/title.png
 tags:
   - meetup
 links:
   - type: slides
-    url: https://slides.com/halkeye/why-not-testing
+    url: /decks/why-not-testing-april-2016/
   - type: youtube
     url: https://www.youtube.com/watch?v=iPGSJVASCkc
   - type: pdf
