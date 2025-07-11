@@ -17,6 +17,19 @@
     figcaption {
       text-align: center
     }
+
+    ul {
+      width: 100%;
+    }
+
+    .row {
+      display: flex
+    }
+
+    .column {
+      flex: 1;
+      margin-right: 10px;
+    }
   </style>
 </head>
 
@@ -50,22 +63,281 @@
         </aside>
       </section>
       <section>
+        <h2>Testing?</h2>
+        <blockquote cite="https://www.merriam-webster.com/dictionary/test" style="text-align: left">
+          <p>means of testing: such as</p>
+          <p>(1) something (such as a series of questions or exercises) for measuring the skill, knowledge,
+            intelligence,
+            capacities, or aptitudes of an individual or group</p>
+          <p>(2) a procedure, reaction, or reagent used to identify or characterize a substance or constituent</p>
+        </blockquote>
+        <p>&mdash; <cite>Merriam Webster</cite></p>
+        <aside class="notes">
+          Miram Webster defines test as a means of testing
+
+          ...
+
+          Just kidding, not only is that confusing, but i'm not going to do a highschool style presentation.
+        </aside>
+      </section>
+      <section>
         <h2>Why should you listen to me?</h2>
         <ul>
           <li class="fragment">You probably shouldn't.</li>
           <li class="fragment">I've made so many mistakes so you don't have to.</li>
           <li class="fragment">Worked at several testing compainies.</li>
-          <li class="fragment">Was on the board for the open source project Jenkins, which is often used to run tests.
-          </li>
+          <li class="fragment">Was on the board for the open source project Jenkins.</li>
           <li class="fragment">Been interviewed about testing on podcasts.</li>
         </ul>
         <aside class="notes">
-          So why should you listen to me? You probably shouldn't. I'm far from an expert, but as someone who has made a
-          lot of mistakes, I have lots to share.
+          <p>You probably shouldn't. There are a lot of paid experts out there that probably have much saner advice, but
+            that being said, I have made so many mistakes over my long career that I know whats not to do.</p>
 
-          I've also worked at several companies selling testing related products. I've also been on the board for
-          Jenkins, which is often used to run tests.
+          <p>Also you know I've worked at several saas companies that sell testing related services, tooling and
+            products. I've had plenty of exposure to the good stuff too.
+            I was on the board of the open source project Jenkins, which I believe still heavily used to run tests,
+            though I wont be talking about it today.</p>
+
+          <p>While at devops world one year, I was interviewed by one of the podcasts on site.</p>
         </aside>
+      </section>
+      <section>
+        <h2>What is testing?</h2>
+        <figure>
+          <img src="./testing-pyramid.png" style="max-height: 50vh" />
+          <figcaption>Produced by ChatGPT</figcaption>
+        </figure>
+        <aside class="notes">
+          <p>So I was going to put up a diagram of the testing pyramid and tell ya all how I didn't agree with all the
+            steps, but apparently I misremembered and there's no standard.</p>
+        </aside>
+      </section>
+      <section>
+        <h2>Gavin's testing pyramid?</h2>
+        <ul>
+          <li class="fragment">End To End (e2e) tests (aka integration).</li>
+          <li class="fragment">Mock e2e tests.</li>
+          <li class="fragment">"Simple" tests.</li>
+        </ul>
+        <aside class="notes">
+          <p>I'll go into details but in order from most expensive, to cheapest...</p>
+          <p>End to end tests</p>
+          <p>End to end tests but with mocks... So not end to end</p>
+          <p>Smallest tests you can handle</p>
+          <p>The idea is to have the least of the first and the most of the last, as they are fastest and easiest to
+            isolate.</p>
+        </aside>
+      </section>
+      <section>
+        <h2>End to End Tests</h2>
+        <p>"everything real"</p>
+        <ul>
+          <li class="fragment">Actual Client (Browser)</li>
+          <li class="fragment">Actual Server</li>
+          <li class="fragment">Real Credentials</li>
+          <li class="fragment">Actual Database</li>
+        </ul>
+        <h3>Examples</h3>
+        <ul>
+          <li>Entire application</li>
+        </ul>
+        <aside class="notes">
+          Everything real.
+          :read list:
+          While that is hard to actually achieve being able to test fully in a perfect production environment, you can
+          often get pretty close.
+          We will use stripe test credentials so we can test scenarios with test credit cards. Or maybe have the ips
+          allow listed so they don't get rate limited.
+        </aside>
+      </section>
+      <section>
+        <h2>E2E Strengths</h2>
+        <ul>
+          <li class="fragment">Makes sure everything works together</li>
+          <li class="fragment">Closest to end-user behaviors</li>
+          <li class="fragment">External changes get highlighted</li>
+        </ul>
+        <aside class="notes">
+          If another system changes something slightly, like json returning string instead of integer, it'll get
+          highlighted in this setup.
+        </aside>
+      </section>
+      <section>
+        <h2>E2E Weaknesses</h2>
+        <ul>
+          <li class="fragment">Hard to setup and control state</li>
+          <li class="fragment">Slowest</li>
+          <li class="fragment">Flakey</li>
+        </ul>
+        <aside class="notes">
+          <p>Since you are doing everything with real behaviors, it can be tricker to create or reset states. You can't
+            just change runtime variables without adding admin apis or connecting to dbs
+          <p>
+          <p>Slowest - Usually need to do remote calls like db or api or browser</p>
+          <p>Flakey - Since you have less control you look for strings or colors</p>
+          <p>Flakey - Small external changes can break things</p>
+        </aside>
+      </section>
+      <section>
+        <h2>E2E Tools</h2>
+        <div class="row">
+          <div class="column">
+            <h3>Browser</h3>
+            <ul>
+              <li>Playwright</li>
+              <li>Cypress</li>
+              <li>Selenium</li>
+              <li>TestCafe</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Mobile</h3>
+            <ul>
+              <li>Appium</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">
+          I'll admit, I don't have a lot of knowledge in this space as I'm no longer doing frontend development full
+          time.
+          The last new hotness I've heard about is playwright. I've heard its good fast and reliable, but I'm guessing
+          there's lots here who know more than me.
+          Reading up on testcafe, it seems it uses client side javascript to control the browser, which means it should
+          let you test on anything that can run javascript.
+          I'm also mentioning appium as a couple of my friends created and maintain it.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Mocked E2E Tests</h2>
+        <p>A hybrid model between full e2e and isolated testing.</p>
+        <p>Call mocks or fake endpoints to emulate.</p>
+        <p>Bigger units of work, but also more control.</p>
+        <h3>Examples</h3>
+        <ul>
+          <li>Login Form</li>
+          <li>REST server endpoint</li>
+        </ul>
+        <aside class="notes">
+          Mocked e2e tests is the sweet spot I end up using more than I probably should.
+          I'll have a real database setup, but i'll mock out external systems like stripe to keep some control.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Mocked - Strengths</h2>
+        <ul>
+          <li>Can control states</li>
+          <li>Easy to spot new dependencies</li>
+        </ul>
+        <aside class="notes">
+          <p>With using mocks and stubs and factories and all the other terms, you have a lot more control. For example,
+            instead of setting up a new user, marking them as abuse, and then trying to login. With mocks you can just
+            tell the user service to return a user in the right state.</p>
+          <p>And with most mocking libraries, they can yell at you when your code starts to connect to unmocked systems
+            or endpoints</p>
+        </aside>
+      </section>
+
+      <section>
+        <h2>Mocked - Cons</h2>
+        <ul>
+          <li>Have to implement and maintain mocks or sample data</li>
+          <li>Can lead to complex mocks that dont actually test things</li>
+          <li>Can easily break if your code uses globals</li>
+          <li>Can hide external systems changing</li>
+        </ul>
+        <aside class="notes">
+        </aside>
+      </section>
+
+      <section>
+        <h2>Mocked - Tools</h2>
+        <div class="row">
+          <div class="column">
+            <h3>Javascript</h3>
+            <ul>
+              <li>Nock</li>
+              <li>Jest</li>
+              <li>Sinon</li>
+              <li>Mock Service Worker</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Golang</h3>
+            <ul>
+              <li>Gomock</li>
+              <li>Counterfeiter</li>
+              <li>Mockery</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">
+          <p>I've listed out a few tools I've used, and a few I found out about in prep for this.</p>
+          <p>Nock has always been an under utilalized tool. I don't know if it will work in browsers, but its great in
+            express and nodejs. You can just target specific http requests and mock out responses. It can yell if the
+            targets arn't found.</p>
+          <p>Jest is a pretty big industry standard these days. Its not only a whole testing framework, but can provide
+            mocks too</p>
+          <p>Sinon has been around forever, and for good reasons. Its mocks are straight forward and reliable</p>
+          <p>Mock service worker is one I just learned about, it sounds like its nock, but for browsers</p>
+        </aside>
+      </section>
+
+      <section>
+        <h1>The End</h1>
+      </section>
+      <!--
+What is testing?
+---
+What kinds of tests? - In my opinion there are only two types that matter, integration and non integration tests. Most people will call non integration tests unit tests, but thats not totally accurate.
+
+Integration tests are tests that test the system as a whole, or at least a large part of it. They are often slower, but they give you confidence that the system works as a whole.
+Unit tests test a small unit of work. From a purist point of view, a unit test can't call other functions, just its own small set of work.
+
+in reality, the term in way more broad. I would say its anything that isn't an integration test is a unit test, and try to avoid mocking as much as possible for unit tests.
+
+So I would say there's three. E2E integration tests, mocked integration tests, and unit tests.
+
+So what are unit tests?
+<next slide>
+
+----
+
+How do I get started?
+
+I would say focus on isolating before worying about anything formal. In react this might mean make a new route that just has your component on it with hardcoded values. This allows you to create a scenario without worrying about how to get there.
+If you are doing a rest interface. You can do the same with a new route.
+The premise is still the same for scripts or libraries or anything else.
+
+That gets you in the habit of thinking about creating smaller units of work.
+
+For example, lets say you have a login form in react. It has two input fields and one button. Sounds small and simple right? But in reality it gets hard to setup an example
+You need to make sure the username gets filled out, then make sure the password gets filled out, then click on the button, oh wait you need to check if the password field has stars instead of text, okay click the button, wait now the form submitted, did it work?
+That gets really complicated really fast.
+
+Instead lets break it down.
+Start with just the username component. Set the value using the value attribute. Refresh. Does the value show up? You have a test case
+:fireworks:
+
+Cool we are done right? Its time to go home?
+
+Well..... kinda. I still do this kind of thing a lot, especially when i'm thinking to myself or rubber ducking. Just want to see what if.
+------- Show react testing utils to render then fill out value, then check render
+--- Talk about mocks in general
+--- talk about e2e tests
+
+
+--- Move comments about react vs rest vs cli etc earlier on, and say "Gonna use react as my examples as I would expect the majority of people here have heard of it if not touched it.
+If you check out the deck on my website, I'm going to try and have some examples or references but not really cover them.
+-->
+      <section data-auto-animate>
+        <h2>What is it good for?</h2>
+        <h3>Documentation</h3>
+        <ul>
+          <li>Why does this function return this?</li>
+          <li>What does real world input look like?</li>
+        </ul>
       </section>
       <section data-auto-animate>
         <h2>What is it good for?</h2>
@@ -87,17 +359,10 @@
           </div>
         </div>
         <aside class="notes">
-          Between the time I pitched the talk, and now, I've actually learned that AI coding tools can take advantage of
+          Between the time I pitched the talk, and now, I've actually learned that AI coding tools can take advantage
+          of
           tests to make sure it doesn't break existing behavior.
         </aside>
-      </section>
-      <section data-auto-animate>
-        <h2>What is it good for?</h2>
-        <h3>Documentation</h3>
-        <ul>
-          <li>Why does this function return this?</li>
-          <li>What does real world input look like?</li>
-        </ul>
       </section>
     </div>
   </div>
