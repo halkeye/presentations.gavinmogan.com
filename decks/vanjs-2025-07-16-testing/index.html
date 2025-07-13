@@ -104,7 +104,7 @@
       <section>
         <h2>What is testing?</h2>
         <figure>
-          <img src="./testing-pyramid.png" style="max-height: 50vh" />
+          <img src="./testing-pyramid-placeholder.png" style="max-height: 50vh" />
           <figcaption>Produced by ChatGPT</figcaption>
         </figure>
         <aside class="notes">
@@ -113,11 +113,22 @@
         </aside>
       </section>
       <section>
+        <figure>
+          <img src="./testing-pyramid.png" style="max-height: 50vh" />
+          <figcaption>&mdash; <a href="https://martinfowler.com/articles/practical-test-pyramid.html">The Practical Test
+              Pyramid - Martin Fowler</a>
+          </figcaption>
+        </figure>
+        <aside class="notes">
+          <p>The closest to official one I could find find hs one by martin fowler.</p>
+        </aside>
+      </section>
+      <section>
         <h2>Gavin's testing pyramid?</h2>
         <ul>
-          <li class="fragment">End To End (e2e) tests (aka integration).</li>
-          <li class="fragment">Mock e2e tests.</li>
-          <li class="fragment">"Simple" tests.</li>
+          <li>End To End (e2e) tests (aka integration).</li>
+          <li>Mock e2e tests.</li>
+          <li>"Simple" tests.</li>
         </ul>
         <aside class="notes">
           <p>I'll go into details but in order from most expensive, to cheapest...</p>
@@ -132,10 +143,10 @@
         <h2>End to End Tests</h2>
         <p>"everything real"</p>
         <ul>
-          <li class="fragment">Actual Client (Browser)</li>
-          <li class="fragment">Actual Server</li>
-          <li class="fragment">Real Credentials</li>
-          <li class="fragment">Actual Database</li>
+          <li>Actual Client (Browser)</li>
+          <li>Actual Server</li>
+          <li>Real Credentials</li>
+          <li>Actual Database</li>
         </ul>
         <h3>Examples</h3>
         <ul>
@@ -153,9 +164,9 @@
       <section>
         <h2>E2E Strengths</h2>
         <ul>
-          <li class="fragment">Makes sure everything works together</li>
-          <li class="fragment">Closest to end-user behaviors</li>
-          <li class="fragment">External changes get highlighted</li>
+          <li>Makes sure everything works together</li>
+          <li>Closest to end-user behaviors</li>
+          <li>External changes get highlighted</li>
         </ul>
         <aside class="notes">
           If another system changes something slightly, like json returning string instead of integer, it'll get
@@ -165,9 +176,9 @@
       <section>
         <h2>E2E Weaknesses</h2>
         <ul>
-          <li class="fragment">Hard to setup and control state</li>
-          <li class="fragment">Slowest</li>
-          <li class="fragment">Flakey</li>
+          <li>Hard to setup and control state</li>
+          <li>Slowest</li>
+          <li>Flakey</li>
         </ul>
         <aside class="notes">
           <p>Since you are doing everything with real behaviors, it can be tricker to create or reset states. You can't
@@ -194,6 +205,12 @@
             <h3>Mobile</h3>
             <ul>
               <li>Appium</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Visual</h3>
+            <ul>
+              <li>Chromatic</li>
             </ul>
           </div>
         </div>
@@ -253,6 +270,7 @@
 
       <section>
         <h2>Mocked - Tools</h2>
+        Probably can include most e2e and unit test suites too
         <div class="row">
           <div class="column">
             <h3>Javascript</h3>
@@ -283,6 +301,161 @@
           <p>Mock service worker is one I just learned about, it sounds like its nock, but for browsers</p>
         </aside>
       </section>
+
+      <section>
+        <h2>"Regular"/"Unit" tests</h2>
+        <p>Focus on small units of work.</p>
+        <p>Make them fast, and have a ton of them</p>
+        <h3>Examples</h3>
+        <ul>
+          <li>Sum function</li>
+          <li>Convert one data model to another</li>
+          <li>Password strength component</li>
+        </ul>
+        <aside class="notes">
+          Lastly we have what I'll call unit tests. Officially they should only ever test a single function, or single
+          unit of work, but with react that can get a bit complicated. The main thing is they shouldn't be testing
+          anything it doesn't own. So no database, rest, graphql or anything else.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Unit Tests - Strengths</h2>
+        <ul>
+          <li>Fast</li>
+          <li>Just focus on input and output</li>
+          <li>Easy to write</li>
+          <li>Easy to maintain</li>
+          <li>Can be run in parallel (unless you use globals 😭)</li>
+          <li>Indirectly can lead to maintainable and understandable code</li>
+        </ul>
+        <aside class="notes">
+          Since unit tests are not interfacing with any other systems, they are usually the most fast. You pass in some
+          inputs, and you check the outputs, you don't need to wait.
+
+          Because of this, the more practice you get with them, the more you want your functions to work in that way. So
+          for normal functions you can probably figure out how that works, just have parameters. But for things like a
+          react component, that means you want to have attributes not hooks. Have the hooks outside the component at the
+          integration level.
+
+          Then quickly you start writing functions and units that are small and do like one thing. It takes a while, and
+          I'll def go over how to do that later, but it does help.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Unit Tests - Cons</h2>
+        <ul>
+          <li>Doesnt break when external systems change</li>
+          <li>Devevelopment before testing often involves coming back and redoing development to make it testable</li>
+          <li>Globals can make it hard to isolate</li>
+        </ul>
+        <aside class="notes">
+          The main downside is because you are testing inputs and outputs, there's no indication when external systems
+          change the inputs. In truth it shouldn't matter because you should have other tests that test those things,
+          but it is a gap here.
+
+          Also globals can make things really hard to test. If you use like a window dot location, or a process dot env,
+          since they are not passed in as inputs, you can't really control them or parallelize without issues.
+
+          Both are probably good reasons to refactor though.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Unit Tests - Tools</h2>
+        A very non exhaustive list
+        <div class="row">
+          <div class="column">
+            <h3>Javascript</h3>
+            <ul>
+              <li>Jest</li>
+              <li>Mocha</li>
+              <li>Jasmine</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Golang</h3>
+            <ul>
+              <li>Go test</li>
+            </ul>
+
+            <h3>Python</h3>
+            <ul>
+              <li>Py.test</li>
+              <li>pyunit</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Ruby</h3>
+            <ul>
+              <li>rspec</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="notes">I tried to list all I could think of, but dont worry, they all more or less work the same
+          way</aside>
+      </section>
+
+
+      <section>
+        <h1>Getting Started</h1>
+        <aside class="notes">So I got started with testing long before I knew what formal testing was. My first job was
+          working directly on clients servers, live, with no backups. It was awful. So i got in the habit of isolating
+          what I was working on so I could run a simplified version on my own computer first. </aside>
+      </section>
+
+      <section>
+        <h2>Getting started pt2</h2>
+        <p>You don't need a formal framework</p>
+        <pre><code data-trim data-noescape>
+            const Users = require('./models/users.js');
+
+            Users.createUser({
+            &nbsp;&nbsp;username => "zoidberg",
+            &nbsp;&nbsp;password => "doctor"
+            }).then(function(user) {
+            &nbsp;&nbsp;console.log($user);
+            });
+          </code></pre>
+        <aside class="notes">Its totally fine, especially for your own projects, just to do things like this. Create a
+          file that imports your functionality and runs that. The only difference between that and a official test is
+          the frameworks to get it running.
+          So start there. Get in the habit. See the benefits.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Getting started pt3</h2>
+        <p><s>Testing every scenario</s></p>
+        <aside class="notes">
+          I think the biggest pitfall to get testing started is that people try to do everything at once. Its okay that
+          your test only checks the "everything was done right" path.
+          There's nothing wrong with that. Testing is an investment in the future. You can and should add more over
+          time, but one test is so much better than no tests.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Start with bugs</h2>
+        <ul>
+          <li>Already include reproduction steps</li>
+          <li>Already need to have a way to say its done</li>
+        </ul>
+        <aside class="notes">
+          So my suggestion, if you arn't going to do tests with development, is to setup tests when you get bug reports,
+          sure start with the simple ones, but start there.
+          A good bug report will have repoduction steps, so you can design the scenario, and by reproducing the bug,
+          you understand the bug. Ideally you start with your test failing in that scenario.
+          Then you fix the problem. Now your test should show the problem is fixed.
+
+          Yay! you just did test driven development (sorta).
+
+          But all you are saying is this very exact scenario won't happen again. You don't need to do more than that.
+          It'll come over time
+        </aside>
+      </section>
+
 
       <section>
         <h1>The End</h1>
