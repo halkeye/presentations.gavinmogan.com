@@ -456,6 +456,80 @@
         </aside>
       </section>
 
+      <section>
+        <h2>Getting Started for real</h2>
+        <h2>Aka frameworks and automation</h2>
+        <aside class="notes">Okay, how do you get ready for real?</aside>
+      </section>
+
+      <section>
+        <h2>Install tooling</h2>
+        <pre><code data-trim data-noescape class="language-bash">
+            $ npm install --save-dev jest
+          </code></pre>
+        <aside class="notes">
+          So i'm going to be using jest for my examples. Its from facebook and has really good documentation and
+          tuturoais.
+          So first step is install jest into your project.
+        </aside>
+      </section>
+
+      <section>
+        <h3>sum.test.js</h3>
+        <pre><code data-trim data-noescape class="language-javascript">
+            const sum = (a, b) => return a+b;
+
+            test('adds 1 + 2 to equal 3', () => {
+            &nbsp;&nbsp;expect(sum(1, 2)).toBe(3);
+            })
+          </code></pre>
+        <pre><code data-trim data-noescape class="language-bash">
+            $ jest sum.test.js
+          </code></pre>
+        <aside class="notes">
+          Second is to create a test function, run your function, and check the output.
+          Lots of javascript frameworks are nice because they try to make things readable as english.
+          Expect something to be something else.
+        </aside>
+      </section>
+
+      <section>
+        <pre><code data-trim data-noescape class="language-bash">
+            $ jest sum.test.js
+          </code></pre>
+        FIXME - include output
+        <aside class="notes">
+          Lastly run the test
+        </aside>
+      </section>
+
+      <section>
+        <h2>Automate it!</h2>
+        <div class="row">
+          <div class="column">
+            <h3>Built in code</h3>
+            <ul>
+              <li>Git commit hooks</li>
+              <li>Github / Gitlab actions</li>
+              <li>Hosted Jenkins
+            </ul>
+          </div>
+          <div class="column">
+            <h3>SaaS</h3>
+            <ul>
+              <li>Circle CI</li>
+              <li>Cloudbees (Jenkins)</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3>Self Hosted</h3>
+            <ul>
+              <li>Jenkins</li>
+              <li>Tekton</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
       <section>
         <h1>The End</h1>
