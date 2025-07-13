@@ -477,7 +477,7 @@
       <section>
         <h3>sum.test.js</h3>
         <pre><code data-trim data-noescape class="language-javascript">
-            const sum = (a, b) => return a+b;
+            const sum = (a, b) => a+b;
 
             test('adds 1 + 2 to equal 3', () => {
             &nbsp;&nbsp;expect(sum(1, 2)).toBe(3);
@@ -494,12 +494,16 @@
       </section>
 
       <section>
+        <h3>Success!</h3>
         <pre><code data-trim data-noescape class="language-bash">
             $ jest sum.test.js
           </code></pre>
-        FIXME - include output
+        <figure>
+          <img src="./jest-output.png" alt="Jest output showing the test passed" />
+        </figure>
         <aside class="notes">
-          Lastly run the test
+          Lastly run the test. With jest it should just be jest and then your filename or directory. Most other
+          frameworks work the same way.
         </aside>
       </section>
 
@@ -507,11 +511,10 @@
         <h2>Automate it!</h2>
         <div class="row">
           <div class="column">
-            <h3>Built in code</h3>
+            <h3>Code Servers</h3>
             <ul>
-              <li>Git commit hooks</li>
-              <li>Github / Gitlab actions</li>
-              <li>Hosted Jenkins
+              <li>Commit hooks</li>
+              <li><a href="https://github.com/halkeye/demo-jest-github-actions">Github</a> / Gitlab actions</li>
             </ul>
           </div>
           <div class="column">
@@ -522,17 +525,50 @@
             </ul>
           </div>
           <div class="column">
-            <h3>Self Hosted</h3>
+            <h3>Self-Hosted</h3>
             <ul>
               <li>Jenkins</li>
               <li>Tekton</li>
             </ul>
           </div>
         </div>
+        <aside class="notes">
+          Again, just some of the tooling I know about. As I was employed by cloudbees and worked on jenkins, I've made
+          sure to include it, but I almost exclusively use github actions for my own things and at work these days.
+        </aside>
+      </section>
+
+      <section>
+        <h3>Github Actions</h3>
+        <figure>
+          <img src="./github-actions.png" alt="Github actions showing a test run" />
+          <figcaption><a
+              href="https://github.com/halkeye/demo-jest-github-actions/actions/runs/16254522455/job/45888756590">https://github.com/halkeye/demo-jest-github-actions</a>
+          </figcaption>
+        </figure>
+        <aside class="notes">
+          As future me is sure he's out of time by now, just a quick screenshot of github actions
+        </aside>
       </section>
 
       <section>
         <h1>The End</h1>
+      </section>
+
+      <section>
+        <h2>Gavin Mogan</h2>
+        <p>
+          Senior Software Engineer at Digital Ocean.
+          <img src="./Sammy08.png" alt="Digital Ocean Mascot, Sammy the Shark, holding a heart ballon" width="100"
+            style="vertical-align: middle;" />
+        </p>
+        <p><a href="https://www.gavinmogan.com">https://www.gavinmogan.com</a></p>
+        <p>
+        <div style="position: relative">
+          <img class="r-stretch" src="./avatar.original.png" alt="Avatar" width="400"
+            alt="photo of child gavin in 1982 sitting infront of a computer at the time" />
+        </div>
+        </p>
       </section>
       <!--
 What is testing?
