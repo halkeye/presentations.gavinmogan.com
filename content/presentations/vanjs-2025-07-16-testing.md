@@ -1,5 +1,6 @@
 ---
 title: "Testing testing gotta get down on testing"
+slug: "vanjs-2025-07-16-testing"
 date: 2025-07-16
 tags:
   - Digital Ocean
