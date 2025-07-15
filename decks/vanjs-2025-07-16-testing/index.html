@@ -57,10 +57,9 @@
         </p>
         <aside class="notes">
           Hey everyone,
-          I'm Gavin. I am a Senior Software Developer at Digital Ocean, currently on the billing team. I don't really do
-          javascript that much anymore but I have always just loved vanjs so here I am. I've been there almost 5 years
-          now, which is forever in software developers terms.
-        </aside>
+          I'm Gavin. I am a Senior Software Developer at Digital Ocean, currently on the billing team doing backend
+          golang work. I don't really get to do javascript that much anymore, but I've been coming to vanjs since the
+          before times and as a huge fan I love to give back... </aside>
       </section>
       <section>
         <h2>Testing?</h2>
@@ -83,22 +82,22 @@
       <section>
         <h2>Why should you listen to me?</h2>
         <ul>
-          <li class="fragment">You probably shouldn't.</li>
-          <li class="fragment">I've made so many mistakes so you don't have to.</li>
-          <li class="fragment">Worked at several testing compainies.</li>
-          <li class="fragment">Was on the board for the open source project Jenkins.</li>
-          <li class="fragment">Been interviewed about testing on podcasts.</li>
+          <li>You probably shouldn't.</li>
+          <li>I've made so many mistakes so you don't have to.</li>
+          <li>Worked at several testing compainies.</li>
+          <li>Was on the board for the open source project Jenkins.</li>
+          <li>Been interviewed about testing on podcasts.</li>
         </ul>
         <aside class="notes">
+          So... why should you listen to me?
+
           <p>You probably shouldn't. There are a lot of paid experts out there that probably have much saner advice, but
             that being said, I have made so many mistakes over my long career that I know whats not to do.</p>
 
-          <p>Also you know I've worked at several saas companies that sell testing related services, tooling and
-            products. I've had plenty of exposure to the good stuff too.
-            I was on the board of the open source project Jenkins, which I believe still heavily used to run tests,
+          <p>I've also worked at several saas companies that sell testing related services, tooling and
+            products. I've had plenty of exposure to all the good stuff. I was on the board of the open source project
+            Jenkins, which I believe still heavily used to run tests,
             though I wont be talking about it today.</p>
-
-          <p>While at devops world one year, I was interviewed by one of the podcasts on site.</p>
         </aside>
       </section>
       <section>
@@ -120,7 +119,8 @@
           </figcaption>
         </figure>
         <aside class="notes">
-          <p>The closest to official one I could find find hs one by martin fowler.</p>
+          <p>The closest to official one I could find is this one by martin fowler which says you should have the least
+            amount of ui or integration tests, and the most of unit tests</p>
         </aside>
       </section>
       <section>
@@ -131,10 +131,10 @@
           <li>"Simple" tests.</li>
         </ul>
         <aside class="notes">
-          <p>I'll go into details but in order from most expensive, to cheapest...</p>
-          <p>End to end tests</p>
-          <p>End to end tests but with mocks... So not end to end</p>
-          <p>Smallest tests you can handle</p>
+          <p>So gavin version. I'll go into details but in order from most expensive, to cheapest... End to end tests.
+            End
+            to end tests but with mocks... So not end to end and lastly Unit tests. There are more types, but this is
+            what I usually go by.</p>
           <p>The idea is to have the least of the first and the most of the last, as they are fastest and easiest to
             isolate.</p>
         </aside>
@@ -155,10 +155,11 @@
         <aside class="notes">
           Everything real.
           :read list:
-          While that is hard to actually achieve being able to test fully in a perfect production environment, you can
+          While fully testing in a perfect production environt is hard to actually achieve, you can
           often get pretty close.
-          We will use stripe test credentials so we can test scenarios with test credit cards. Or maybe have the ips
-          allow listed so they don't get rate limited.
+          Try to keep the environment as close as you can. We use use stripe test credentials so we can test scenarios
+          with test credit cards. Sometimes have the ips
+          added to an allow list so they don't get rate limited.
         </aside>
       </section>
       <section>
@@ -169,6 +170,8 @@
           <li>External changes get highlighted</li>
         </ul>
         <aside class="notes">
+          Strengths... the goal is to test the whole system. So make sure everything works together. Api responses. UI
+          responses.
           If another system changes something slightly, like json returning string instead of integer, it'll get
           highlighted in this setup.
         </aside>
@@ -223,6 +226,10 @@
           let you test on anything that can run javascript.
           I'm also mentioning appium as a couple of my friends created and maintain it.
         </aside>
+      </section>
+
+      <section>
+        <h2>Mocked E2E Tests</h2>
       </section>
 
       <section>
