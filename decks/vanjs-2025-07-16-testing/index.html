@@ -105,19 +105,21 @@
       <section>
         <h2>What is it good for?</h2>
         <aside class="notes">
-          The urge to start singing about war and what it is good for, totally confusing the younger people here is so
+          What is it good for? The urge to start singing about war and what it is good for, totally confusing the
+          younger people here is so
           high.
           Buuuut...
         </aside>
       </section>
       <section data-auto-animate>
-        <h3>Documentation</h3>
+        <h3>Living Documentation</h3>
         <ul>
           <li>Why does this function return this?</li>
           <li>What does real world input look like?</li>
         </ul>
         <aside class="notes">
-          One surprising thing i've learned about testing, especially in open source projects where documentation can be
+          Living Documentation. One surprising thing i've learned about testing, especially in open source projects
+          where documentation can be
           lacking, is to see the actual usages of a library or application in action. I can see what data they are
           expecting, and how its handled. Does a lot of the expiramentation for me.
         </aside>
@@ -130,6 +132,8 @@
           <li>refactors</li>
         </ul>
         <aside class="notes">
+          Confidence.
+
           One of the talks last last month talks about how AI coding assistant tools can actually use tests to make sure
           new code suggestion actually doesn't break old behaviors. I believe it can also help with code style based on
           the topics mentioned in previous slide.
@@ -137,6 +141,9 @@
           I'll talk about it more later, but I just love creating tests for bug tickets I'm assigned. It helps me
           understand the problem then I can guarantee long into the future that the specific behavior won't happen
           again.
+
+          Its great for new hires too, gives them a bit more of a cusion to make changes without fear, the quicker they
+          can get involved and engaged the quicker they feel like part of the team and can contribute.
         </aside>
       </section>
       <section>
@@ -170,7 +177,8 @@
           <li>"Simple" tests.</li>
         </ul>
         <aside class="notes">
-          <p>So gavin version. I'll go into details but in order from most expensive, to cheapest... End to end tests.
+          <p>So gavin version. I'll go into details but in order ... from most expensive, to cheapest... End to end
+            tests.
             End
             to end tests but with mocks... So not end to end and lastly Unit tests. There are more types, but this is
             what I usually go by.</p>
@@ -399,7 +407,8 @@
 
           Because of this, the more practice you get with them, the more you want your functions to work in that way. So
           for normal functions you can probably figure out how that works, just have parameters. But for things like a
-          react component, that means you want to have attributes not hooks. Have the hooks outside the component at the
+          react component, that means you want to have attributes not hooks like useeffect which is often used to make
+          external api calls. Have the hooks outside the component at the
           integration level.
 
           Then quickly you start writing functions and units that are small and do like one thing. It takes a while, and
@@ -458,7 +467,16 @@
           </div>
         </div>
         <aside class="notes">I tried to list all I could think of, but dont worry, they all more or less work the same
-          way</aside>
+          way.
+
+          I would go as far as to say none of these are unit test specific. You'd have to pull in additional systems to
+          test with browsers, but they are more about running tests in general rather than unit tests.
+
+          As mentioned, jest is kinda the industry standard these days. It runs each test file in isolation so one file
+          cant accidently break a different file.
+          Mocha and Jasmine have been around forever and have lots of tooling and reporting for them. I think jest is
+          actually based on jasmine.
+        </aside>
       </section>
 
 
@@ -533,7 +551,7 @@
           </code></pre>
         <aside class="notes">
           So i'm going to be using jest for my examples. Its the tooling i've most recently used in the javascript
-          space, and most other tools will be more or less the same. I will say its from acebook and i've found its
+          space, and most other tools will be more or less the same. I will say its from facebook and i've found its
           really the easiest to get started.
 
           So first step is install jest into your project.
@@ -548,9 +566,6 @@
             test('adds 1 + 2 to equal 3', () => {
             &nbsp;&nbsp;expect(sum(1, 2)).toBe(3);
             })
-          </code></pre>
-        <pre><code data-trim data-noescape class="language-bash">
-            $ jest sum.test.js
           </code></pre>
         <aside class="notes">
           Second is to create a test function, run your function, and check the output.
@@ -637,6 +652,9 @@
       <section>
         <h3>Storybook - Component library</h3>
         <img src="./storybook.webp" alt="Storybook screenshot showing a component library" />
+        <a href="https://storybook.js.org/">https://storybook.js.org/</a>
+        <a href="https://jenkins-io-components.netlify.app/">https://jenkins-io-components.netlify.app/</a>
+
         <aside class="notes">
           Storybook is a component library which means it can list out all your components, and show them in different
           states. If that sounds like testing, it honestly overlaps a lot. There's actually plugins to run tests right
@@ -648,6 +666,9 @@
           used it for jenkins, I embedded all the tests in there so you could step through the states the tests ran
           through. It was really cool, and its like 5 versions since I used it, so I can only assume its mind blowing
           now.
+
+          I've included a link to the last open source project i setup storybook for. Its probably pretty out of date,
+          but can show you some examples. The storybook website has other examples too.
         </aside>
       </section>
 
@@ -655,17 +676,24 @@
         <h3>Chromatic - Visual regression testing</h3>
         <img src="./chromatic.webp" alt="Chromatic screenshot showing a visual regression test" />
         <aside class="notes">
-          Chromatic is a tool by the same company, or at least was the same company. It can let you compare screenshots
-          of your components to previous versions, and highlight changes.
+          I'll admit when i started researching Chromatic again, its slightly expanded from what I remember. It was
+          first setup as an automated way to run your storybooks through different browsers and record visual changes.
+          They then had tools to show you the difference, and fail a pr, or require approval, etc.
+          I didn't end up using it for my open source work as it did had a cost factor and we didn't need that level of
+          detail at the time.
 
-          Infact from what I learned researching this talk, storybook can do most things chromatic can, but chromatic
-          adds like workflow approvals, multiple devices, and other automation that is much harder for your own hosted
-          tools. (hashtag not sponsored)
+          From what I reasearched this week, Storybook can actually do lots of the same things, so chromatic seems to
+          have focused on the workflow side of things, of the visual difference side as setting up a test farm is a lot
+          of work... I know because i helped run a saas test farm
         </aside>
       </section>
 
       <section>
         <h1>The End</h1>
+        <aside class="notes">
+          So thats all I have for this. As mentioned a few times, all my slides and notes are available. They are
+          written in revealjs, so you can inspect source, or press s to get speaker notes.
+        </aside>
       </section>
 
       <section>
