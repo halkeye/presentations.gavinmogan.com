@@ -2,23 +2,60 @@
 title: Presentations
 layout: layouts/home.njk
 ---
-<div class="p-24 flex flex-wrap items-center justify-center">
+<header class="flex flex-col gap-4 items-center justify-center">
+  <h1 class="text-6xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-primary
+  to-secondary">Presentations</h1>
+  <h2 class="text-2xl lg:text-3xl text-secondary">by Gavin Mogan</h2>
+</header>
+
+<div class="filter m-auto">
+  <input class="btn filter-reset btn-accent btn-outline font-normal rounded-full" type="radio" name="categories"
+         aria-label="View
+  all" />
+  <input class="btn btn-accent btn-outline font-normal rounded-full
+         [&:not(:checked):not(:hover)]:bg-base-200"
+         type="radio"
+         name="categories"
+         aria-label="YouTube"/>
+  <input class="btn btn-accent btn-outline [&:not(:checked):not(:hover)]:bg-base-200 font-normal rounded-full"
+         type="radio" name="categories"
+         aria-label="Slides"/>
+  <input class="btn btn-accent btn-outline [&:not(:checked):not(:hover)]:bg-base-200 font-normal rounded-full"
+         type="radio" name="categories"
+         aria-label="Commands"/>
+</div>
+
+<div class="flex flex-wrap gap-10 items-stretch justify-center">
   {%- for p in collections.presentations | sort(attribute="data.date") | reverse %}
-  <div class="flex-initial card w-96 h-90 bg-slate-600 shadow-xl m-4 p-2">
+
+  <div class="card bg-base-200 rounded-2xl w-full sm:w-[calc(50%-2.5rem)] lg:w-[calc(33.333%-2.5rem)]">
     <figure class="h-60">
-      <a href="{{ p.url }}">{% toImageTag p.data.image, p.data.title, [300] %}</a>
+      <a href="{{ p.url }}">{% toImageTag p.data.image, p.data.title, [300], {class: "w-full object-cover"}%}</a>
     </figure>
-    <div class="card-body">
-      <h2 class="card-title">
+
+    <div class="card-body flex flex-col gap-6">
+      <div class="flex flex-col gap-2">
+
+      <time class="font-mono text-sm uppercase text-info" datetime="{{ page.date | htmlDateString }}">{{ page
+        .date |
+        readableDate
+          ('MMM
+      yyyy') }}</time>
+
+      <h2 class="card-title font-body text-xl text-primary font-medium">
         <a href="{{ p.url }}">{{ p.data.title }}</a>
       </h2>
-      <div class="card-actions justify-end">
+      </div>
+
+      <div class="card-actions flex flex-wrap gap-3">
         {% for tag in p.data.tags | filterTagList %}
-        <div class="badge badge-outline">{{ tag | ucFirst }}</div>
+        <div class="badge badge-outline badge-info badge-lg rounded-full h-auto font-mono px-3 py-1">{{ tag | ucFirst
+          }}</div>
         {% endfor %}
       </div>
+
       {% if links %}
-      <div class="card-actions justify-end">
+      <div class="card-actions">
         {% for link in p.data.links %}
         <a role="button" href="{{link.url}}" class="btn {% if loop.first %}btn-primary{% else %}btn-secondary{% endif %}">{{ link.type | ucFirst }}</a>
         {% endfor %}
