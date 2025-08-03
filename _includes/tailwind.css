@@ -1,3 +1,74 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Sora', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+  --color-neutral-100: #E7ECFF;
+  --color-neutral-200: #BCC2E3;
+  --color-grey-300: #3B3B50;
+  --color-grey-400: #2B2B3B;
+  --color-grey-500: #1E1E2E;
+  --color-grey-600: #121224;
+  --color-purple-300: #CAA7F8;
+  --color-purple-500: #7341B4;
+  --color-teal-300: #82CAD8;
+  --color-teal-500: #298192;
+  --color-blue-300: #8CBAEC;
+  --color-blue-500: #256CB8;
+  --color-indigo-300: #B5BEFF;
+  --color-indigo-500: #3E4BAF;
+  --color-orange-300: #EBAD84;
+  --color-orange-500: #A5521A;
+  --color-rose-300: #E59FA9;
+  --color-rose-500: #C03348;
+}
+
+@layer base {
+  html {
+    @apply font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .menu {
+    --menu-active-bg: var(--color-base-100);
+    --menu-active-fg: var(--color-secondary);
+  }
+}
+
+@plugin "daisyui";
+@plugin "daisyui/theme" {
+  name: "customdark";
+  default: true;
+  prefersdark: true;
+  color-scheme: dark;
+
+  --color-base-100: var(--color-grey-500);
+  --color-base-200: var(--color-grey-600);
+  --color-primary: var(--color-purple-300);
+  --color-secondary: var(--color-blue-300);
+  --color-accent: var(--color-orange-300);
+  --color-accent-content: var(--color-grey-600);
+  --color-info: var(--color-indigo-300);
+}
+
+
+@plugin "daisyui/theme" {
+  name: "customlight";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: var(--color-neutral-200);
+  --color-base-200: var(--color-neutral-100);
+  --color-primary: var(--color-purple-500);
+  --color-secondary: var(--color-blue-500);
+  --color-accent: var(--color-orange-500);
+  --color-accent-content: var(--color-neutral-100);
+  --color-info: var(--color-indigo-500);
+}
