@@ -6,6 +6,7 @@
   --font-mono: 'Fira Code', monospace;
   --color-neutral-100: #E7ECFF;
   --color-neutral-200: #BCC2E3;
+  --color-neutral-300: #CED6F4;
   --color-grey-300: #3B3B50;
   --color-grey-400: #2B2B3B;
   --color-grey-500: #1E1E2E;
@@ -48,10 +49,13 @@
   prefersdark: true;
   color-scheme: dark;
 
+  --color-base-content: var(--color-neutral-300);
   --color-base-100: var(--color-grey-500);
   --color-base-200: var(--color-grey-600);
   --color-primary: var(--color-purple-300);
+  --color-primary-content: var(--color-grey-600);
   --color-secondary: var(--color-blue-300);
+  --color-secondary-content: var(--color-grey-600);
   --color-accent: var(--color-orange-300);
   --color-accent-content: var(--color-grey-600);
   --color-info: var(--color-indigo-300);
@@ -64,10 +68,13 @@
   prefersdark: false;
   color-scheme: light;
 
+  --color-base-content: var(--color-grey-500);
   --color-base-100: var(--color-neutral-200);
   --color-base-200: var(--color-neutral-100);
   --color-primary: var(--color-purple-500);
+  --color-primary-content: var(--color-neutral-100);
   --color-secondary: var(--color-blue-500);
+  --color-secondary-content: var(--color-neutral-100);
   --color-accent: var(--color-orange-500);
   --color-accent-content: var(--color-neutral-100);
   --color-info: var(--color-indigo-500);
