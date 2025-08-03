@@ -1,40 +1,69 @@
 ---
 layout: layouts/base.njk
 ---
-<div class="h-full">
+<div class="h-full flex flex-col gap-4">
+    <a role="button" class="btn btn-outline btn-accent [&:not(:hover)]:bg-base-200 rounded-full
+    self-start" href="../">
+        <svg class="w-5 h-5 rtl:rotate-180"
+             xmlns="http://www.w3.org/2000/svg"
+             fill="none"
+             viewBox="0 0 24 24"
+             stroke-width="1.5"
+             stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18"/>
+        </svg>
+        Go back
+    </a>
 
-  <a role="button" class="btn" href="../">
-    <svg class="w-5 h-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-    </svg>
-    Go back
-  </a>
+    <div class="">
+        <div class="card bg-base-200 rounded-2xl w-full flex md:flex-row gap-5 p-5">
 
-  <div class="h-full flex items-center justify-center">
-    <div class="card md:w-2/5 bg-slate-600 shadow-xl p-2">
-      <figure>
-        <a href="{{link}}">{% toImageTag image, title, [300] %}</a>
-      </figure>
-      <div class="card-body">
-        <h2 class="card-title">
-          <a href="{{link}}">{{ title }}</a>
-          <div class="badge badge-secondary"><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate('MMM yyyy') }}</time></div>
-        </h2>
-        {{ content | safe }}
-        <div class="card-actions justify-end">
-          {% for tag in tags | filterTagList %}
-          <div class="badge badge-outline">{{ tag | ucFirst }}</div>
-          {% endfor %}
+            <div class="flex-1/4 flex flex-col gap-3">
+                <figure>
+                    <a href="{{ link }}">{% toImageTag image, title, [300], {class: "w-full object-cover rounded-xl"} %}</a>
+                </figure>
+
+                {% if links %}
+                    <div class="card-actions">
+                        {% for link in links %}
+                            <a role="button"
+                               href="{{ link.url }}"
+                               class="btn {% if loop.first %}btn-primary{% else %}btn-secondary{% endif %}
+                               rounded-full">{{ link.type | ucFirst }}</a>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+            </div>
+
+            <div class="card-body flex-3/4 gap-8">
+                <div class="flex flex-col gap-4">
+                    <time class="font-mono text-sm uppercase text-info"
+                          datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate('MMM yyyy') }}</time>
+
+                    <h1 class="card-title text-3xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-b
+                from-primary
+                    to-secondary">
+                        <a href="{{ link }}">{{ title }}</a>
+                    </h1>
+
+                    <h2 class="card-subtitle text-xl lg:text-2xl text-secondary">
+                        Gavin Mogan
+                    </h2>
+                </div>
+
+                {% if content %}
+                    <div class="flex flex-col gap-4 text-lg">
+                        {{ content | safe }}
+                    </div>
+                {% endif %}
+
+                <div class="card-actions">
+                    {% for tag in tags | filterTagList %}
+                        <div class="badge badge-outline badge-info badge-lg rounded-full h-auto font-mono px-3 py-1">{{ tag | ucFirst }}</div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-        {% if links %}
-        <div class="card-actions justify-end">
-          {% for link in links %}
-          <a role="button" href="{{link.url}}" class="btn {% if loop.first %}btn-primary{% else %}btn-secondary{% endif %}">{{ link.type | ucFirst }}</a>
-          {% endfor %}
-        </div>
-        {% endif %}
-
-      </div>
     </div>
-  </div>
 </div>
