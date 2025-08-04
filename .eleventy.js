@@ -2,7 +2,7 @@ const {DateTime} = require("luxon");
 const path = require('path');
 
 const postcss = require('postcss');
-const tailwindcss = require('tailwindcss');
+const tailwindcss = require('@tailwindcss/postcss');
 const autoprefixer = require('autoprefixer');
 
 const markdownItImage = require("markdown-it-eleventy-img");
@@ -44,10 +44,11 @@ module.exports = eleventyConfig => {
   eleventyConfig.addPassthroughCopy({
     "node_modules/reveal.js/dist": "assets/reveal/",
     "node_modules/reveal.js/plugin": "assets/reveal/plugin",
+    "_includes/tailwind.css": "tailwind.css"
   });
 
   eleventyConfig.addNunjucksAsyncFilter('postcss', (cssCode, done) => {
-    postcss([tailwindcss(require('./tailwind.config.js')), autoprefixer()])
+    postcss([tailwindcss(), autoprefixer()])
       .process(cssCode, {from: './_includes/tailwind.css'})
       .then(
         (r) => done(null, r.css),
@@ -123,7 +124,13 @@ module.exports = eleventyConfig => {
   eleventyConfig.addFilter('toJSON', (data) => {
     return JSON.stringify(data, null, "\t");
   })
+  eleventyConfig.addFilter("hasSlides", (pres) => {
+    return !!pres.data.links?.find((link) => link.type == "slides");
+  });
 
+  eleventyConfig.addFilter("hasRecording", (pres) => {
+    return !!pres.data.links?.find((link) => link.type == "youtube");
+  });
   eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
     return (tags || []).filter(tag => ["all", "presentations"].indexOf(tag) === -1);
   });
