@@ -3,24 +3,24 @@ title: Presentations
 layout: layouts/home.njk
 ---
 <header class="flex flex-col gap-4 items-center justify-center">
-  <h1 class="text-6xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-primary
+  <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-primary
   to-secondary">Presentations</h1>
-  <h2 class="text-2xl lg:text-3xl text-secondary">by Gavin Mogan</h2>
+  <h2 class="text-xl md:text-2xl lg:text-3xl text-secondary">by Gavin Mogan</h2>
 </header>
 
 <div class="filter m-auto">
-  <input class="btn filter-reset btn-accent btn-outline font-normal rounded-full" type="radio" name="categories"
+  <input class="btn filter-reset btn-accent btn-outline btn-sm sm:btn-md  font-normal rounded-full" type="radio" name="categories"
          aria-label="View
   all" />
-  <input class="btn btn-accent btn-outline font-normal rounded-full
+  <input class="btn btn-accent btn-outline btn-sm sm:btn-md font-normal rounded-full
          [&:not(:checked):not(:hover)]:bg-base-200"
          type="radio"
          name="categories"
          aria-label="YouTube"/>
-  <input class="btn btn-accent btn-outline [&:not(:checked):not(:hover)]:bg-base-200 font-normal rounded-full"
+  <input class="btn btn-accent btn-outline btn-sm sm:btn-md font-normal rounded-full [&:not(:checked):not(:hover)]:bg-base-200"
          type="radio" name="categories"
          aria-label="Slides"/>
-  <input class="btn btn-accent btn-outline [&:not(:checked):not(:hover)]:bg-base-200 font-normal rounded-full"
+  <input class="btn btn-accent btn-outline btn-sm sm:btn-md font-normal rounded-full [&:not(:checked):not(:hover)]:bg-base-200"
          type="radio" name="categories"
          aria-label="Commands"/>
 </div>
