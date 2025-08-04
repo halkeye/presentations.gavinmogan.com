@@ -124,7 +124,13 @@ module.exports = eleventyConfig => {
   eleventyConfig.addFilter('toJSON', (data) => {
     return JSON.stringify(data, null, "\t");
   })
+  eleventyConfig.addFilter("hasSlides", (pres) => {
+    return !!pres.data.links?.find((link) => link.type == "slides");
+  });
 
+  eleventyConfig.addFilter("hasRecording", (pres) => {
+    return !!pres.data.links?.find((link) => link.type == "youtube");
+  });
   eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
     return (tags || []).filter(tag => ["all", "presentations"].indexOf(tag) === -1);
   });

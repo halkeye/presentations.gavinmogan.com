@@ -8,43 +8,48 @@ layout: layouts/home.njk
   <h2 class="text-xl md:text-2xl lg:text-3xl text-secondary">by Gavin Mogan</h2>
 </header>
 
-<div class="filter m-auto">
-  <input class="btn filter-reset btn-accent btn-outline btn-sm sm:btn-md  font-normal rounded-full" type="radio" name="categories"
-         aria-label="View
-  all" />
-  <input class="btn btn-accent btn-outline btn-sm sm:btn-md font-normal rounded-full
-         [&:not(:checked):not(:hover)]:bg-base-200"
-         type="radio"
-         name="categories"
-         aria-label="YouTube"/>
+<form class="filter m-auto" id="links-filter">
+  <input 
+   class="btn filter-reset btn-accent btn-outline btn-sm sm:btn-md font-normal rounded-full" 
+   type="radio"
+   value="x"
+   name="links"
+   aria-label="View all" />
   <input class="btn btn-accent btn-outline btn-sm sm:btn-md font-normal rounded-full [&:not(:checked):not(:hover)]:bg-base-200"
-         type="radio" name="categories"
-         aria-label="Slides"/>
+   type="radio"
+   name="links"
+   value="hasSlides"
+   aria-label="Slides"/>
   <input class="btn btn-accent btn-outline btn-sm sm:btn-md font-normal rounded-full [&:not(:checked):not(:hover)]:bg-base-200"
-         type="radio" name="categories"
-         aria-label="Commands"/>
-</div>
+   type="radio"
+   name="links"
+   value="hasRecording"
+   aria-label="Recordings"/>
+</form>
 
-<div class="flex flex-wrap gap-10 items-stretch justify-center">
+<div class="flex flex-wrap gap-10 items-stretch justify-center" id="presentations">
   {%- for p in collections.presentations | sort(attribute="data.date") | reverse %}
 
-  <div class="card bg-base-200 rounded-2xl w-full sm:w-[calc(50%-2.5rem)] lg:w-[calc(33.333%-2.5rem)]">
+  <div
+    class="presentation card bg-base-200 rounded-2xl w-full sm:w-[calc(50%-2.5rem)] lg:w-[calc(33.333%-2.5rem)]"
+    data-has-slides={{ p | hasSlides | toJSON }}
+    data-has-recording={{ p | hasRecording | toJSON }}
+  >
     <figure class="h-60">
       <a href="{{ p.url }}">{% toImageTag p.data.image, p.data.title, [300], {class: "w-full object-cover"}%}</a>
     </figure>
 
     <div class="card-body flex flex-col gap-6">
       <div class="flex flex-col gap-2">
+        <time class="font-mono text-sm uppercase text-info" datetime="{{ p.data.date | htmlDateString }}">{{ p.data
+          .date |
+          readableDate
+            ('MMM
+        yyyy') }}</time>
 
-      <time class="font-mono text-sm uppercase text-info" datetime="{{ p.data.date | htmlDateString }}">{{ p.data
-        .date |
-        readableDate
-          ('MMM
-      yyyy') }}</time>
-
-      <h2 class="card-title font-body text-xl text-primary font-medium">
-        <a href="{{ p.url }}">{{ p.data.title }}</a>
-      </h2>
+        <h2 class="card-title font-body text-xl text-primary font-medium">
+          <a href="{{ p.url }}">{{ p.data.title }}</a>
+        </h2>
       </div>
 
       <div class="card-actions flex flex-wrap gap-3">
@@ -65,4 +70,6 @@ layout: layouts/home.njk
   </div>
   {%- endfor %}
 </div>
-
+<script>
+{% include "link-filter.js" %}
+</script>
