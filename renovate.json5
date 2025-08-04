@@ -6,7 +6,9 @@
     "schedule:monthly",    // can be schedule:weekly, schedule:weekends, etc
     "npm:unpublishSafe",   // the release must be at least 3 days old
     ":approveMajorUpdates",// require explicit update approval on the dashboard before opening PR
-    ":maintainLockFilesWeekly" // regenerates lock file to update all indirect deps
+    ":maintainLockFilesWeekly", // regenerates lock file to update all indirect deps
+    ":timezone(America/Vancouver)",
+    "github>halkeye/home-k8s//.github/renovate/grafanaDashboards.json"
   ],
   "transitiveRemediation": true, // apply security updates for indirect (transitive) NPM dependencies
   "packageRules": [
