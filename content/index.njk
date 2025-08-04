@@ -36,7 +36,7 @@ layout: layouts/home.njk
     <div class="card-body flex flex-col gap-6">
       <div class="flex flex-col gap-2">
 
-      <time class="font-mono text-sm uppercase text-info" datetime="{{ page.date | htmlDateString }}">{{ page
+      <time class="font-mono text-sm uppercase text-info" datetime="{{ p.data.date | htmlDateString }}">{{ p.data
         .date |
         readableDate
           ('MMM
