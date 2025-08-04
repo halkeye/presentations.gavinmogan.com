@@ -59,6 +59,7 @@
   --color-accent: var(--color-orange-300);
   --color-accent-content: var(--color-grey-600);
   --color-info: var(--color-indigo-300);
+  --color-accent-alt: var(--color-teal-300);
 }
 
 
@@ -78,4 +79,5 @@
   --color-accent: var(--color-orange-500);
   --color-accent-content: var(--color-neutral-100);
   --color-info: var(--color-indigo-500);
+  --color-accent-alt: var(--color-teal-500);
 }
