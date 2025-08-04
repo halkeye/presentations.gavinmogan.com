@@ -1,41 +1,27 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+  <meta charset="utf-8">
 
-		<title>Angular vs React - fight fight fight</title>
-		<meta name="author" content="Gavin Mogan">
+  <title>Angular vs React - fight fight fight</title>
+  <meta name="author" content="Gavin Mogan">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/league.css" id="theme">
+  <link rel="stylesheet" href="/assets/reveal/reveal.css" />
+  <link rel="stylesheet" href="/assets/reveal/theme/league.css" />
+  <link rel="stylesheet" href="/assets/reveal/plugin/highlight/zenburn.css">
+</head>
 
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
-
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-	</head>
-
-	<body>
-    <!--
+<body>
+  <!--
       * Two way binding made it easy to skip steps
-      * $scope, $rootScope, parentScope, directives having thier own scope
+      * $scope, $rootScope, parentScope, directives having their own scope
 
       Enforces the idea that Controllers (Stores) massage the data and pass it to views.
 
@@ -44,360 +30,395 @@
       React-Router is the Controller???
     -->
 
-		<div class="reveal">
+  <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>React vs Angular</h1>
-					<h3>Fight fight fight</h3>
-          <img src="img/title.gif" />
-					<p>
-						<small>Created by <a href="http://gavinmogan.com">Gavin Mogan</a> / <a href="http://twitter.com/halkeye">@halkeye</a></small>
-          </p>
-				</section>
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+      <section>
+        <h1>React vs Angular</h1>
+        <h3>Fight fight fight</h3>
+        <img src="img/title.gif" />
+        <p>
+          <small>Created by <a href="http://gavinmogan.com">Gavin Mogan</a> / <a
+              href="http://twitter.com/halkeye">@halkeye</a></small>
+        </p>
+      </section>
 
-        <section>
-          <p>Angular is a very opinionated framework.</p>
-          <p>Provides you with a lot of things, kinda like rails, but if you need to do things in way it doesn't support, then you spend a lot of time fighting with it.</p>
-          <p>ng-repeat confuses everyone</p>
-          <hr />
-          <p>React is very non-opionated.</p>
-          <p>Doesn't do a lot for you, but very plugin friendly.</p>
-          <p>Data only flows one way.</p>
-          <p></p>
-        </section>
+      <section>
+        <p>Angular is a very opinionated framework.</p>
+        <p>Provides you with a lot of things, kinda like rails, but if you need to do things in way it doesn't support,
+          then you spend a lot of time fighting with it.</p>
+        <p>ng-repeat confuses everyone</p>
+        <hr />
+        <p>React is very non-opinionated.</p>
+        <p>Doesn't do a lot for you, but very plugin friendly.</p>
+        <p>Data only flows one way.</p>
+        <p></p>
+      </section>
 
-        <section>
-          <h2>What react doesn't do</h2>
-          <ul>
-            <li>Validation</li>
-            <li>MVC</li>
-            <li>Templates</li>
-            <li>Anything other than view layer</li>
-            <li>Support browsers before IE8</li>
-          </ul>
-          <img src="img/cat-sail.gif" />
+      <section>
+        <h2>What react doesn't do</h2>
+        <ul>
+          <li>Validation</li>
+          <li>MVC</li>
+          <li>Templates</li>
+          <li>Anything other than view layer</li>
+          <li>Support browsers before IE8</li>
+        </ul>
+        <img src="img/cat-sail.gif" />
 
-          <aside class="notes">
-            * React-Router works as a controller
-            * Flux works as models
-            * angular-react
-          </aside>
-        </section>
+        <aside class="notes">
+          * React-Router works as a controller
+          * Flux works as models
+          * angular-react
+        </aside>
+      </section>
 
-        <section>
-          <h2>What react does do well</h2>
-          <ul>
-            <li>Views</li>
-            <li>Server side Rendering</li>
-            <li>Really strongly pushes for reusable components</li>
-            <li>Reusable Components</li>
-            <li>Nested Components</li>
-            <li>Testing</li>
-          </ul>
-          <img src="img/cat-success.gif" />
-          <aside class="notes">
-            * Love it or hate it, react mixes html into your javascript. Makes it easier to distribute.
-            * React-Router works as a controller
-            * Flux works as models
-            * angular-react
-          </aside>
-        </section>
+      <section>
+        <h2>What react does do well</h2>
+        <ul>
+          <li>Views</li>
+          <li>Server side Rendering</li>
+          <li>Really strongly pushes for reusable components</li>
+          <li>Reusable Components</li>
+          <li>Nested Components</li>
+          <li>Testing</li>
+        </ul>
+        <img src="img/cat-success.gif" />
+        <aside class="notes">
+          * Love it or hate it, react mixes html into your javascript. Makes it easier to distribute.
+          * React-Router works as a controller
+          * Flux works as models
+          * angular-react
+        </aside>
+      </section>
 
-        <section>
-          <h2>Watches, ewwwww</h2>
-          <p>With Angular if you wanted to change one value when other deep linked value changed, you'd have to use watches.</p>
-          <p>This would lead to very weird conditions, $apply statements wrapping code, etc</p>
-          <p></p>
-          <p>React only re-renders with attributes change, or state changes</p>
-          <p>No deep linking</p>
-        </section>
+      <section>
+        <h2>Watches, ewwwww</h2>
+        <p>With Angular if you wanted to change one value when other deep linked value changed, you'd have to use
+          watches.</p>
+        <p>This would lead to very weird conditions, $apply statements wrapping code, etc</p>
+        <p></p>
+        <p>React only re-renders with attributes change, or state changes</p>
+        <p>No deep linking</p>
+      </section>
 
-				<section>
-					<h2>Directives Vs Components - Angular</h2>
-          <ul>
-            <li>In an attempt to make templating less confusing, angular has made everything into html and/or attributes</li>
-            <li>Angular has directives, but are also kinda confusing</li>
-          </ul>
-          <div class="fragment">
-            Simple Example:
-            <pre><xmp data-trim>
-<html ng-app="testApp">
-  <head></head>
-  <body ng-controller="testController">
-    <hello-world name="{{name}}"/>
-  </body>
-</html>
-var app = angular.module("testApp", []);
-app.controller("testController", function($scope) { $scope.name = "Gavin Mogan"; });
-app.directive("helloWorld", function() {
-    return {
-        restrict: "E",
-        template: "<div>Hello, {{name}}!</div>",
-        scope: { name: "@" }
-    };
-});
-            </xmp></pre>
-					</div>
-          <aside class="notes">
-            I know tom and I spent a bunch of time figuring out the scope notation for optik home dashboards. 
-            I still don't really know what @ means.
-            I looked up online how to nest, and there was huge debates.
-          </aside>
-				</section>
+      <section>
+        <h2>Directives Vs Components - Angular</h2>
+        <ul>
+          <li>In an attempt to make templating less confusing, angular has made everything into html and/or attributes
+          </li>
+          <li>Angular has directives, but are also kinda confusing</li>
+        </ul>
+        <div class="fragment">
+          Simple Example:
+          <pre>
+            <xmp data-trim>
+              <html ng-app="testApp">
 
-				<section>
-					<h2>Directives Vs Components - React</h2>
-          <ul>
-            <li>Everything is a component/element</li>
-            <li>First class citizen</li>
-            <li>Data is fetched from elsewhere and rendered through components.</li>
-          </ul>
+              <head></head>
 
-          <div class="fragment">
-            Example:
-            <pre><xmp data-trim>
-<html><body>
-  <div id="main"></div>
-</body></html>
+              <body ng-controller="testController">
+                <hello-world name="{{name}}" />
+              </body>
 
-var React = require('react');
-var HelloWorld = React.createClass({
-  render() {
-    return <div>Hello,{this.props.name}!</div>;
-  }
-});
-React.render(<HelloWorld name="Gavin Mogan" />, document.body);
-            </xmp></pre>
+              </html>
+              var app = angular.module("testApp", []);
+              app.controller("testController", function($scope) { $scope.name = "Gavin Mogan"; });
+              app.directive("helloWorld", function() {
+              return {
+              restrict: "E",
+              template: "<div>Hello, {{name}}!</div>",
+              scope: { name: "@" }
+              };
+              });
+            </xmp>
+          </pre>
+        </div>
+        <aside class="notes">
+          I know tom and I spent a bunch of time figuring out the scope notation for optik home dashboards.
+          I still don't really know what @ means.
+          I looked up online how to nest, and there was huge debates.
+        </aside>
+      </section>
+
+      <section>
+        <h2>Directives Vs Components - React</h2>
+        <ul>
+          <li>Everything is a component/element</li>
+          <li>First class citizen</li>
+          <li>Data is fetched from elsewhere and rendered through components.</li>
+        </ul>
+
+        <div class="fragment">
+          Example:
+          <pre>
+            <xmp data-trim>
+              <html>
+
+              <body>
+                <div id="main"></div>
+              </body>
+
+              </html>
+
+              var React = require('react');
+              var HelloWorld = React.createClass({
+              render() {
+              return <div>Hello,{this.props.name}!</div>;
+              }
+              });
+              React.render(
+              <HelloWorld name="Gavin Mogan" />, document.body);
+            </xmp>
+          </pre>
+        </div>
+        <aside class="notes">
+          Since this is just a view layer, everything is a component.
+          This is using babel and reactify to support es6 stuff.
+        </aside>
+      </section>
+
+      <section>
+        <h2>React - Nesting is easy and Encouraged</h2>
+        <div style="position:relative">
+          <div data-fragment-index="0" class="fragment fade-out" style="position: absolute">
+            <pre>
+              <xmp>
+                var React = require('react');
+                var Person = React.createClass({
+                render() {
+                return <div>{this.props.person.name}!</div>;
+                }
+                });
+                var HelloWorld = React.createClass({
+                render() {
+                return <div>Hello,
+                  <Person person={this.props.person} />!
+                </div>;
+                }
+                });
+              </xmp>
+            </pre>
           </div>
-          <aside class="notes">
-            Since this is just a view layer, everything is a component.
-            This is using babel and reactify to support es6 stuff.
-          </aside>
-        </section>
-
-        <section>
-          <h2>React - Nesting is easy and Encouraged</h2>
-          <div style="position:relative">
-            <div data-fragment-index="0" class="fragment fade-out" style="position: absolute">
-              <pre><xmp>
-var React = require('react');
-var Person = React.createClass({
-  render() {
-    return <div>{this.props.person.name}!</div>;
-  }
-});
-var HelloWorld = React.createClass({
-  render() {
-    return <div>Hello, <Person person={this.props.person} />!</div>;
-  }
-});
-              </xmp></pre>
-            </div>
-            <div data-fragment-index="0" class="fragment fade-in" style="position: absolute">
-              <p>Passing data can be tedious though</p>
-              <pre><xmp data-trim>
-var React = require('react');
-var Person = React.createClass({
-  render() {
-    return <div>{this.props.name}!</div>;
-  }
-});
-var HelloWorld = React.createClass({
-  render() {
-    return <div>Hello, <Person {...this.props.person} />!</div>;
-  }
-});
-              </xmp></pre>
-            </div>
+          <div data-fragment-index="0" class="fragment fade-in" style="position: absolute">
+            <p>Passing data can be tedious though</p>
+            <pre>
+              <xmp data-trim>
+                var React = require('react');
+                var Person = React.createClass({
+                render() {
+                return <div>{this.props.name}!</div>;
+                }
+                });
+                var HelloWorld = React.createClass({
+                render() {
+                return <div>Hello,
+                  <Person {...this.props.person} />!
+                </div>;
+                }
+                });
+              </xmp>
+            </pre>
           </div>
-          <aside class="notes">
-            Unlike angular which got really angry at me any time I tried to figure out how nesting directives worked.
-            You need to eval things. So people would start to make shared helpers
-            ng-transclude
-            each nest has its own scope
+        </div>
+        <aside class="notes">
+          Unlike angular which got really angry at me any time I tried to figure out how nesting directives worked.
+          You need to eval things. So people would start to make shared helpers
+          ng-transclude
+          each nest has its own scope
 
-            React has a spread operator specifically designed to pass data easily
-          </aside>
-        </section>
+          React has a spread operator specifically designed to pass data easily
+        </aside>
+      </section>
 
-        <section>
-          <h2>Testing</h2>
-          <p>Facebook has provided first class unit testing tools</p>
-          <pre><code data-trim>
-var shallowRenderer = TestUtils.createRenderer();
-shallowRenderer.render(<MyComponent customer={customer}>);
-var component = shallowRenderer.getRenderOutput();
+      <section>
+        <h2>Testing</h2>
+        <p>Facebook has provided first class unit testing tools</p>
+        <pre><code data-trim>
+            var shallowRenderer = TestUtils.createRenderer();
+            shallowRenderer.render(<MyComponent customer={customer}>);
+              var component = shallowRenderer.getRenderOutput();
           </code></pre>
-          <p>Then just make sure things are as you expect</p>
-          <pre><code data-trim>
-expect(component.props.className).to.equal('MyComponent');
+        <p>Then just make sure things are as you expect</p>
+        <pre><code data-trim>
+            expect(component.props.className).to.equal('MyComponent');
           </code></pre>
-        </section>
+      </section>
 
-        <section>
-          <h2>Loops</h2>
-          <h3>Angular - ng-repeat</h3>
-          <pre><code data-trim>
-<div ng-repeat="comment in comments">
-  Comment {{$index}}: 
-  <div ng-include="comment.html">
-    <!-- is comment passed to ng-include? -->
+      <section>
+        <h2>Loops</h2>
+        <h3>Angular - ng-repeat</h3>
+        <pre><code data-trim>
+            <div ng-repeat="comment in comments">
+              Comment {{$index}}:
+              <div ng-include="comment.html">
+                <!-- is comment passed to ng-include? -->
+              </div>
+            </div>
+          </code></pre>
+        <h3>React - Raw Javascript</h3>
+        <pre>
+          <xmp data-trim>
+            var comments = this.props.comments.map(function(comment, idx) {
+            return (<div>
+              Comment {idx}:
+              <Comment {...comment} />
+            </div>);
+            });
+            <div>{comments}</div>
+          </xmp>
+        </pre>
+      </section>
+
+      <section>
+        <h2>Dev Tools</h2>
+        <div style="float: left; padding: 1em">
+          <h4>Angular</h4>
+          <p>ngmin/ngannotate</p>
+          <h4>React</h4>
+          <p>Reactify/jsx</p>
+        </div>
+        <div style="float: left;">
+          <img src="img/cat-working.gif" />
+        </div>
+        <div style="float: left; padding: 1em">
+          <h4>General</h4>
+          <ul>
+            <li>browserify</li>
+            <li>npm</li>
+            <li>webpack</li>
+            <li>babel</li>
+            <li>eslint</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>Cool Modules - React-Router</h2>
+        <div>
+          <p>Can act as a controller like apparatus</p>
+          <p>Supposed to be IE8 compatible again next major release (with polyfills)</p>
+          <a href="https://github.com/rackt/react-router">React-Router</a>
+        </div>
+      </section>
+      <section>
+        <h2>Cool Modules - TransitiveNumber</h2>
+        <div>
+          <img src="img/react-transitive-number.gif" />
+          <pre>
+            <xmp data-trim>
+              <TransitiveNumber>2:00</TransitiveNumber>
+            </xmp>
+          </pre>
+          <a href="https://github.com/Lapple/react-transitive-number">TransitiveNumber</a>
+        </div>
+      </section>
+      <section>
+        <h2>Cool Modules - ReactSpeech</h2>
+        <div>
+          <a href="https://cdn.rawgit.com/AndrewKeig/react-speech/master/example/index.html">Demo</a>
+          <pre>
+            <xmp data-trim>
+              <Speech text="I have the default settings" />
+            </xmp>
+          </pre>
+          <a href="https://github.com/AndrewKeig/react-speech">react-speech</a>
+        </div>
+      </section>
+      <section>
+        <h2>Cool Modules - MaskedInput</h2>
+        <div>
+          <img src="img/react-masked-input.gif" />
+          <pre>
+            <xmp data-trim>
+              <MaskedInput pattern="1111 1111 1111 1111" name="card" size="20" onChange={this._onChange} />
+            </xmp>
+          </pre>
+          <a href="https://github.com/insin/react-maskedinput">react-maskedinput</a>
+        </div>
+      </section>
+
+      <section>
+        <h2>Bonus - NPM and shims are our friends</h2>
+        <pre><code data-trim>
+            {
+            "bootstrap-sass": "^3.3.4",
+            "consolelog": "^2.1.3",
+            "es5-shim": "^4.1.5",
+            "es6-shim": "^0.31.3",
+            "flux": "^2.0.3",
+            "flux-dispatcher": "^1.0.6",
+            "flux-store": "^1.1.5",
+            "font-awesome": "^4.3.0",
+            "html5shiv": "^3.7.2",
+            "i18next-client": "^1.9.0",
+            "isarray": "0.0.1",
+            "json-loader": "^0.5.2",
+            "json3": "^3.3.2",
+            "mirrorkey": "^1.2.0",
+            "object-assign": "^2.0.0",
+            "react": "^0.13.3",
+            "react-bootstrap": "^0.23.1",
+            "react-maskedinput": "^2.0.0",
+            "react-router": "^0.13.3",
+            "react-toggle": "^1.2.3",
+            "reqwest": "^1.1.5",
+            "store": "^1.3.17",
+            "whatwg-fetch": "^0.9.0"
+            }
+          </code></pre>
+        <aside class="notes">
+          Versioning with npm is really nice. Most components are very self contained. No more adding everything to the
+          index.html.
+          Lots of shims so even ie8 can work with everything. Babel + webpack makes sass even nicer.
+        </aside>
+
+      </section>
+      <section>
+        <h1>THE END</h1>
+        <p>
+          <img src="img/thats-all-folks.gif" />
+        </p>
+      </section>
+      <section>
+        <h2>More</h2>
+        <p>Found many useful items while researching</p>
+        <ul>
+          <li><a href="http://blog.andrewray.me/flux-for-stupid-people/">Some flux notes</a></li>
+          <li><a href="https://www.airpair.com/angularjs/posts/angular-vs-react-the-tie-breaker">React vs angular</a>
+          </li>
+          <li><a
+              href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React
+              Chrome Extension</a></li>
+          <li><a href="https://github.com/enaqx/awesome-react">Collection of shiny react things</a></li>
+        </ul>
+      </section>
+
+    </div>
+
   </div>
-</div>
-          </code></pre>
-          <h3>React - Raw Javascript</h3>
-          <pre><xmp data-trim>
-var comments = this.props.comments.map(function(comment, idx) {
-  return (<div>
-    Comment {idx}: 
-    <Comment {...comment} />
-  </div>);
-});
-<div>{comments}</div>
-          </xmp></pre>
-        </section>
 
-        <section>
-          <h2>Dev Tools</h2>
-          <div style="float: left; padding: 1em">
-            <h4>Angular</h4>
-            <p>ngmin/ngannotate</p>
-            <h4>React</h4>
-            <p>Reactify/jsx</p>
-          </div>
-          <div style="float: left;">
-            <img src="img/cat-working.gif" />
-          </div>
-          <div style="float: left; padding: 1em">
-            <h4>General</h4>
-            <ul>
-              <li>browserify</li>
-              <li>npm</li>
-              <li>webpack</li>
-              <li>babel</li>
-              <li>eslint</li>
-            </ul>
-          </div>
-        </section>
+  <script src="/assets/reveal/reveal.js"></script>
+  <script src="/assets/reveal/plugin/highlight/highlight.js"></script>
+  <script src="/assets/reveal/plugin/notes/notes.js"></script>
+  <script src="/assets/reveal/plugin/markdown/markdown.js"></script>
 
-        <section>
-          <h2>Cool Modules - React-Router</h2>
-          <div>
-            <p>Can act as a controller like apparatus</p>
-            <p>Supposed to be IE8 compatible again next major release (with polyfills)</p>
-            <a href="https://github.com/rackt/react-router">React-Router</a>
-          </div>
-        </section>
-        <section>
-          <h2>Cool Modules - TransitiveNumber</h2>
-          <div>
-            <img src="img/react-transitive-number.gif" />
-            <pre><xmp data-trim><TransitiveNumber>2:00</TransitiveNumber></xmp></pre>
-            <a href="https://github.com/Lapple/react-transitive-number">TransitiveNumber</a>
-          </div>
-        </section>
-        <section>
-          <h2>Cool Modules - ReactSpeech</h2>
-          <div>
-            <a href="https://cdn.rawgit.com/AndrewKeig/react-speech/master/example/index.html">Demo</a>
-            <pre><xmp data-trim> <Speech text="I have the default settings" /> </xmp></pre>
-            <a href="https://github.com/AndrewKeig/react-speech">react-speech</a>
-          </div>
-        </section>
-        <section>
-          <h2>Cool Modules - MaskedInput</h2>
-          <div>
-            <img src="img/react-masked-input.gif" />
-            <pre><xmp data-trim> <MaskedInput pattern="1111 1111 1111 1111" name="card" size="20" onChange={this._onChange}/> </xmp></pre>
-            <a href="https://github.com/insin/react-maskedinput">react-maskedinput</a>
-          </div>
-        </section>
+  <script>
 
-        <section>
-          <h2>Bonus - NPM and shims are our friends</h2>
-          <pre><code data-trim>
-{
-  "bootstrap-sass": "^3.3.4",
-  "consolelog": "^2.1.3",
-  "es5-shim": "^4.1.5",
-  "es6-shim": "^0.31.3",
-  "flux": "^2.0.3",
-  "flux-dispatcher": "^1.0.6",
-  "flux-store": "^1.1.5",
-  "font-awesome": "^4.3.0",
-  "html5shiv": "^3.7.2",
-  "i18next-client": "^1.9.0",
-  "isarray": "0.0.1",
-  "json-loader": "^0.5.2",
-  "json3": "^3.3.2",
-  "mirrorkey": "^1.2.0",
-  "object-assign": "^2.0.0",
-  "react": "^0.13.3",
-  "react-bootstrap": "^0.23.1",
-  "react-maskedinput": "^2.0.0",
-  "react-router": "^0.13.3",
-  "react-toggle": "^1.2.3",
-  "reqwest": "^1.1.5",
-  "store": "^1.3.17",
-  "whatwg-fetch": "^0.9.0"
-}
-          </code></pre>
-          <aside class="notes">
-            Versioning with npm is really nice. Most components are very self contained. No more adding everything to the index.html.
-            Lots of shims so even ie8 can work with everything. Babel + webpack makes sass even nicer.
-          </aside>
+    // Full list of configuration options available at:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      center: false,
 
-        </section>
-				<section>
-					<h1>THE END</h1>
-					<p>
-            <img src="img/thats-all-folks.gif" />
-					</p>
-        </section>
-        <section>
-          <h2>More</h2>
-          <p>Found many useful items while researching</p>
-          <ul>
-            <li><a href="http://blog.andrewray.me/flux-for-stupid-people/">Some flux notes</a></li>
-            <li><a href="https://www.airpair.com/angularjs/posts/angular-vs-react-the-tie-breaker">React vs angular</a></li>
-            <li><a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">React Chrome Extension</a></li>
-            <li><a href="https://github.com/enaqx/awesome-react">Collection of shiny react things</a></li>
-          </ul>
-				</section>
+      slideNumber: false,
+      plugins: [RevealNotes, RevealHighlight, RevealMarkdown]
+    });
 
-			</div>
+  </script>
+</body>
 
-		</div>
-
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
-
-		<script>
-
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: false,
-
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
-
-		</script>
-
-	</body>
 </html>
