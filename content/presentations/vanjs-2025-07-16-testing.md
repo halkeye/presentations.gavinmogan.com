@@ -8,7 +8,7 @@ tags:
 image: /assets/vanjs-2025-07-16-testing.jpg
 link: /decks/vanjs-2025-07-16/
 links:
-  - type: youtube
+  - type: recording
     url:  https://www.youtube.com/watch?v=UpL58woHGGM
   - type: slides
     url: /decks/vanjs-2025-07-16-testing/

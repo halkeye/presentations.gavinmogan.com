@@ -186,7 +186,7 @@ module.exports = (eleventyConfig) => {
   });
 
   eleventyConfig.addFilter("getRecording", (pres) => {
-    return pres.data.links?.find((link) => link.type == "youtube")?.url;
+    return pres.data.links?.find((link) => link.type == "recording")?.url;
   });
 
   eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {

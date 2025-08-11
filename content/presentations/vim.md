@@ -8,7 +8,7 @@ tags:
   - airG
 link: https://www.youtube.com/watch?v=__SJWsWSD9M
 links:
-  - type: youtube
+  - type: recording
     url: https://www.youtube.com/watch?v=__SJWsWSD9M
   - type: commands
     url: /assets/vi-commands-gavin.txt

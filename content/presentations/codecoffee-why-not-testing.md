@@ -8,7 +8,7 @@ tags:
 links:
   - type: slides
     url: /decks/why-not-testing-april-2016/
-  - type: youtube
+  - type: recording
     url: https://www.youtube.com/watch?v=iPGSJVASCkc
   - type: pdf
     url: /assets/why-not-testing.pdf
