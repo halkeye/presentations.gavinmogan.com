@@ -1,61 +1,67 @@
-const {DateTime} = require("luxon");
-const path = require('path');
+const { DateTime } = require("luxon");
+const path = require("path");
 
-const postcss = require('postcss');
-const tailwindcss = require('@tailwindcss/postcss');
-const autoprefixer = require('autoprefixer');
+const postcss = require("postcss");
+const tailwindcss = require("@tailwindcss/postcss");
+const autoprefixer = require("autoprefixer");
 
 const markdownItImage = require("markdown-it-eleventy-img");
 const Image = require("@11ty/eleventy-img");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const {EleventyHtmlBasePlugin} = require("@11ty/eleventy");
+const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
-const toImageTag = async (src = 'static/assets/noimage.jpg', alt = "", widths = [300], extraAttributes = {}) => {
+const toImageTag = async (
+  src = "static/assets/noimage.jpg",
+  alt = "",
+  widths = [300],
+  extraAttributes = {},
+) => {
   if (!src) {
     src = "static/assets/noimage.jpg";
   }
 
   let attributes = {
-    src: src.replace('/assets/', 'static/assets/'),
+    src: src.replace("/assets/", "static/assets/"),
     widths: widths,
     alt: alt || "",
-    ...extraAttributes
-  }
+    ...extraAttributes,
+  };
   const imageOptions = {
     // We only need the original width and format
     widths: attributes.widths,
-    formats: ['avif', 'png', 'webp', 'jpeg'],
+    formats: ["avif", "png", "webp", "jpeg"],
     // Where the generated image files get saved
-    outputDir: '_site/assets/images',
+    outputDir: "_site/assets/images",
     // Public URL path that's referenced in the img tag's src attribute
-    urlPath: '/assets/images',
+    urlPath: "/assets/images",
   };
   // generate images, while this is async we don’t wait
   let metadata = await Image(attributes.src, imageOptions);
   return Image.generateHTML(metadata, {
-    sizes: '100vw',
-    loading: 'lazy',
-    decoding: 'async',
+    sizes: "100vw",
+    loading: "lazy",
+    decoding: "async",
     ...attributes,
   });
 };
 
-module.exports = eleventyConfig => {
+module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy({
     "node_modules/reveal.js/dist": "assets/reveal/",
     "node_modules/reveal.js/plugin": "assets/reveal/plugin",
-    "_includes/tailwind.css": "tailwind.css"
+    "_includes/tailwind.css": "tailwind.css",
   });
 
-  eleventyConfig.addNunjucksAsyncFilter('postcss', (cssCode, done) => {
+  eleventyConfig.addNunjucksAsyncFilter("postcss", (cssCode, done) => {
     postcss([tailwindcss(), autoprefixer()])
-      .process(cssCode, {from: './_includes/tailwind.css'})
+      .process(cssCode, { from: "./_includes/tailwind.css" })
       .then(
         (r) => done(null, r.css),
-        (e) => done(e, null)
+        (e) => done(e, null),
       );
   });
-  eleventyConfig.addWatchTarget('_includes/**/*.css');
+
+  eleventyConfig.addWatchTarget("_includes/**/*.css");
 
   eleventyConfig.addPassthroughCopy({
     "./public/": "/",
@@ -64,12 +70,52 @@ module.exports = eleventyConfig => {
     // "./node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css"
   });
 
-  eleventyConfig.addPassthroughCopy('decks')
+  eleventyConfig.addPassthroughCopy("decks");
 
-  eleventyConfig.addAsyncShortcode('toImageTag', toImageTag)
+  eleventyConfig.addAsyncShortcode("toImageTag", toImageTag);
+
+  eleventyConfig.addAsyncShortcode("svgIcon", async (src, options = {}) => {
+    let metadata = await Image(src, {
+      formats: ["svg"],
+      dryRun: true,
+    });
+    const body = metadata.svg[0].buffer.toString();
+    const firstTagAttributes = body
+      .match(/(\w*) *= *((['"])?((\\\3|[^\3])*?)\3|(\w+))/gm)
+      .reduce((ret, str) => {
+        let [key, val] = str.split("=", 2);
+        if (val.startsWith('"')) {
+          val = val.replace(/^"(.*)"$/, "$1");
+        } else {
+          val = val.replace(/^'(.*)'$/, "$1");
+        }
+        ret[key] = val;
+        return ret;
+      }, {});
+    if (options.class) {
+      firstTagAttributes.class = (firstTagAttributes.class || "")
+        .split(/\s+/)
+        .map((str) => str.trim())
+        .filter(Boolean)
+        .concat(options.class.split(/\s+/))
+        .join(" ");
+    }
+    return body
+      .trim()
+      .replace(
+        /^<(\w+)\s*([^>]*)>(.*)$/,
+        function (_match, tag, attributes, rest, ...foo) {
+          attributes = Object.entries(firstTagAttributes)
+            .map(([key, value]) => `${key}="${value.replaceAll(/"/g, '\\"')}"`)
+            .join(" ");
+          return `<${tag} ${attributes}>${rest}`;
+        },
+      );
+  });
 
   eleventyConfig.addFilter("absoluteUrl", function (url = "") {
-    const baseUrl = process.env.OVERRIDE_BASE_URL || `https://presentations.gavinmogan.com`;
+    const baseUrl =
+      process.env.OVERRIDE_BASE_URL || `https://presentations.gavinmogan.com`;
 
     try {
       return new URL(url, baseUrl).href;
@@ -79,33 +125,37 @@ module.exports = eleventyConfig => {
     }
   });
 
-  eleventyConfig.addFilter("toUpperCase", value => value.toUpperCase())
+  eleventyConfig.addFilter("toUpperCase", (value) => value.toUpperCase());
 
-  eleventyConfig.addFilter("ucFirst", value => value.charAt(0).toUpperCase() + value.slice(1))
+  eleventyConfig.addFilter(
+    "ucFirst",
+    (value) => value.charAt(0).toUpperCase() + value.slice(1),
+  );
 
   // Customize Markdown library settings:
-  eleventyConfig.amendLibrary("md", mdLib => {
+  eleventyConfig.amendLibrary("md", (mdLib) => {
     mdLib.use(markdownItImage, {
-      resolvePath: (filepath, env) => path.join(path.dirname(env.page.inputPath), filepath),
+      resolvePath: (filepath, env) =>
+        path.join(path.dirname(env.page.inputPath), filepath),
       imgOptions: {
         widths: [800, 500, 300],
         urlPath: "/images/",
         outputDir: path.join("_site", "images"),
-        formats: ["avif", "webp", "jpeg"]
+        formats: ["avif", "webp", "jpeg"],
       },
       globalAttributes: {
         class: "markdown-image",
         decoding: "async",
         // If you use multiple widths,
         // don't forget to add a `sizes` attribute.
-        sizes: "100vw"
-      }
+        sizes: "100vw",
+      },
     });
   });
 
   // Official plugins
   eleventyConfig.addPlugin(pluginSyntaxHighlight, {
-    preAttributes: {tabindex: 0}
+    preAttributes: { tabindex: 0 },
   });
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
@@ -113,37 +163,42 @@ module.exports = eleventyConfig => {
   // Filters
   eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
     // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
-    return DateTime.fromJSDate(dateObj, {zone: zone || "utc"}).toFormat(format || "dd LLLL yyyy");
+    return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(
+      format || "dd LLLL yyyy",
+    );
   });
 
-  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
+  eleventyConfig.addFilter("htmlDateString", (dateObj) => {
     // dateObj input: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
   });
 
-  eleventyConfig.addFilter('toJSON', (data) => {
+  eleventyConfig.addFilter("toBool", (data) => {
+    return !!data;
+  });
+
+  eleventyConfig.addFilter("toJSON", (data) => {
     return JSON.stringify(data, null, "\t");
-  })
-  eleventyConfig.addFilter("hasSlides", (pres) => {
-    return !!pres.data.links?.find((link) => link.type == "slides");
   });
 
-  eleventyConfig.addFilter("hasRecording", (pres) => {
-    return !!pres.data.links?.find((link) => link.type == "youtube");
+  eleventyConfig.addFilter("getSlides", (pres) => {
+    return pres.data.links?.find((link) => link.type == "slides")?.url;
   });
+
+  eleventyConfig.addFilter("getRecording", (pres) => {
+    return pres.data.links?.find((link) => link.type == "youtube")?.url;
+  });
+
   eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
-    return (tags || []).filter(tag => ["all", "presentations"].indexOf(tag) === -1);
+    return (tags || []).filter(
+      (tag) => ["all", "presentations"].indexOf(tag) === -1,
+    );
   });
 
   return {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid
-    templateFormats: [
-      "md",
-      "njk",
-      "html",
-      "liquid"
-    ],
+    templateFormats: ["md", "njk", "html", "liquid"],
 
     // Pre-process *.md files with: (default: `liquid`)
     markdownTemplateEngine: false,
@@ -153,10 +208,10 @@ module.exports = eleventyConfig => {
 
     // These are all optional:
     dir: {
-      input: "content",         // default: "."
-      includes: "../_includes",  // default: "_includes"
-      data: "../_data",          // default: "_data"
-      output: "_site"
+      input: "content", // default: "."
+      includes: "../_includes", // default: "_includes"
+      data: "../_data", // default: "_data"
+      output: "_site",
     },
 
     // -----------------------------------------------------------------
