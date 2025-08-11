@@ -28,7 +28,6 @@
 
   {% set css %}
   {% include "../tailwind.css" %}
-  {% include "node_modules/lite-youtube-embed/src/lite-yt-embed.css" %}
   {% endset %}
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,10 +36,9 @@
     href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&family=Space+Grotesk:wght@400;700&family=Sora:wght@400;500;600;700&display=swap"
     rel="stylesheet">
 
-  <style>
-    <!-- {{ css | postcss | safe }}
-    -->
-  </style>
+  <{{ "style" }}>
+    {{ css | postcss | safe }}
+  </{{ "style" }}>
 </head>
 
 <body class="flex flex-col min-h-screen">
