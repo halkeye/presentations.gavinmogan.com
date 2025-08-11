@@ -10,7 +10,7 @@ const Image = require("@11ty/eleventy-img");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
-const toImageTag = async (
+const toImageMetadata = async (
   src = "static/assets/noimage.jpg",
   alt = "",
   widths = [300],
@@ -37,6 +37,23 @@ const toImageTag = async (
   };
   // generate images, while this is async we don’t wait
   let metadata = await Image(attributes.src, imageOptions);
+  return metadata;
+};
+
+const toImageTag = async (
+  src = "static/assets/noimage.jpg",
+  alt = "",
+  widths = [300],
+  extraAttributes = {},
+) => {
+  const metadata = await toImageMetadata(src, alt, widths, extraAttributes);
+  let attributes = {
+    src: src.replace("/assets/", "static/assets/"),
+    widths: widths,
+    alt: alt || "",
+    ...extraAttributes,
+  };
+
   return Image.generateHTML(metadata, {
     sizes: "100vw",
     loading: "lazy",
@@ -45,10 +62,21 @@ const toImageTag = async (
   });
 };
 
+const toImageUrl = async (
+  src = "static/assets/noimage.jpg",
+  alt = "",
+  widths = [300],
+  extraAttributes = {},
+) => {
+  const metadata = await toImageMetadata(src, alt, widths, extraAttributes);
+  return metadata.webp[0].url;
+};
+
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy({
     "node_modules/reveal.js/dist": "assets/reveal/",
     "node_modules/reveal.js/plugin": "assets/reveal/plugin",
+    "node_modules/lite-youtube-embed/src": "assets/lite-youtube-embed/src",
     "_includes/tailwind.css": "tailwind.css",
   });
 
@@ -73,6 +101,8 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("decks");
 
   eleventyConfig.addAsyncShortcode("toImageTag", toImageTag);
+
+  eleventyConfig.addAsyncShortcode("toImageUrl", toImageUrl);
 
   eleventyConfig.addAsyncShortcode("svgIcon", async (src, options = {}) => {
     let metadata = await Image(src, {

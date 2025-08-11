@@ -28,6 +28,7 @@
 
   {% set css %}
   {% include "../tailwind.css" %}
+  {% include "node_modules/lite-youtube-embed/src/lite-yt-embed.css" %}
   {% endset %}
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -176,6 +177,7 @@
       </a>
     </div>
   </footer>
+  <script src="/assets/lite-youtube-embed/src/lite-yt-embed.js"></script>
 
   <!-- Current page: {{ page.url | htmlBaseUrl }} -->
 </body>

@@ -7,6 +7,7 @@ tags:
   - Telus
 date: 2015-06-01
 link: /decks/react-vs-angular/
+slides: /decks/react-vs-angular/
 links:
   - type: slides
     url: /decks/react-vs-angular/

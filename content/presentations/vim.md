@@ -7,6 +7,9 @@ tags:
   - Internal
   - airG
 link: https://www.youtube.com/watch?v=__SJWsWSD9M
+recording: 
+  type: youtube
+  id: __SJWsWSD9M
 links:
   - type: recording
     url: https://www.youtube.com/watch?v=__SJWsWSD9M

@@ -5,6 +5,7 @@ tags:
 date: 2016-07-01
 image: /assets/slides.com_halkeye_no-rest-for-the-wicked.png
 link: https://slides.com/halkeye/no-rest-for-the-wicked
+slides: https://slides.com/halkeye/no-rest-for-the-wicked
 links:
   - type: slides
     url: https://slides.com/halkeye/no-rest-for-the-wicked

@@ -7,6 +7,7 @@ tags:
 date: 2015-05-01
 image: /assets/presentations-stats.png
 link: /decks/stats/
+slides: /decks/stats/
 links:
   - type: slides
     url: /decks/stats/

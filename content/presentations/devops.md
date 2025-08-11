@@ -7,6 +7,7 @@ tags:
   - Telus
 date: 2015-01-01
 link: /decks/devops/
+slides: /decks/devops/
 links:
   - type: slides
     url: /decks/devops/

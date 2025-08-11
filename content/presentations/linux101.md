@@ -7,6 +7,7 @@ tags:
   - Telus
 date: 2015-03-01
 link: /decks/linux101/
+slides: /decks/linux101/
 links:
   - type: slides
     url: /decks/linux101/

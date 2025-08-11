@@ -5,13 +5,15 @@ link: /decks/why-not-testing-april-2016/
 image: /assets/title.png
 tags:
   - meetup
+slides: /decks/why-not-testing-april-2016/
+recording:
+  type: youtube
+  id: iPGSJVASCkc
 links:
   - type: slides
     url: /decks/why-not-testing-april-2016/
   - type: recording
     url: https://www.youtube.com/watch?v=iPGSJVASCkc
-  - type: pdf
-    url: /assets/why-not-testing.pdf
 attachments:
   - /assets/why-not-testing.pdf
 ---

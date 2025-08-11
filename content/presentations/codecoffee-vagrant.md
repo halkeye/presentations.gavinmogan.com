@@ -5,6 +5,7 @@ tags:
 date: 2015-09-01
 image: /assets/vagrant.png
 link: https://slides.com/halkeye/give-your-development-a-portable-home-with-vagrant
+slides: https://slides.com/halkeye/give-your-development-a-portable-home-with-vagrant
 links:
   - type: slides
     url: https://slides.com/halkeye/give-your-development-a-portable-home-with-vagrant
