@@ -1,6 +1,6 @@
 ---
 title: "Why not Testing? (April 2016)"
-date: "2016-04-14"
+date: 2016-04-14
 link: /decks/why-not-testing-april-2016/
 image: /assets/title.png
 tags:
