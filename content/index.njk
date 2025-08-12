@@ -51,12 +51,12 @@ layout: layouts/home.njk
           <div class="felx flex-row justify-self-end">
             {% if p | getRecording | toBool %}
             <a href="{{ p | getRecording | recordingURL }}" title="Direct link to recording for '{{ p.data.title }}'">
-            {% svgIcon 'static/assets/icon-has-video.svg', { class: "fill-blue-500 inline-block", title: "Has Recording" } %}
+            {% svgIcon 'static/assets/icon-has-video.svg', { class: "fill-secondary inline-block", title: "Has Recording" } %}
             </a>
             {% endif %}
             {% if p | getSlides | toBool %}
             <a href="{{ p | getSlides }}" title="Slides for '{{ p.data.title }}'">
-              {% svgIcon 'static/assets/icon-has-notes.svg', { class: "fill-blue-500 inline-block", title: "Has Notes or Slides" } %}
+              {% svgIcon 'static/assets/icon-has-notes.svg', { class: "fill-secondary inline-block", title: "Has Notes or Slides" } %}
             </a>
             {% endif %}
           </div>
