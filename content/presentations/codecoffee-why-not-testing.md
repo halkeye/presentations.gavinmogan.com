@@ -9,11 +9,7 @@ slides: /decks/why-not-testing-april-2016/
 recording:
   type: youtube
   id: iPGSJVASCkc
-links:
-  - type: slides
-    url: /decks/why-not-testing-april-2016/
-  - type: recording
-    url: https://www.youtube.com/watch?v=iPGSJVASCkc
+links: []
 attachments:
   - /assets/why-not-testing.pdf
 ---

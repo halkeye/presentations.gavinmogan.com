@@ -4,11 +4,8 @@ tags:
   - Meetup
 date: 2016-07-01
 image: /assets/slides.com_halkeye_no-rest-for-the-wicked.png
-link: https://slides.com/halkeye/no-rest-for-the-wicked
 slides: https://slides.com/halkeye/no-rest-for-the-wicked
-links:
-  - type: slides
-    url: https://slides.com/halkeye/no-rest-for-the-wicked
+links: []
 ---
 
 REST is a popular term out there on the internet. I wanted to de-mystify it for those who were intimidate it. Covered what REST was.

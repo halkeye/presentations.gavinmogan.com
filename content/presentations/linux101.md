@@ -6,11 +6,8 @@ tags:
   - Internal
   - Telus
 date: 2015-03-01
-link: /decks/linux101/
 slides: /decks/linux101/
-links:
-  - type: slides
-    url: /decks/linux101/
+links: []
 ---
 
 Internal work presentation to share some day to day CLI linux knowledge I had with users who were mostly windows users.

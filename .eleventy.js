@@ -212,11 +212,21 @@ module.exports = (eleventyConfig) => {
   });
 
   eleventyConfig.addFilter("getSlides", (pres) => {
-    return pres.data.links?.find((link) => link.type == "slides")?.url;
+    return pres.data?.slides;
   });
 
   eleventyConfig.addFilter("getRecording", (pres) => {
-    return pres.data.links?.find((link) => link.type == "recording")?.url;
+    return pres.data?.recording;
+  });
+
+  eleventyConfig.addFilter("recordingURL", (recording) => {
+    if (!recording) {
+      throw new Error(`No recording data`);
+    }
+    if (recording.type === "youtube") {
+      return `https://www.youtube.com/watch?v=${recording.id}`;
+    }
+    throw new Error(`Unknown recording type: ${recording.type}`);
   });
 
   eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {

@@ -50,7 +50,7 @@ layout: layouts/home.njk
           {% if p | getRecording | toBool or p | getSlides | toBool %}
           <div class="felx flex-row justify-self-end">
             {% if p | getRecording | toBool %}
-            <a href="{{ p | getRecording }}" alt="Direct link to recording for {{ p.data.title }}">
+            <a href="{{ p | getRecording | recordingURL }}" alt="Direct link to recording for {{ p.data.title }}">
             {% svgIcon 'static/assets/icon-has-video.svg', { class: "fill-blue-500 inline-block" } %}
             </a>
             {% endif %}

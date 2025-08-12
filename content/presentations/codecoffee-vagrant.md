@@ -4,11 +4,8 @@ tags:
   - Meetup
 date: 2015-09-01
 image: /assets/vagrant.png
-link: https://slides.com/halkeye/give-your-development-a-portable-home-with-vagrant
 slides: https://slides.com/halkeye/give-your-development-a-portable-home-with-vagrant
-links:
-  - type: slides
-    url: https://slides.com/halkeye/give-your-development-a-portable-home-with-vagrant
+links: []
 ---
 Vagrant presentation for [Code Coffee Vancouver](https://www.meetup.com/Code-Coffee-Vancouver/events/224950040/). 
 

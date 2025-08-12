@@ -19,13 +19,35 @@ layout: layouts/base.njk
           {% toImageTag image, title, [300], {class: "w-full object-cover rounded-xl"} %}
         </figure>
 
-        {% if links %}
+        {% if links or recording or slides %}
         <div class="card-actions">
+          {% if recording %}
+          <a
+            role="button"
+            href="{{ recording | recordingURL }}"
+            class="btn btn-primary rounded-full"
+          >
+            {% svgIcon 'static/assets/icon-has-video.svg', { class: "fill-blue-500 inline-block" } %}
+            Recording
+          </a>
+          {% endif %}
+
+          {% if slides %}
+          <a
+            role="button"
+            href="{{ slides }}"
+            class="btn btn-secondary rounded-full"
+          >
+            {% svgIcon 'static/assets/icon-has-notes.svg', { class: "fill-blue-500 inline-block" } %}
+            Slides
+          </a>
+          {% endif %}
+
           {% for link in links %}
           <a
             role="button"
             href="{{ link.url }}"
-            class="btn {% if loop.first %}btn-primary{% else %}btn-secondary{% endif %} rounded-full"
+            class="btn btn-outline btn-secondary rounded-full"
           >{{ link.type | ucFirst }}</a>
           {% endfor %}
         </div>

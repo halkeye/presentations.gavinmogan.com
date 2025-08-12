@@ -6,13 +6,10 @@ tags:
   - Work
   - Internal
   - airG
-link: https://www.youtube.com/watch?v=__SJWsWSD9M
 recording: 
   type: youtube
   id: __SJWsWSD9M
 links:
-  - type: recording
-    url: https://www.youtube.com/watch?v=__SJWsWSD9M
   - type: commands
     url: /assets/vi-commands-gavin.txt
 attachments:

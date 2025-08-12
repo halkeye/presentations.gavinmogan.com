@@ -6,13 +6,10 @@ tags:
   - Work
   - Interview
 image: /assets/devops.png
-link: https://www.youtube.com/watch?v=hshD-a2YHCs
 recording:
   type: youtube
   id: hshD-a2YHCs
-links:
-  - type: recording
-    url: https://www.youtube.com/watch?v=hshD-a2YHCs
+links: []
 ---
 
 Devops.com was doing a bunch of different podcast style quick interviews at Jenkins World 2017.
