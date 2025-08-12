@@ -1,7 +1,7 @@
 ---
 title: Give your development a portable home with vagrant (Sept 2015)
 tags:
-  - Meetup
+  - meetup
 date: 2015-09-01
 image: /assets/vagrant.png
 slides: https://slides.com/halkeye/give-your-development-a-portable-home-with-vagrant

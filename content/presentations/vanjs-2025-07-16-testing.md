@@ -5,6 +5,7 @@ date: 2025-07-16
 tags:
   - Digital Ocean
   - VanJS
+  - meetup
 image: /assets/vanjs-2025-07-16-testing.jpg
 slides: /decks/vanjs-2025-07-16-testing/
 recording:

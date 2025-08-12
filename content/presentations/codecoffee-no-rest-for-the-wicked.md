@@ -1,7 +1,7 @@
 ---
 title: No REST for the wicked? (July 2016)
 tags:
-  - Meetup
+  - meetup
 date: 2016-07-01
 image: /assets/slides.com_halkeye_no-rest-for-the-wicked.png
 slides: https://slides.com/halkeye/no-rest-for-the-wicked
