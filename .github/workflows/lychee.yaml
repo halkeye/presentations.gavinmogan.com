@@ -5,7 +5,7 @@ name: "Lychee"
 on:
   workflow_dispatch:
   push:
-    branches: ["main", "main"]
+    branches: [ "master", "main" ]
     paths: [".github/workflows/lychee.yaml"]
   schedule:
     - cron: "0 0 * * *"
@@ -15,7 +15,6 @@ permissions:
 
 env:
   LYCHEE_OUTPUT: lychee/out.md
-  OVERRIDE_BASE_URL: "/"
   WORKFLOW_ISSUE_TITLE: "Link Checker Dashboard 🔗"
 
 jobs:
@@ -37,7 +36,7 @@ jobs:
         id: lychee
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
-          args: --no-progress '_site'
+          args: --no-progress --base _site --exclude https://fonts.gstatic.com/ --exclude https://fonts.googleapis.com/ '_site'
           output: "${{ env.LYCHEE_OUTPUT }}"
           debug: true
 
