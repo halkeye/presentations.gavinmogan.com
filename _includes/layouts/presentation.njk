@@ -22,14 +22,17 @@ layout: layouts/base.njk
         {% if links %}
         <div class="card-actions">
           {% for link in links %}
-          <a role="button" href="{{ link.url }}" class="btn {% if loop.first %}btn-primary{% else %}btn-secondary{% endif %}
-                               rounded-full">{{ link.type | ucFirst }}</a>
+          <a
+            role="button"
+            href="{{ link.url }}"
+            class="btn {% if loop.first %}btn-primary{% else %}btn-secondary{% endif %} rounded-full"
+          >{{ link.type | ucFirst }}</a>
           {% endfor %}
         </div>
         {% endif %}
       </div>
 
-      <div class="card-body flex-3/4 gap-8">
+      <div class="card-body flex-3/4 gap-8 pt-0">
         <div class="flex flex-col gap-4">
           <time class="font-mono text-sm uppercase text-info" datetime="{{ page.date | htmlDateString }}">{{ page.date |
             readableDate('MMM yyyy') }}</time>
