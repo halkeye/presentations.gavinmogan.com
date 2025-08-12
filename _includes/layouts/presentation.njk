@@ -47,6 +47,7 @@ layout: layouts/base.njk
           <a
             role="button"
             href="{{ link.url }}"
+            title="{{ link.type }}"
             class="btn btn-outline btn-secondary rounded-full"
           >{{ link.type | ucFirst }}</a>
           {% endfor %}

@@ -50,13 +50,13 @@ layout: layouts/home.njk
           {% if p | getRecording | toBool or p | getSlides | toBool %}
           <div class="felx flex-row justify-self-end">
             {% if p | getRecording | toBool %}
-            <a href="{{ p | getRecording | recordingURL }}" alt="Direct link to recording for {{ p.data.title }}">
-            {% svgIcon 'static/assets/icon-has-video.svg', { class: "fill-blue-500 inline-block" } %}
+            <a href="{{ p | getRecording | recordingURL }}" title="Direct link to recording for '{{ p.data.title }}'">
+            {% svgIcon 'static/assets/icon-has-video.svg', { class: "fill-blue-500 inline-block", title: "Has Recording" } %}
             </a>
             {% endif %}
             {% if p | getSlides | toBool %}
-            <a href="{{ p | getSlides }}" alt="Slides for {{ p.data.title }}">
-              {% svgIcon 'static/assets/icon-has-notes.svg', { class: "fill-blue-500 inline-block" } %}
+            <a href="{{ p | getSlides }}" title="Slides for '{{ p.data.title }}'">
+              {% svgIcon 'static/assets/icon-has-notes.svg', { class: "fill-blue-500 inline-block", title: "Has Notes or Slides" } %}
             </a>
             {% endif %}
           </div>
@@ -74,14 +74,6 @@ layout: layouts/home.njk
           }}</div>
         {% endfor %}
       </div>
-
-      {% if links %}
-      <div class="card-actions">
-        {% for link in p.data.links %}
-        <a role="button" href="{{link.url}}" class="btn {% if loop.first %}btn-primary{% else %}btn-secondary{% endif %}">{{ link.type | ucFirst }}</a>
-        {% endfor %}
-      </div>
-      {% endif %}
     </div>
   </div>
   {%- endfor %}

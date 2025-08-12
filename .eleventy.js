@@ -122,19 +122,21 @@ module.exports = (eleventyConfig) => {
         ret[key] = val;
         return ret;
       }, {});
-    if (options.class) {
-      firstTagAttributes.class = (firstTagAttributes.class || "")
-        .split(/\s+/)
-        .map((str) => str.trim())
-        .filter(Boolean)
-        .concat(options.class.split(/\s+/))
-        .join(" ");
+    for (const field of Object.keys(options)) {
+      if (options[field]) {
+        firstTagAttributes[field] = (firstTagAttributes[field] || "")
+          .split(/\s+/)
+          .map((str) => str.trim())
+          .filter(Boolean)
+          .concat(options[field].split(/\s+/))
+          .join(" ");
+      }
     }
     return body
       .trim()
       .replace(
         /^<(\w+)\s*([^>]*)>(.*)$/,
-        function (_match, tag, attributes, rest, ...foo) {
+        function (_match, tag, attributes, rest) {
           attributes = Object.entries(firstTagAttributes)
             .map(([key, value]) => `${key}="${value.replaceAll(/"/g, '\\"')}"`)
             .join(" ");
