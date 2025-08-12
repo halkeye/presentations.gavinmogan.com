@@ -6,7 +6,7 @@ tags:
   - Digital Ocean
   - VanJS
 image: /assets/vanjs-2025-07-16-testing.jpg
-slides: /decks/vanjs-2025-07-16/
+slides: /decks/vanjs-2025-07-16-testing/
 recording:
   type: youtube
   id: UpL58woHGGM
