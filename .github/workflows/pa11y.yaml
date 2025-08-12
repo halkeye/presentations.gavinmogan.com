@@ -35,10 +35,10 @@ jobs:
         run: npm run build
 
       - name: serve
-        run: npx serve -l 3000 _site
+        run: npx serve -l 3000 _site &
 
       - name: Run pa11y-ci.
-        run: npx pa11y-ci --sitemap http://localhost:3000/sitemap.xml --runner axe --runner htmlcs
+        run: npx pa11y-ci --sitemap http://localhost:3000/sitemap.xml -f https://presentations.gavinmogan.com -r http://localhost:3000 --runner axe --runner htmlcs
 
       - name: Find Link Checker Issue
         id: find-issue
