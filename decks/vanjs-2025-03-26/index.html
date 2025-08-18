@@ -54,7 +54,7 @@
           <li class="fragment">Linux tools, like npm packages, like to do one thing and do them well.</li>
         </ul>
         <aside class="notes">
-          Okay, a few notes before we get started.  
+          Okay, a few notes before we get started.
 
           While I know most developers these days, at least front end ones, will end up using an apple laptop, I'm going to cover linux as I know it the best, and but the apple cli, and windows with wsl, and even to some degrees powershell all have overlaps so it shouldn't be hard to adapt things.
 
@@ -67,7 +67,7 @@
       </section>
 
       <section>
-        <h2>Getting Help</h2> 
+        <h2>Getting Help</h2>
         <p>Offline version</p>
         <ul>
           <li class="fragment">
@@ -84,7 +84,7 @@
           </li>
         </ul>
         <aside class="notes">
-          First things first. Getting help. There are a bunch of built in solutions but don't underestimate talking to other people. 
+          First things first. Getting help. There are a bunch of built in solutions but don't underestimate talking to other people.
         </aside>
       </section>
 
@@ -93,11 +93,11 @@
         <ul>
           <li><b><kbd>Ctrl</kbd>+<kbd>r</kbd></b> - Reverse search through your bash history (My fav)</li>
           <li><b><kbd>Up</kbd> / <kbd>Down</kbd></b> - Prev/next in history</li>
-          
+
           <li><b><kbd>Ctrl</kbd>+<kbd>w</kbd></b> - Delete previous word</li>
           <li><b><kbd>Ctrl</kbd>+<kbd>k</kbd></b> - Delete rest of line</li>
           <li><b><kbd>Ctrl</kbd>+<kbd>u</kbd></b> - Delete entire line</li>
-          
+
           <li><b><kbd>Ctrl</kbd>+<kbd>a</kbd></b> - Move to start of line</li>
           <li><b><kbd>Ctrl</kbd>+<kbd>e</kbd></b> - Move to end of line</li>
         </ul>
@@ -106,7 +106,7 @@
 
           The biggest life changer for me was reverse search. Most people get started in the terminal by typing out everything every time. Then you quickly realize that if you hit up or down, you can go back through previously typed out commands.
 
-          But ctrl+r, thats where speed starts to kick in. 
+          But ctrl+r, thats where speed starts to kick in.
         </aside>
       </section>
 
@@ -172,8 +172,8 @@
 
           Just like with urls, there are relative and absolute paths.
 
-          If it starts with a slash, its an absolute path. 
-          
+          If it starts with a slash, its an absolute path.
+
           If it doesn't, then its probably a relative path.
 
           And finally, if your path contains special characters like spaces, you'll want to add backslash, or wrap everything in quotes.
@@ -194,7 +194,7 @@
         $ pwd
         /home/gavinm
         </pre></code>
-        
+
         <aside class="notes">
           Now that you got in the habbit of moving around, its time to go back.
           cd minus will get you back to the last directory you are in.
@@ -327,7 +327,7 @@
         <aside class="notes">
           So at a basic level, bash has boolean operators live javascript. So you can do two ampersands and only run the second command if the first one succeeds. Two ors if it fails, and a semicolon that just splits up two statements. And yes, before someone corrects me to say its not actually success based, I'm not going cover error codes today.
         </aside>
-      </section>        
+      </section>
 
       <section>
         <h2>if and while statements</h2>
@@ -360,7 +360,7 @@
         </aside>
       </section>
 
-      
+
       <section>
         <h2>Create Edit Update Destroy</h2>
         <pre><code data-trim>
@@ -372,9 +372,9 @@
           rm &lt;file&gt; # Remove a file
           rmdir &lt;dir&gt; # Remove an empty directory
           mkdir &lt;dir&gt; # Create a directory (mkdir -p as bonus)
-          # Create all the directories required to make the full path 
+          # Create all the directories required to make the full path
           # (and doesn't error if already exists)
-          mkdir -p &lt;dir/subdir/subdir2&gt; 
+          mkdir -p &lt;dir/subdir/subdir2&gt;
         </code></pre>
         <pre><code data-trim>
           touch &lt;file&gt; # update timestamp/create empty file
@@ -542,7 +542,7 @@
         false
         </code></pre>
         <aside class="notes">
-          JQ is something I probably end up using every day in one way or another. I would say the most common is to pretty print json text. You can, as shown here, curl and pipe to jq. 
+          JQ is something I probably end up using every day in one way or another. I would say the most common is to pretty print json text. You can, as shown here, curl and pipe to jq.
           Next most common for me has to be pulling out specific info. It can handle properties, as shown, but so much more, like arrays both numeric index, or filtering by other criteria.
           Its also really great at producing content that can go into a for loop.
         </aside>
@@ -594,7 +594,7 @@
 
       <section>
         <h1>Extra Stuffsssss</h1>
-        <p>Slides that were already done but decided against bringing them up</p> 
+        <p>Slides that were already done but decided against bringing them up</p>
       </section>
 
       <section>
@@ -694,6 +694,9 @@
       plugins: [RevealNotes, RevealHighlight, RevealMarkdown]
     });
   </script>
+  <script defer src="https://u.g4v.dev/script.js" data-website-id="4b48952f-9dd2-4164-823e-d1c16af3733d"></script>
+  <script defer data-domain="presentations.gavinmogan.com"
+    src="https://p.g4v.dev/js/script.file-downloads.outbound-links.js"></script>
 </body>
 
 </html>
