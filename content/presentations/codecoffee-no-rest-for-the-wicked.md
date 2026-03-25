@@ -4,7 +4,7 @@ tags:
   - meetup
 date: 2016-07-01
 image: /assets/slides.com_halkeye_no-rest-for-the-wicked.png
-slides: https://slides.com/halkeye/no-rest-for-the-wicked
+slides: /decks/no-rest-for-wicked-aug-2016/
 links: []
 ---
 
