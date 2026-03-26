@@ -38,7 +38,7 @@ layout: layouts/home.njk
     data-has-recording={{ p | getRecording | toBool | toJSON }}
   >
     <figure class="h-60">
-      <a href="{{ p.url }}">{% toImageTag p.data.image, p.data.title, [300], {class: "w-full object-cover"}%}</a>
+      <a href="{{ p.url }}"><img src="../static/{{ p.data.image }}" alt="Presentation thumbnail for {{ p.data.title }}" title="{{ p.data.title }}" width="300" class="w-full object-cover" /></a>
     </figure>
 
     <div class="card-body flex flex-col gap-6">

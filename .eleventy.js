@@ -6,71 +6,11 @@ const tailwindcss = require("@tailwindcss/postcss");
 const autoprefixer = require("autoprefixer");
 
 const markdownItImage = require("markdown-it-eleventy-img");
+const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
+
 const Image = require("@11ty/eleventy-img");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
-
-const toImageMetadata = async (
-  src = "static/assets/noimage.jpg",
-  alt = "",
-  widths = [300],
-  extraAttributes = {},
-) => {
-  if (!src) {
-    src = "static/assets/noimage.jpg";
-  }
-
-  let attributes = {
-    src: src.replace("/assets/", "static/assets/"),
-    widths: widths,
-    alt: alt || "",
-    ...extraAttributes,
-  };
-  const imageOptions = {
-    // We only need the original width and format
-    widths: attributes.widths,
-    formats: ["avif", "png", "webp", "jpeg"],
-    // Where the generated image files get saved
-    outputDir: "_site/assets/images",
-    // Public URL path that's referenced in the img tag's src attribute
-    urlPath: "/assets/images",
-  };
-  // generate images, while this is async we don’t wait
-  let metadata = await Image(attributes.src, imageOptions);
-  return metadata;
-};
-
-const toImageTag = async (
-  src = "static/assets/noimage.jpg",
-  alt = "",
-  widths = [300],
-  extraAttributes = {},
-) => {
-  const metadata = await toImageMetadata(src, alt, widths, extraAttributes);
-  let attributes = {
-    src: src.replace("/assets/", "static/assets/"),
-    widths: widths,
-    alt: alt || "",
-    ...extraAttributes,
-  };
-
-  return Image.generateHTML(metadata, {
-    sizes: "100vw",
-    loading: "lazy",
-    decoding: "async",
-    ...attributes,
-  });
-};
-
-const toImageUrl = async (
-  src = "static/assets/noimage.jpg",
-  alt = "",
-  widths = [300],
-  extraAttributes = {},
-) => {
-  const metadata = await toImageMetadata(src, alt, widths, extraAttributes);
-  return metadata.webp[0].url;
-};
 
 module.exports = (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy({
@@ -99,10 +39,6 @@ module.exports = (eleventyConfig) => {
   });
 
   eleventyConfig.addPassthroughCopy("decks");
-
-  eleventyConfig.addAsyncShortcode("toImageTag", toImageTag);
-
-  eleventyConfig.addAsyncShortcode("toImageUrl", toImageUrl);
 
   eleventyConfig.addAsyncShortcode("svgIcon", async (src, options = {}) => {
     let metadata = await Image(src, {
@@ -191,6 +127,7 @@ module.exports = (eleventyConfig) => {
   });
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
+  eleventyConfig.addPlugin(eleventyImageTransformPlugin);
 
   // Filters
   eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
