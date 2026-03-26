@@ -4,10 +4,7 @@ layout: layouts/base.njk
 <div class="h-full flex flex-col gap-4">
   <a role="button" class="btn btn-outline btn-accent [&:not(:hover)]:bg-base-200 rounded-full
     self-start" href="../">
-    <svg class="w-5 h-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-      stroke-width="1.5" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
-    </svg>
+    {% svg "icon-back-arrow" "w-5 h-5 rtl:rotate-180" %>
     Go back
   </a>
 
@@ -27,7 +24,7 @@ layout: layouts/base.njk
             href="{{ recording | recordingURL }}"
             class="btn btn-primary rounded-full"
           >
-            {% svgIcon 'static/assets/icon-has-video.svg', { class: "fill-current inline-block" } %}
+            {% svg 'icon-has-video', "fill-current inline-block size-8", "Has Recording Icon" %}
             Recording
           </a>
           {% endif %}
@@ -38,7 +35,7 @@ layout: layouts/base.njk
             href="{{ slides }}"
             class="btn btn-secondary rounded-full"
           >
-            {% svgIcon 'static/assets/icon-has-notes.svg', { class: "fill-current inline-block" } %}
+            {% svg 'icon-has-notes', "fill-current inline-block size-8", "Has Notes or Slides Icon" %}
             Slides
           </a>
           {% endif %}

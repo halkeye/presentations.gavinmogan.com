@@ -1,14 +1,12 @@
 const { DateTime } = require("luxon");
 const path = require("path");
-
 const postcss = require("postcss");
 const tailwindcss = require("@tailwindcss/postcss");
 const autoprefixer = require("autoprefixer");
-
 const markdownItImage = require("markdown-it-eleventy-img");
 const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
-
 const Image = require("@11ty/eleventy-img");
+const svgSprite = require("eleventy-plugin-svg-sprite");
 const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
@@ -121,9 +119,12 @@ module.exports = (eleventyConfig) => {
     });
   });
 
-  // Official plugins
   eleventyConfig.addPlugin(pluginSyntaxHighlight, {
     preAttributes: { tabindex: 0 },
+  });
+
+  eleventyConfig.addPlugin(svgSprite, {
+    path: "./static/assets/",
   });
 
   eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
