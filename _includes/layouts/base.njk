@@ -46,7 +46,7 @@
     <nav>
       <ul class="menu menu-horizontal bg-base-200 rounded-full text-secondary">
         <li>
-          <a href="https://www.gavinmogan.com" class="rounded-full p-3" title="Main Website">
+          <a href="https://www.gavinmogan.com" class="rounded-full p-3" title="Main Website" rel="me atproto">
             {% svg 'icon-website-main', "size-6" %}
           </a>
         </li>
@@ -88,7 +88,7 @@
         {% svg 'icon-linkedin', "size-10" %}
       </a>
 
-      <a rel="me atproto" href="https://bsky.app/profile/halkeye.net" target="_blank" title="Blue Sky"
+      <a rel="me" href="https://bsky.app/profile/halkeye.net" target="_blank" title="Blue Sky"
         class="bg-base-100/40 text-info p-1 rounded-xl">
         {% svg 'icon-bluesky', "size-10" %}
       </a>
@@ -107,6 +107,11 @@
       <a hrel="me" ref="https://matrix.to/#/@halkeye:g4v.dev" target="_blank" title="Direct Matrix Chat"
         class="bg-base-100/40 text-accent p-1 rounded-xl">
         {% svg 'icon-matrix', "size-10" %}
+      </a>
+
+      <a hrel="me" ref="https://github.com/halkeye" target="_blank" title="Github"
+        class="bg-base-100/40 text-accent p-1 rounded-xl">
+        {% svg 'icon-github', "size-10 fill-(--color-secondary) " %}
       </a>
     </div>
   </footer>
