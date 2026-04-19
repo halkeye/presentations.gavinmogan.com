@@ -1,0 +1,21 @@
+
+<meta charset="utf-8">
+<meta name="author" content="Gavin Mogan">
+<meta name="viewport" content="{{ viewport or metadata.viewport or "width=device-width, initial-scale=1.0" }}">
+<title>{{ title or metadata.title }}</title>
+<meta name="description"
+      content="{{ description or metadata.description }}">
+<meta name="generator" content="{{ eleventy.generator }}">
+<meta name="title" content="{{ title or metadata.title }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ page.url | absoluteUrl }}">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="{{ title or metadata.title }}">
+{%- if image %}<meta property="og:image" content="{{ image | absoluteUrl }}">{%- endif %}
+<meta property="og:image:alt" content="{{ title or metadata.title }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:url" content="{{ page.url | absoluteUrl }}">
+<meta name="twitter:title" content="{{ title or metadata.title }}">
+{%- if image %}<meta name="twitter:image" content="{{ image | absoluteUrl }}">{%- endif %}
+<meta name="twitter:image:alt" content="{{ title or metadata.title }}">
+<link rel="canonical" href="{{ page.url | absoluteUrl }}">
