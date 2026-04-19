@@ -1,5 +1,77 @@
----
-layout: layouts/base.njk
----
+<!DOCTYPE html>
+<html lang="{{ metadata.language or "en" }}">
+  <head>
+    <title>{{ title or metadata.title }}</title>
+    <meta name="author" content="Gavin Mogan">
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/assets/reveal/reveal.css" />
+    <link rel="stylesheet" href="/assets/reveal/theme/dracula.css" />
+    <link rel="stylesheet" href="/assets/reveal/plugin/highlight/monokai.css">
+    {% set css %}
+      {% include "../kbd.min.css" %}
+    {% endset %}
+    <style>
+    ul[aria-label]:before {
+      content: attr(aria-label);
+      color: rgb(255, 153, 0);
+      font-size: 80%;
+      font-weight: bold;
+      margin-left: -35px;
+    }
 
-{{ content | safe }}
+    ul[aria-caption]:after {
+      content: attr(aria-caption);
+      font-size: 80%;
+      margin-left: -35px;
+    }
+    figure {
+      display: block;
+    }
+
+    figcaption {
+      text-align: center;
+    }
+
+    ul {
+      width: 100%;
+    }
+
+    .row {
+      display: flex
+    }
+
+    .column {
+      flex: 1;
+      margin-right: 10px;
+    }
+    {{ css | postcss | safe }}
+    </style>
+  </head>
+  <body>
+    {{ content | safe }}
+    <script src="/assets/reveal/reveal.js"></script>
+    <script src="/assets/reveal/plugin/highlight/highlight.js"></script>
+    <script src="/assets/reveal/plugin/notes/notes.js"></script>
+    <script src="/assets/reveal/plugin/markdown/markdown.js"></script>
+    <script>
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          history: true,
+          slideNumber: false,
+          plugins: [RevealNotes, RevealHighlight, RevealMarkdown]
+        });
+    </script>
+    <script defer
+            src="https://u.g4v.dev/script.js"
+            data-website-id="4b48952f-9dd2-4164-823e-d1c16af3733d"></script>
+    <script defer
+            data-domain="presentations.gavinmogan.com"
+            src="https://p.g4v.dev/js/script.file-downloads.outbound-links.js"></script>
+  </body>
+</html>

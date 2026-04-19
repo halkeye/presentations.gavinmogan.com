@@ -1,114 +1,90 @@
-<!DOCTYPE html>
-<html lang="{{ metadata.language }}">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="/assets/reveal/reveal.css" />
-    <link rel="stylesheet" href="/assets/reveal/theme/dracula.css" />
-    <link rel="stylesheet" href="/assets/reveal/plugin/highlight/monokai.css">
-    <title>No REST for the wicked</title>
-    <style>
-    ul[aria-label]:before {
-      content: attr(aria-label);
-      color: rgb(255, 153, 0);
-      font-size: 80%;
-      font-weight: bold;
-      margin-left: -35px;
-    }
+---
+title: No REST for the wicked
+---
 
-    ul[aria-caption]:after {
-      content: attr(aria-caption);
-      font-size: 80%;
-      margin-left: -35px;
-    }
-    </style>
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section data-transition="zoom">
-          <h1 class="r-fit-text">No REST for the wicked</h1>
-          <img src="./img/giphy__1_.gif" alt="" class="r-stretch" />
-        </a>
-        <p class="fragment">Howtos, Tricks and Tips to build REST Servers</p>
-      </section>
-      <section>
-        <h2>Gavin Mogan</h2>
-        <p>Code Monkey @ Sauce Labs</p>
-        <p>
-          <a href="https://web.archive.org/web/20221218113549/https://twitter.com/halkeye"
-             target="_blank">@halkeye</a>
-        </p>
-        <p>
-          <a href="https://www.gavinmogan.com" target="_blank">https://www.gavinmogan.com</a>
-        </p>
-        <img src="./img/2011-07-15_13.png"
-             alt="profile photo of gavin with hair in a mess">
-        <aside class="notes">
-          Hi
-          I'm Gavin and I work as a code monkey at Sauce Labs here in vancouver.
-          So a little about myself. I'm kinda a goofball at the best of times. I'm very much a generalist and as such, I
-          know enough to get me in trouble about a lot of topics. And as such, I love sharing and learning as much as
-          possible.
-        </aside>
-      </section>
-      <section>
-        <h2>Whats going on?</h2>
-        <ul>
-          <li class="fragment">Demonstration</li>
-          <li class="fragment">How HTTP Works (basics)</li>
-          <li class="fragment">Examples</li>
-          <li class="fragment">"Best" Practices</li>
-        </ul>
-        <aside class="notes">
-          Tonight I'm going to cover a little bit how HTTP and REST Services work.
-          Tonight is my third talk at code and coffee, and since I'm someone who loves to learn and experiment, I'm
-          going to try at least one new thing. With that, I'm going to need a volunteer.
-        </aside>
-      </section>
-      <section>
-        <h2>Live Demo time</h2>
-        <img src="./img/giphy__2_.gif" alt="" class="r-stretch" />
-        <h2>I need a volunteer</h2>
-        <aside class="notes">
-          Example #1
-          <br />
-          <br />
-          Hi. I'm Gavin. I speak english. Tell me about yourself.
-          <br />
-          <br />
-          --response--
-          <br />
-          <br />
-          Cool great, see nothing to it. Its really that simple.
-          <br />
-          <br />
-          Example #2
-          <br />
-          <br />
-          Hi I'm Gavin. I'm going to give you this thing.
-          *hand over hot sauce*
-          <br />
-          <br />
-          --- response ---
-        </aside>
-      </section>
-      <section>
-        <h2>How does it work?</h2>
-        <p>HTTP is made up of headers and bodies. Both on the request and the response side of things.</p>
-        <aside class="notes">
-          HTTP is actually a super simple protocol. Its probably why its been around for so long. Generally what people
-          think of HTTP as is the current version, HTTP/1.1, HTTP/1.0 still works, and 0.9 is very hit or miss
-          When your browser starts talking to a server, thats a request, and when it responses its a ... response. Yea I
-          know.
-          The cool thing about HTTP is it really allows for a lot of expandability. You really only need the first line
-          of the request to do anything.
-        </aside>
-      </section>
-      <section>
-        <p>Request</p>
-        <pre><code data-trim><script type="text/template">
+<div class="reveal">
+  <div class="slides">
+    <section data-transition="zoom">
+      <h1 class="r-fit-text">No REST for the wicked</h1>
+      <img src="./img/giphy__1_.gif" alt="" class="r-stretch">
+      <p class="fragment">Howtos, Tricks and Tips to build REST Servers</p>
+    </section>
+    <section>
+      <h2>Gavin Mogan</h2>
+      <p>Code Monkey @ Sauce Labs</p>
+      <p>
+        <a href="https://web.archive.org/web/20221218113549/https://twitter.com/halkeye"
+           target="_blank">@halkeye</a>
+      </p>
+      <p>
+        <a href="https://www.gavinmogan.com" target="_blank">https://www.gavinmogan.com</a>
+      </p>
+      <img src="./img/2011-07-15_13.png"
+           alt="profile photo of gavin with hair in a mess">
+      <aside class="notes">
+        Hi
+        I'm Gavin and I work as a code monkey at Sauce Labs here in vancouver.
+        So a little about myself. I'm kinda a goofball at the best of times. I'm very much a generalist and as such, I
+        know enough to get me in trouble about a lot of topics. And as such, I love sharing and learning as much as
+        possible.
+      </aside>
+    </section>
+    <section>
+      <h2>Whats going on?</h2>
+      <ul>
+        <li class="fragment">Demonstration</li>
+        <li class="fragment">How HTTP Works (basics)</li>
+        <li class="fragment">Examples</li>
+        <li class="fragment">"Best" Practices</li>
+      </ul>
+      <aside class="notes">
+        Tonight I'm going to cover a little bit how HTTP and REST Services work.
+        Tonight is my third talk at code and coffee, and since I'm someone who loves to learn and experiment, I'm
+        going to try at least one new thing. With that, I'm going to need a volunteer.
+      </aside>
+    </section>
+    <section>
+      <h2>Live Demo time</h2>
+      <img src="./img/giphy__2_.gif" alt="" class="r-stretch" />
+      <h2>I need a volunteer</h2>
+      <aside class="notes">
+        Example #1
+        <br />
+        <br />
+        Hi. I'm Gavin. I speak english. Tell me about yourself.
+        <br />
+        <br />
+        --response--
+        <br />
+        <br />
+        Cool great, see nothing to it. Its really that simple.
+        <br />
+        <br />
+        Example #2
+        <br />
+        <br />
+        Hi I'm Gavin. I'm going to give you this thing.
+        *hand over hot sauce*
+        <br />
+        <br />
+        --- response ---
+      </aside>
+    </section>
+    <section>
+      <h2>How does it work?</h2>
+      <p>HTTP is made up of headers and bodies. Both on the request and the response side of things.</p>
+      <aside class="notes">
+        HTTP is actually a super simple protocol. Its probably why its been around for so long. Generally what people
+        think of HTTP as is the current version, HTTP/1.1, HTTP/1.0 still works, and 0.9 is very hit or miss
+        When your browser starts talking to a server, thats a request, and when it responses its a ... response. Yea I
+        know.
+        The cool thing about HTTP is it really allows for a lot of expandability. You really only need the first line
+        of the request to do anything.
+      </aside>
+    </section>
+    <section>
+      <p>Request</p>
+      <pre><code data-trim><script type="text/template">
           GET /index.html HTTP/1.1
           Host: www.example.com
           Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
@@ -116,21 +92,21 @@
           Cache-Control: max-age=0
           User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103
           Safari/537.36
-        </script></code></pre>
-        <aside class="notes">
-          The request is made up of a method, a path and a protocol version. In this case, the method is GET, the path
-          is slash index and the version is 1.1.
-          <br />
-          <br />
-          Then it is followed buy any number of key value pairs, separated by a colon, which make up the headers.
-          <br />
-          <br />
-          Then finally a blank line and any bodies.
-        </aside>
-      </section>
-      <section>
-        <p>Response</p>
-        <pre><code data-trim><script type="text/template">
+      </script></code></pre>
+      <aside class="notes">
+        The request is made up of a method, a path and a protocol version. In this case, the method is GET, the path
+        is slash index and the version is 1.1.
+        <br />
+        <br />
+        Then it is followed buy any number of key value pairs, separated by a colon, which make up the headers.
+        <br />
+        <br />
+        Then finally a blank line and any bodies.
+      </aside>
+    </section>
+    <section>
+      <p>Response</p>
+      <pre><code data-trim><script type="text/template">
           HTTP/1.1 200 OK
           Date: Mon, 23 May 2005 22:38:34 GMT
           Content-Type: text/html; charset=UTF-8
@@ -146,173 +122,173 @@
           </head>
           <body>Hello World, this is a very simple HTML document.</body>
           </html>
-        </script></code></pre>
-        <aside class="notes">
-          The response follows the same sort of pattern. Http version, followed by status code and status string.
-          <br />
-          Then headers.
-          <br />
-          Blank line
-          <br />
-          Then body. Usually html page, but could be json or binary or anything else.
-        </aside>
+      </script></code></pre>
+      <aside class="notes">
+        The response follows the same sort of pattern. Http version, followed by status code and status string.
+        <br />
+        Then headers.
+        <br />
+        Blank line
+        <br />
+        Then body. Usually html page, but could be json or binary or anything else.
+      </aside>
+    </section>
+    <section>
+      <section>
+        <h2>Live Demo time</h2>
+        <img src="./img/giphy__3_.gif" alt="" class="r-stretch" />
       </section>
       <section>
         <section>
-          <h2>Live Demo time</h2>
-          <img src="./img/giphy__3_.gif" alt="" class="r-stretch" />
-        </section>
-        <section>
-          <section>
-            <h2>Okay, backup time</h2>
-            <pre>
+          <h2>Okay, backup time</h2>
+          <pre>
               <code data-trim data-noescape>
                 telnet localhost 8000
               </code>
             </pre>
-            <pre class="fragment">
+          <pre class="fragment">
               <code data-trim data-noescape>
                 GET / HTTP/1.0
               </code>
             </pre>
-          </section>
         </section>
+      </section>
+      <section>
         <section>
-          <section>
-            <h2>Okay, backup time</h2>
-            <pre>
+          <h2>Okay, backup time</h2>
+          <pre>
               <code data-trim data-noescape>
                 telnet google.com 80
               </code>
             </pre>
-            <pre class="fragment">
+          <pre class="fragment">
               <code data-trim data-noescape>
                 GET / HTTP/1.0
               </code>
             </pre>
-          </section>
         </section>
-        <aside class="notes">
-          tab1:
-          <br />
-          webbie
-          <br />
-          <br />
-          tab2:
-          <br />
-          telnet localhost 8000
-          <br />
-          GET / HTTP/1.0
-          <br />
-          <br />
-          <br />
-          <br />
-          telnet google.com 80
-          <br />
-          GET / HTTP/1.0
-          <br />
-        </aside>
       </section>
-      <section>
-        <h4>Types of HTTP Requests (1.0 - Simplified)</h4>
-        <div style="display: flex; gap: 10px">
-          <div style=" flex: 1">
-            <ul aria-label="GET" aria-caption="Ex: Image">
-              <li>Getting Data</li>
-              <li>Should not change state</li>
-              <li>Should be repeatable</li>
-            </ul>
-            <ul aria-label="HEAD">
-              <li>Just returns header, no body</li>
-              <li>Not really going to cover</li>
-            </ul>
-          </div>
-          <div style="flex: 1">
-            <ul aria-label="POST" aria-caption="Ex: Login Form">
-              <li>Sending Data</li>
-              <li>Modifies state</li>
-              <li>No guarantees if sending again will do the same thing</li>
-            </ul>
-          </div>
+      <aside class="notes">
+        tab1:
+        <br />
+        webbie
+        <br />
+        <br />
+        tab2:
+        <br />
+        telnet localhost 8000
+        <br />
+        GET / HTTP/1.0
+        <br />
+        <br />
+        <br />
+        <br />
+        telnet google.com 80
+        <br />
+        GET / HTTP/1.0
+        <br />
+      </aside>
+    </section>
+    <section>
+      <h4>Types of HTTP Requests (1.0 - Simplified)</h4>
+      <div style="display: flex; gap: 10px">
+        <div style=" flex: 1">
+          <ul aria-label="GET" aria-caption="Ex: Image">
+            <li>Getting Data</li>
+            <li>Should not change state</li>
+            <li>Should be repeatable</li>
+          </ul>
+          <ul aria-label="HEAD">
+            <li>Just returns header, no body</li>
+            <li>Not really going to cover</li>
+          </ul>
         </div>
-        <aside class="notes">
-        </aside>
-      </section>
-      <section>
-        <h2>HTTP/1.1 Added More</h2>
-        <ul>
-          <li>OPTIONS</li>
-          <li>PUT</li>
-          <li>DELETE</li>
-          <li>TRACE</li>
-          <li>CONNECT</li>
+        <div style="flex: 1">
+          <ul aria-label="POST" aria-caption="Ex: Login Form">
+            <li>Sending Data</li>
+            <li>Modifies state</li>
+            <li>No guarantees if sending again will do the same thing</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="notes">
+      </aside>
+    </section>
+    <section>
+      <h2>HTTP/1.1 Added More</h2>
+      <ul>
+        <li>OPTIONS</li>
+        <li>PUT</li>
+        <li>DELETE</li>
+        <li>TRACE</li>
+        <li>CONNECT</li>
+      </ul>
+      <div style="display: flex; gap: 10px" class="fragment">
+        <ul aria-label="PUT" style="flex: 1">
+          <li>Idempotent</li>
+          <li>"Save"</li>
+          <li>"Store at this location"</li>
         </ul>
-        <div style="display: flex; gap: 10px" class="fragment">
-          <ul aria-label="PUT" style="flex: 1">
-            <li>Idempotent</li>
-            <li>"Save"</li>
-            <li>"Store at this location"</li>
-          </ul>
-          <ul aria-label="DELETE" style="flex: 1">
-            <li>Idempotent</li>
-            <li>Delete this item (if exists)</li>
-          </ul>
-        </div>
-        <aside class="notes">
-          Really a HTTP Verb can be anything. These are just standardized behavior.
-          The only really common ones from this list is PUT and DELETE.
-          Both should be idempotent, meaning it should have the same effect if you repeat the request. Like most things
-          HTTP, this is just a guideline.
-        </aside>
-      </section>
-      <section>
-        <h2>Okay, how do I do it?</h2>
-        <img src="./img/giphy__4_.gif" alt="" class="r-stretch" />
-        <aside class="notes">
-        </aside>
-      </section>
-      <section>
-        <div style="display: flex; gap: 10px">
-          <ul aria-label="Bare Bones" style="flex: 1">
-            <li>Sinatra (ruby)</li>
-            <li>Flask (python)</li>
-            <li>Express/Connect (node)</li>
-            <li>PHP</li>
-          </ul>
-          <ul aria-label="Frameworks" style="flex: 1">
-            <li>Rails (ruby)</li>
-            <li>Django (python)</li>
-            <li>Express + Sequalize (node)</li>
-            <li>Kohana (php)</li>
-            <li>Sympony (php)</li>
-          </ul>
-        </div>
-        <img src="./img/giphy__5_.gif" alt="" class="r-stretch" />
-        <aside class="notes">
-          Don't worry, you don't have to do any of it by hand, there's so many tools out there. I'm just going to use a
-          few I've used.
-          <br />
-          <br />
-          Some of you might have gotten ahead of me and noticed express for node is on both sides. I debated with myself
-          a bunch where to put it, but I'll get to that.
-        </aside>
-      </section>
-      <section>
-        <h4>Bare Bones</h4>
-        <div style="display: grid; grid-template-columns: auto auto;">
-          <div>
-            Sinatra (ruby)
-            <pre><code data-trim><script type="text/template">
+        <ul aria-label="DELETE" style="flex: 1">
+          <li>Idempotent</li>
+          <li>Delete this item (if exists)</li>
+        </ul>
+      </div>
+      <aside class="notes">
+        Really a HTTP Verb can be anything. These are just standardized behavior.
+        The only really common ones from this list is PUT and DELETE.
+        Both should be idempotent, meaning it should have the same effect if you repeat the request. Like most things
+        HTTP, this is just a guideline.
+      </aside>
+    </section>
+    <section>
+      <h2>Okay, how do I do it?</h2>
+      <img src="./img/giphy__4_.gif" alt="" class="r-stretch" />
+      <aside class="notes">
+      </aside>
+    </section>
+    <section>
+      <div style="display: flex; gap: 10px">
+        <ul aria-label="Bare Bones" style="flex: 1">
+          <li>Sinatra (ruby)</li>
+          <li>Flask (python)</li>
+          <li>Express/Connect (node)</li>
+          <li>PHP</li>
+        </ul>
+        <ul aria-label="Frameworks" style="flex: 1">
+          <li>Rails (ruby)</li>
+          <li>Django (python)</li>
+          <li>Express + Sequalize (node)</li>
+          <li>Kohana (php)</li>
+          <li>Sympony (php)</li>
+        </ul>
+      </div>
+      <img src="./img/giphy__5_.gif" alt="" class="r-stretch" />
+      <aside class="notes">
+        Don't worry, you don't have to do any of it by hand, there's so many tools out there. I'm just going to use a
+        few I've used.
+        <br />
+        <br />
+        Some of you might have gotten ahead of me and noticed express for node is on both sides. I debated with myself
+        a bunch where to put it, but I'll get to that.
+      </aside>
+    </section>
+    <section>
+      <h4>Bare Bones</h4>
+      <div style="display: grid; grid-template-columns: auto auto;">
+        <div>
+          Sinatra (ruby)
+          <pre><code data-trim><script type="text/template">
             require 'sinatra'
 
             get '/hi' do
               "Hello World!"
             end
-            </script></code></pre>
-          </div>
-          <div>
-            Express (node)
-            <pre><code data-trim><script type="text/template">
+          </script></code></pre>
+        </div>
+        <div>
+          Express (node)
+          <pre><code data-trim><script type="text/template">
                 var express = require('express');
                 var app = express();
 
@@ -323,11 +299,11 @@
                 app.listen(3000, function () {
                   console.log('Example app listening on port 3000!');
                 });
-            </script></code></pre>
-          </div>
-          <div>
-            Flask (python)
-            <pre><code data-trim><script type="text/template">
+          </script></code></pre>
+        </div>
+        <div>
+          Flask (python)
+          <pre><code data-trim><script type="text/template">
                 from flask import Flask
                 app = Flask(__name__)
 
@@ -337,23 +313,23 @@
 
                 if __name__ == "__main__":
                 app.run()
-            </script></code></pre>
-          </div>
-          <div>
-            PHP
-            <pre>
+          </script></code></pre>
+        </div>
+        <div>
+          PHP
+          <pre>
               <code data-trim data-noescape>
                 &lt;?php echo "Hello World";
               </code>
             </pre>
-          </div>
         </div>
-        <aside class="notes">
-        </aside>
-      </section>
-      <section>
-        <h4>Rails (ruby)</h4>
-        <pre class="r-stretch"><code data-trim><script type="text/template">
+      </div>
+      <aside class="notes">
+      </aside>
+    </section>
+    <section>
+      <h4>Rails (ruby)</h4>
+      <pre class="r-stretch"><code data-trim><script type="text/template">
             $ rails new blog
             # it does some stuff
             $ cd blog
@@ -384,202 +360,184 @@
             [2016-07-18 22:06:05] INFO WEBrick 1.3.1
             [2016-07-18 22:06:05] INFO ruby 2.0.0 (2014-11-13) [x86_64-linux]
 
-        </script></code></pre>
-        <aside class="notes">
-          Rails, Django, and others give you everything you could need out of the box. They are a lot more strict, but
-          way more structured.
-          <br />
-          <br />
-          They pretty much are saying "Our sandbox, our rules".
-          <br />
-          <br />
-          That being said, they have a massive community of awesome people. Lots of plugins and extensions. Lots of
-          help.
-        </aside>
-      </section>
-      <section>
-        <h1>"Best" Practices</h1>
-        <aside class="notes">
-          There's no right or wrong way to do rest. As long as things are valid http, then its probably fine. But as a
-          developer that spends a lot of time integrating with other apis, there are some things I've learned.
-        </aside>
-      </section>
-      <section>
-        <h2>URL Schemas</h2>
-        <ul>
-          <li>GET /resource - should return all</li>
-          <li>GET /resource/id - should return one</li>
-          <br />
-          <li>POST /resource - should add one</li>
-          <br />
-          <li>PUT/POST /resource/id - should update/store one</li>
-          <br />
-          <li>DELETE /resource/id - should delete one</li>
-        </ul>
-        <aside class="notes">
-          REST resources generally follow a practice like files on your disk
-          <br />
-          .
-          <br />
-          GET would be the same as load. If you get a folder or directory, you get a listing of files
-          <br />
-          .
-          If you GET a specific file, you get the contents
-          <br />
-          .
-          <br />
-          POST and PUT is kinda where that analogy falls apart, but it still is similar. You want to save a new file,
-          Its a POST to a folder. If you want to overwrite, its PUT to a file
-          <br />
-          .
-          <br />
-          DELETE is simplest, it'll just delete what you tell it to. Generally REST interfaces just stick with deleting
-          files.
-        </aside>
-      </section>
-      <section>
-        <h2>Response Code</h2>
-        <ul>
-          <li>200 - All good</li>
-          <li>201 - Created Successfully</li>
-          <li>301 - Always look here instead</li>
-          <li>302 - Look here instead</li>
-          <li>401 - Security pls. Who are you?</li>
-          <li>402 - Not allowed</li>
-          <li>404 - Not found</li>
-          <li>418 - I'm a little tea pot</li>
-          <li>500 - PANIC ERROR HAS HAPPENED</li>
-        </ul>
+      </script></code></pre>
+      <aside class="notes">
+        Rails, Django, and others give you everything you could need out of the box. They are a lot more strict, but
+        way more structured.
         <br />
-        <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">https://en.wikipedia.org/wiki/List_of_HTTP_status_codes</a>
-        <aside class="notes">
-          There are many many response codes.
-          <br />
-          <br />
-          I've tried to list a few that I see pretty often, these are not the official titles, just sorta my fun way of
-          remembering them.
-          <br />
-          <br />
-          They are segmented into blocks.
-          <br />
-          100s are informational, not often seen unless you are writing a server like apache or nginx
-          <br />
-          200s are various forms of good
-          <br />
-          300s are redirections
-          <br />
-          400s are errors (expected)
-          <br />
-          500s are server errors (bad)
-          <br />
-          <br />
-          Yes, there's a http code for being a little tea pot. Not making it up.
-          <br />
-        </aside>
-      </section>
-      <section>
-        <h2>
-          JSON
-          <br />
-          vs
-          <br />
-          XML
-          <br />
-          vs
-          <br />
-          YAML
-        </h2>
-        <aside class="notes">
-          The short answer is who cares. Just be consistent.
-          <br />
-          <br />
-          Java and microsoft world originally used XML a whole lot. Lots of libraries and tools exist for it.
-          <br />
-          <br />
-          Open source world jumped on JSON a lot, most APIs I work with use json.
-          <br />
-          <br />
-          YAML? I can't say I've seen too many apis use it, but its an option too.
-          <br />
-          <br />
-          Generally conistency is key
-          <br />
-        </aside>
-      </section>
-      <section>
-        <h2>Tooling</h2>
-        <ul>
-          <li>Chrome/Firefox/IE Web Dev Tools</li>
-          <li>
-            <a href="https://mitmproxy.org/">mitmproxy</a>
-          </li>
-          <li>tcpdump (linux/mac)</li>
-          <li>
-            <a href="https://www.telerik.com/download/fiddler/fiddler2">fiddler2</a> (windows)
-          </li>
-          <li>curl (linux/mac)</li>
-          <li>
-            <a href="https://www.getpostman.com/">Postman</a>
-          </li>
-        </ul>
-        <aside class="notes">
-          I use a mix of a lot of tools. I don't have any solid recommendations.
-          <br />
-          <br />
-          Fiddler2 was amazing when I was working in windows.
-          <br />
-          <br />
-          I just looked into Postman again for this talk, and it looks super polished and awesome. I'm sure many here
-          have other suggestions.
-          <br />
-        </aside>
-      </section>
-      <section>
-        <h2>Browser Tools</h2>
-        <img src="./img/Chrome_dev_tools.gif" alt="" class="r-stretch" />
-        <aside class="notes">
-        </aside>
-      </section>
-      <section>
-        <h2>Documentation</h2>
-        <ul>
-          <li>
-            Github self documents all their urls
-            <ul>
-              <li>See https://api.github.com/repos/appium/appium</li>
-            </ul>
-          </li>
-          <li>Swagger, Blueprint, Probably more</li>
-          <li>Lots of companies roll their own.</li>
-          <li>Documentation is hard</li>
-          <li>
-            Provide Examples
-            <ul>
-              <li>Snippets</li>
-              <li>Downloadable examples</li>
-            </ul>
-          </li>
-        </ul>
-        <aside class="notes">
-        </aside>
-      </section>
-    </div>
+        <br />
+        They pretty much are saying "Our sandbox, our rules".
+        <br />
+        <br />
+        That being said, they have a massive community of awesome people. Lots of plugins and extensions. Lots of
+        help.
+      </aside>
+    </section>
+    <section>
+      <h1>"Best" Practices</h1>
+      <aside class="notes">
+        There's no right or wrong way to do rest. As long as things are valid http, then its probably fine. But as a
+        developer that spends a lot of time integrating with other apis, there are some things I've learned.
+      </aside>
+    </section>
+    <section>
+      <h2>URL Schemas</h2>
+      <ul>
+        <li>GET /resource - should return all</li>
+        <li>GET /resource/id - should return one</li>
+        <br />
+        <li>POST /resource - should add one</li>
+        <br />
+        <li>PUT/POST /resource/id - should update/store one</li>
+        <br />
+        <li>DELETE /resource/id - should delete one</li>
+      </ul>
+      <aside class="notes">
+        REST resources generally follow a practice like files on your disk
+        <br />
+        .
+        <br />
+        GET would be the same as load. If you get a folder or directory, you get a listing of files
+        <br />
+        .
+        If you GET a specific file, you get the contents
+        <br />
+        .
+        <br />
+        POST and PUT is kinda where that analogy falls apart, but it still is similar. You want to save a new file,
+        Its a POST to a folder. If you want to overwrite, its PUT to a file
+        <br />
+        .
+        <br />
+        DELETE is simplest, it'll just delete what you tell it to. Generally REST interfaces just stick with deleting
+        files.
+      </aside>
+    </section>
+    <section>
+      <h2>Response Code</h2>
+      <ul>
+        <li>200 - All good</li>
+        <li>201 - Created Successfully</li>
+        <li>301 - Always look here instead</li>
+        <li>302 - Look here instead</li>
+        <li>401 - Security pls. Who are you?</li>
+        <li>402 - Not allowed</li>
+        <li>404 - Not found</li>
+        <li>418 - I'm a little tea pot</li>
+        <li>500 - PANIC ERROR HAS HAPPENED</li>
+      </ul>
+      <br />
+      <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">https://en.wikipedia.org/wiki/List_of_HTTP_status_codes</a>
+      <aside class="notes">
+        There are many many response codes.
+        <br />
+        <br />
+        I've tried to list a few that I see pretty often, these are not the official titles, just sorta my fun way of
+        remembering them.
+        <br />
+        <br />
+        They are segmented into blocks.
+        <br />
+        100s are informational, not often seen unless you are writing a server like apache or nginx
+        <br />
+        200s are various forms of good
+        <br />
+        300s are redirections
+        <br />
+        400s are errors (expected)
+        <br />
+        500s are server errors (bad)
+        <br />
+        <br />
+        Yes, there's a http code for being a little tea pot. Not making it up.
+        <br />
+      </aside>
+    </section>
+    <section>
+      <h2>
+        JSON
+        <br />
+        vs
+        <br />
+        XML
+        <br />
+        vs
+        <br />
+        YAML
+      </h2>
+      <aside class="notes">
+        The short answer is who cares. Just be consistent.
+        <br />
+        <br />
+        Java and microsoft world originally used XML a whole lot. Lots of libraries and tools exist for it.
+        <br />
+        <br />
+        Open source world jumped on JSON a lot, most APIs I work with use json.
+        <br />
+        <br />
+        YAML? I can't say I've seen too many apis use it, but its an option too.
+        <br />
+        <br />
+        Generally conistency is key
+        <br />
+      </aside>
+    </section>
+    <section>
+      <h2>Tooling</h2>
+      <ul>
+        <li>Chrome/Firefox/IE Web Dev Tools</li>
+        <li>
+          <a href="https://mitmproxy.org/">mitmproxy</a>
+        </li>
+        <li>tcpdump (linux/mac)</li>
+        <li>
+          <a href="https://www.telerik.com/download/fiddler/fiddler2">fiddler2</a> (windows)
+        </li>
+        <li>curl (linux/mac)</li>
+        <li>
+          <a href="https://www.getpostman.com/">Postman</a>
+        </li>
+      </ul>
+      <aside class="notes">
+        I use a mix of a lot of tools. I don't have any solid recommendations.
+        <br />
+        <br />
+        Fiddler2 was amazing when I was working in windows.
+        <br />
+        <br />
+        I just looked into Postman again for this talk, and it looks super polished and awesome. I'm sure many here
+        have other suggestions.
+        <br />
+      </aside>
+    </section>
+    <section>
+      <h2>Browser Tools</h2>
+      <img src="./img/Chrome_dev_tools.gif" alt="" class="r-stretch" />
+      <aside class="notes">
+      </aside>
+    </section>
+    <section>
+      <h2>Documentation</h2>
+      <ul>
+        <li>
+          Github self documents all their urls
+          <ul>
+            <li>See https://api.github.com/repos/appium/appium</li>
+          </ul>
+        </li>
+        <li>Swagger, Blueprint, Probably more</li>
+        <li>Lots of companies roll their own.</li>
+        <li>Documentation is hard</li>
+        <li>
+          Provide Examples
+          <ul>
+            <li>Snippets</li>
+            <li>Downloadable examples</li>
+          </ul>
+        </li>
+      </ul>
+      <aside class="notes">
+      </aside>
+    </section>
   </div>
-  <script src="/assets/reveal/reveal.js"></script>
-  <script src="/assets/reveal/plugin/highlight/highlight.js"></script>
-  <script src="/assets/reveal/plugin/notes/notes.js"></script>
-  <script src="/assets/reveal/plugin/markdown/markdown.js"></script>
-  <script>
-    Reveal.initialize({
-      controls: true,
-      progress: true,
-      history: true,
-      slideNumber: false,
-      plugins: [RevealNotes, RevealHighlight, RevealMarkdown]
-    });
-  </script>
-  <script defer
-          src="https://u.g4v.dev/script.js"
-          data-website-id="4b48952f-9dd2-4164-823e-d1c16af3733d"></script>
-</body>
-</html>
+</div>

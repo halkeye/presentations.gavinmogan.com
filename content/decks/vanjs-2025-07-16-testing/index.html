@@ -1,513 +1,481 @@
-<!DOCTYPE html>
-<html lang="{{ metadata.language }}">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="/assets/reveal/reveal.css" />
-    <link rel="stylesheet" href="/assets/reveal/theme/dracula.css" />
-    <link rel="stylesheet" href="/assets/reveal/plugin/highlight/monokai.css">
-    <link rel="stylesheet" href="./kbd.min.css" />
-    <title>Testing testing gotta get down on testing - VanJS - July 16th, 2025</title>
-    <style>
-    figure {
-      display: block;
-    }
+---
+title: Testing testing gotta get down on testing - VanJS - July 16th, 2025
+---
 
-    figcaption {
-      text-align: center
-    }
-
-    ul {
-      width: 100%;
-    }
-
-    .row {
-      display: flex
-    }
-
-    .column {
-      flex: 1;
-      margin-right: 10px;
-    }
-    </style>
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section>
+<div class="reveal">
+  <div class="slides">
+    <section>
+      <img class="r-stretch"
+           src="./gottagetdown.jpg"
+           alt="Testing testing gotta get down on testing" />
+      <h2>VanJS</h2>
+      <h3>July 16th, 2025</h3>
+    </section>
+    <section>
+      <h2>Gavin Mogan</h2>
+      <p>
+        Senior Software Engineer at Digital Ocean.
+        <img src="./Sammy08.png"
+             alt="Digital Ocean Mascot, Sammy the Shark, holding a heart ballon"
+             width="100"
+             style="vertical-align: middle" />
+      </p>
+      <p>
+        <a href="https://www.gavinmogan.com">https://www.gavinmogan.com</a>
+      </p>
+      <p>
+        <div style="position: relative">
           <img class="r-stretch"
-               src="./gottagetdown.jpg"
-               alt="Testing testing gotta get down on testing" />
-          <h2>VanJS</h2>
-          <h3>July 16th, 2025</h3>
-        </section>
-        <section>
-          <h2>Gavin Mogan</h2>
-          <p>
-            Senior Software Engineer at Digital Ocean.
-            <img src="./Sammy08.png"
-                 alt="Digital Ocean Mascot, Sammy the Shark, holding a heart ballon"
-                 width="100"
-                 style="vertical-align: middle" />
-          </p>
-          <p>
-            <a href="https://www.gavinmogan.com">https://www.gavinmogan.com</a>
-          </p>
-          <p>
-            <div style="position: relative">
-              <img class="r-stretch"
-                   src="./avatar.original.png"
-                   alt="Avatar"
-                   width="400"
-                   alt="photo of child gavin in 1982 sitting infront of a computer at the time" />
-            </div>
-          </p>
-          <aside class="notes">
-            Hey everyone,
-            I'm Gavin. I am a Senior Software Developer at Digital Ocean, currently on the billing team doing backend
-            golang work. As usual, you can find a copy of these slides on my website, and whenever the video gets posted,
-            i'll make sure to update the links so don't worry about missing anything. I don't really get to do javascript
-            that much anymore, but I've been coming to vanjs since the
-            before times and as a huge fan I love to give back...
-          </aside>
-        </section>
-        <section>
-          <h2>Testing?</h2>
-          <blockquote cite="https://www.merriam-webster.com/dictionary/test"
-                      style="text-align: left">
-            <p>means of testing: such as</p>
-            <p>
-              (1) something (such as a series of questions or exercises) for measuring the skill, knowledge,
-              intelligence,
-              capacities, or aptitudes of an individual or group
-            </p>
-            <p>(2) a procedure, reaction, or reagent used to identify or characterize a substance or constituent</p>
-          </blockquote>
-          <p>
-            &mdash; <cite>Merriam Webster</cite>
-          </p>
-          <aside class="notes">
-            So what am I here to talk about today? Well Miram Webster defines test as a means of testing
-            ...
-            Just kidding, not only is that confusing, but i'm not going to do a highschool style presentation.
-          </aside>
-        </section>
-        <section>
-          <h2>Why should you listen to me?</h2>
-          <ul>
-            <li>I'm here right now!</li>
-            <li>I've made so many mistakes so you don't have to.</li>
-            <li>Worked at several testing compainies.</li>
-            <li>Was on the board for the open source project Jenkins.</li>
-            <li>Been interviewed about testing on podcasts.</li>
-          </ul>
-          <aside class="notes">
-            So... why should you listen to me?
-            <p>
-              Well there's something for being up here right?. I like to say I'm not better at something, I've just broke
-              it first. I'm here to share what I have learned to fast forward you all.
-            </p>
-            <p>
-              I've also worked at several saas companies that sell testing related services, tooling and
-              products. I've had plenty of exposure to all the good stuff. I was on the board of the open source project
-              Jenkins, which I believe still heavily used to run tests,
-              though I wont be talking about it today.
-            </p>
-          </aside>
-        </section>
-        <section>
-          <h2>What is it good for?</h2>
-          <aside class="notes">
-            What is it good for? The urge to start singing about war and what it is good for, totally confusing the
-            younger people here is so
-            high.
-            Buuuut...
-          </aside>
-        </section>
-        <section data-auto-animate>
-          <h3>Living Documentation</h3>
-          <ul>
-            <li>Why does this function return this?</li>
-            <li>What does real world input look like?</li>
-          </ul>
-          <aside class="notes">
-            Living Documentation. One surprising thing i've learned about testing, especially in open source projects
-            where documentation can be
-            lacking, is to see the actual usages of a library or application in action. I can see what data they are
-            expecting, and how its handled. Does a lot of the expiramentation for me.
-          </aside>
-        </section>
-        <section>
-          <h3>Confidence</h3>
-          <ul>
-            <li>in future changes</li>
-            <li>current changes</li>
-            <li>refactors</li>
-          </ul>
-          <aside class="notes">
-            Confidence.
-            One of the talks last last month talks about how AI coding assistant tools can actually use tests to make sure
-            new code suggestion actually doesn't break old behaviors. I believe it can also help with code style based on
-            the topics mentioned in previous slide.
-            I'll talk about it more later, but I just love creating tests for bug tickets I'm assigned. It helps me
-            understand the problem then I can guarantee long into the future that the specific behavior won't happen
-            again.
-            Its great for new hires too, gives them a bit more of a cusion to make changes without fear, the quicker they
-            can get involved and engaged the quicker they feel like part of the team and can contribute.
-          </aside>
-        </section>
-        <section>
-          <h2>What is testing?</h2>
-          <figure>
-            <img src="./testing-pyramid-placeholder.png"
-                 style="max-height: 50vh"
-                 alt="joke image about putting a testing pyramid image here eventually" />
-            <figcaption>Produced by ChatGPT</figcaption>
-          </figure>
-          <aside class="notes">
-            <p>
-              So I was going to put up a diagram of the testing pyramid and tell ya all how I didn't agree with all the
-              steps, but apparently I misremembered and there's no standard.
-            </p>
-          </aside>
-        </section>
-        <section>
-          <figure>
-            <img src="./testing-pyramid.png"
-                 style="max-height: 50vh"
-                 alt="a pyramid diagram where the largest bottom has unit tests, next service tests, and lastly smallest at the top ui tests" />
-            <figcaption>
-              &mdash; <a href=" https://martinfowler.com/articles/practical-test-pyramid.html">The Practical
-              Test
-            Pyramid - Martin Fowler</a>
-          </figcaption>
-        </figure>
-        <aside class="notes">
-          <p>
-            The closest to official one I could find is this one by martin fowler which says you should have the least
-            amount of ui or integration tests, and the most of unit tests
-          </p>
-        </aside>
-      </section>
-      <section>
-        <h2>Gavin's testing pyramid?</h2>
-        <ul>
-          <li>End To End (e2e) tests (aka integration).</li>
-          <li>Mock e2e tests.</li>
-          <li>"Simple" tests.</li>
-        </ul>
-        <aside class="notes">
-          <p>
-            So gavin version. I'll go into details but in order ... from most expensive, to cheapest... End to end
-            tests.
-            End
-            to end tests but with mocks... So not end to end and lastly Unit tests. There are more types, but this is
-            what I usually go by.
-          </p>
-          <p>
-            The idea is to have the least of the first and the most of the last, as they are fastest and easiest to
-            isolate.
-          </p>
-        </aside>
-      </section>
-      <section>
-        <h2>End to End Tests</h2>
-        <p>"everything real"</p>
-        <ul>
-          <li>Actual Client (Browser)</li>
-          <li>Actual Server</li>
-          <li>Real Credentials</li>
-          <li>Actual Database</li>
-        </ul>
-        <h3>Examples</h3>
-        <ul>
-          <li>Entire application</li>
-        </ul>
-        <aside class="notes">
-          First up we have end to end tests. The goal is to emulate user behavior and confirm everything works together.
-          This means as much real life stuff as possible. Real browsers, real apis calls, and talking to the backend
-          properly.
-          While its not always possible to automate a production environment, especially since there's often tooling to
-          prevent bots and other abuse, you can get pretty close. Maybe add your ips to a allowlist so it doesn't get
-          caught by security. Its a slippery slope though since you can easily hide actual issues and not catch them.
-        </aside>
-      </section>
-      <section>
-        <h2>E2E Strengths</h2>
-        <ul>
-          <li>Makes sure everything works together</li>
-          <li>Closest to end-user behaviors</li>
-          <li>External changes get highlighted</li>
-        </ul>
-        <aside class="notes">
-          E2e Strengths... the goal is to test the whole system. So make sure everything works together. Api responses.
-          UI
-          responses. For example, if suddenly your login apis start requiring two factor auth, but you haven't enabled
-          it on the front end, the tests will fail. It can also highlight differences between browsers, and there are
-          tools to help you confirm behavior with limited network connections etc.
-        </aside>
-      </section>
-      <section>
-        <h2>E2E Weaknesses</h2>
-        <ul>
-          <li>Hard to setup and control state</li>
-          <li>Slowest</li>
-          <li>Flakey</li>
-        </ul>
-        <aside class="notes">
-          Weaknesses. Since you are doing everything with real behaviors, it can be tricker to create or reset states.
-          You can't just change runtime variables like having a user with an existing shopping cart from a previous
-          session. With e2e tests you'll have to either have a user kept around that has that state permanently, or go
-          through all the steps to populate a shopping cart, but that wont let you test a legacy format.
-          Also, there's so much stuff out of your control. If an error message from the backend slightly changes, that
-          can cause your tests to fail, and depending on what framework you use, you might not be able to tell why the
-          test is failing, just that it cant find the string you want.
-        </aside>
-      </section>
-      <section>
-        <h2>E2E Tools</h2>
-        <div class="row">
-          <div class="column">
-            <h3>Browser</h3>
-            <ul>
-              <li>Playwright</li>
-              <li>Cypress</li>
-              <li>Selenium</li>
-              <li>TestCafe</li>
-            </ul>
-          </div>
-          <div class="column">
-            <h3>Mobile</h3>
-            <ul>
-              <li>Appium</li>
-            </ul>
-          </div>
-          <!-- <div class="column">
-            <h3>Visual</h3>
-            <ul>
-              <li>Chromatic</li>
-            </ul>
-</div> -->
+               src="./avatar.original.png"
+               alt="Avatar"
+               width="400"
+               alt="photo of child gavin in 1982 sitting infront of a computer at the time" />
         </div>
-        <aside class="notes">
-          Tooling. I'm far from an expert here as I'm no longer doing frontend development full time but i've included a
-          few I've heard about.
-          Selenium is one of the oldest browser automation tools out there. You can find so much guides and tips for it,
-          but at the same time, it breaks the easiest. Playwright and Cypress are much newer and more reliable, and at
-          least to some degree, have backing of browser developers. Lastly there's testcafe. From my research it uses
-          client side javascript to trigger browser behavior, as such it can let you test on anything from modern
-          browsers, phones, to even smart tvs.
-          I'm also mentioning appium because some of friends created and maintain it. It lets you automate a phone, so
-          install apps, click on things, etc. Its really quite powerful.
-        </aside>
-      </section>
-      <section>
-        <h2>Mocked E2E Tests</h2>
-      </section>
-      <section>
-        <h2>Mocked E2E Tests</h2>
-        <p>A hybrid model between full e2e and isolated testing.</p>
-        <p>Call mocks or fake endpoints to emulate.</p>
-        <p>Bigger units of work, but also more control.</p>
-        <h3>Examples</h3>
-        <ul>
-          <li>Login Form</li>
-          <li>REST server endpoint</li>
-        </ul>
-        <aside class="notes">
-          Okay, Mocked E2e tests, or integration tests, that tends to be what I write more of now, even though I
-          probably shouldn't. I'll use a real database, but i might mock out external systems like stripe. Especially if
-          I know said system is pretty stable.
-        </aside>
-      </section>
-      <section>
-        <h2>Mocked - Strengths</h2>
-        <ul>
-          <li>Can control states</li>
-          <li>Easy to spot new dependencies</li>
-        </ul>
-        <aside class="notes">
-          Strengths...
-          <p>
-            With using mocks and stubs and factories and all the other terms, you have a lot more control. For example,
-            instead of setting up a new user, marking them as abuse, and then trying to login. With mocks you can just
-            tell the user service to return a user in the right state.
-          </p>
-          <p>
-            And with most mocking libraries, they can yell at you when your code starts to connect to unmocked systems
-            or endpoints
-          </p>
-        </aside>
-      </section>
-      <section>
-        <h2>Mocked - Cons</h2>
-        <ul>
-          <li>Have to implement and maintain mocks or sample data</li>
-          <li>Can lead to complex mocks that dont actually test things</li>
-          <li>Can easily break if your code uses globals</li>
-          <li>Can hide external systems changing</li>
-        </ul>
-        <aside class="notes">
-          Cons.. Anyone who has done tests for a while will tell you how dangerous mocks can be. If your mocks just
-          return simple states, like static json files, its pretty safe, but it becomes so easy for your mocks to become
-          more dynamic. Return different states based on inputs. Soon your tests will start testing your mocks instead
-          of testing the systems the mocks use.
-          In non typed systems, it can also not be obvious when the system you are mocking has changed. This can mean
-          something small like you are assuming an whole number integer, when the api now returns a float or string.
-          Injecting mocks can be hard too, there are tools to make it easier, but if for example your function makes an
-          http call, and you use a global http library, it'll be hard to isolate the client enough that it doesn't leak
-          to other tests, or a test could be run in parallel.
-        </aside>
-      </section>
-      <section>
-        <h2>Mocked - Tools</h2>
-        Probably can include most e2e and unit test suites too
-        <div class="row">
-          <div class="column">
-            <h3>Javascript</h3>
-            <ul>
-              <li>Nock</li>
-              <li>Jest</li>
-              <li>Sinon</li>
-              <li>Mock Service Worker</li>
-            </ul>
-          </div>
-          <div class="column">
-            <h3>Golang</h3>
-            <ul>
-              <li>Gomock</li>
-              <li>Counterfeiter</li>
-              <li>Mockery</li>
-            </ul>
-          </div>
+      </p>
+      <aside class="notes">
+        Hey everyone,
+        I'm Gavin. I am a Senior Software Developer at Digital Ocean, currently on the billing team doing backend
+        golang work. As usual, you can find a copy of these slides on my website, and whenever the video gets posted,
+        i'll make sure to update the links so don't worry about missing anything. I don't really get to do javascript
+        that much anymore, but I've been coming to vanjs since the
+        before times and as a huge fan I love to give back...
+      </aside>
+    </section>
+    <section>
+      <h2>Testing?</h2>
+      <blockquote cite="https://www.merriam-webster.com/dictionary/test"
+                  style="text-align: left">
+        <p>means of testing: such as</p>
+        <p>
+          (1) something (such as a series of questions or exercises) for measuring the skill, knowledge,
+          intelligence,
+          capacities, or aptitudes of an individual or group
+        </p>
+        <p>(2) a procedure, reaction, or reagent used to identify or characterize a substance or constituent</p>
+      </blockquote>
+      <p>
+        &mdash; <cite>Merriam Webster</cite>
+      </p>
+      <aside class="notes">
+        So what am I here to talk about today? Well Miram Webster defines test as a means of testing
+        ...
+        Just kidding, not only is that confusing, but i'm not going to do a highschool style presentation.
+      </aside>
+    </section>
+    <section>
+      <h2>Why should you listen to me?</h2>
+      <ul>
+        <li>I'm here right now!</li>
+        <li>I've made so many mistakes so you don't have to.</li>
+        <li>Worked at several testing compainies.</li>
+        <li>Was on the board for the open source project Jenkins.</li>
+        <li>Been interviewed about testing on podcasts.</li>
+      </ul>
+      <aside class="notes">
+        So... why should you listen to me?
+        <p>
+          Well there's something for being up here right?. I like to say I'm not better at something, I've just broke
+          it first. I'm here to share what I have learned to fast forward you all.
+        </p>
+        <p>
+          I've also worked at several saas companies that sell testing related services, tooling and
+          products. I've had plenty of exposure to all the good stuff. I was on the board of the open source project
+          Jenkins, which I believe still heavily used to run tests,
+          though I wont be talking about it today.
+        </p>
+      </aside>
+    </section>
+    <section>
+      <h2>What is it good for?</h2>
+      <aside class="notes">
+        What is it good for? The urge to start singing about war and what it is good for, totally confusing the
+        younger people here is so
+        high.
+        Buuuut...
+      </aside>
+    </section>
+    <section data-auto-animate>
+      <h3>Living Documentation</h3>
+      <ul>
+        <li>Why does this function return this?</li>
+        <li>What does real world input look like?</li>
+      </ul>
+      <aside class="notes">
+        Living Documentation. One surprising thing i've learned about testing, especially in open source projects
+        where documentation can be
+        lacking, is to see the actual usages of a library or application in action. I can see what data they are
+        expecting, and how its handled. Does a lot of the expiramentation for me.
+      </aside>
+    </section>
+    <section>
+      <h3>Confidence</h3>
+      <ul>
+        <li>in future changes</li>
+        <li>current changes</li>
+        <li>refactors</li>
+      </ul>
+      <aside class="notes">
+        Confidence.
+        One of the talks last last month talks about how AI coding assistant tools can actually use tests to make sure
+        new code suggestion actually doesn't break old behaviors. I believe it can also help with code style based on
+        the topics mentioned in previous slide.
+        I'll talk about it more later, but I just love creating tests for bug tickets I'm assigned. It helps me
+        understand the problem then I can guarantee long into the future that the specific behavior won't happen
+        again.
+        Its great for new hires too, gives them a bit more of a cusion to make changes without fear, the quicker they
+        can get involved and engaged the quicker they feel like part of the team and can contribute.
+      </aside>
+    </section>
+    <section>
+      <h2>What is testing?</h2>
+      <figure>
+        <img src="./testing-pyramid-placeholder.png"
+             style="max-height: 50vh"
+             alt="joke image about putting a testing pyramid image here eventually" />
+        <figcaption>Produced by ChatGPT</figcaption>
+      </figure>
+      <aside class="notes">
+        <p>
+          So I was going to put up a diagram of the testing pyramid and tell ya all how I didn't agree with all the
+          steps, but apparently I misremembered and there's no standard.
+        </p>
+      </aside>
+    </section>
+    <section>
+      <figure>
+        <img src="./testing-pyramid.png"
+             style="max-height: 50vh;
+                    background-color: white"
+             alt="a pyramid diagram where the largest bottom has unit tests, next service tests, and lastly smallest at the top ui tests" />
+        <figcaption>
+          &mdash; <a href=" https://martinfowler.com/articles/practical-test-pyramid.html">The Practical Test Pyramid - Martin Fowler</a>
+        </figcaption>
+      </figure>
+      <aside class="notes">
+        <p>
+          The closest to official one I could find is this one by martin fowler which says you should have the least
+          amount of ui or integration tests, and the most of unit tests
+        </p>
+      </aside>
+    </section>
+    <section>
+      <h2>Gavin's testing pyramid?</h2>
+      <ul>
+        <li>End To End (e2e) tests (aka integration).</li>
+        <li>Mock e2e tests.</li>
+        <li>"Simple" tests.</li>
+      </ul>
+      <aside class="notes">
+        <p>
+          So gavin version. I'll go into details but in order ... from most expensive, to cheapest... End to end
+          tests.
+          End
+          to end tests but with mocks... So not end to end and lastly Unit tests. There are more types, but this is
+          what I usually go by.
+        </p>
+        <p>
+          The idea is to have the least of the first and the most of the last, as they are fastest and easiest to
+          isolate.
+        </p>
+      </aside>
+    </section>
+    <section>
+      <h2>End to End Tests</h2>
+      <p>"everything real"</p>
+      <ul>
+        <li>Actual Client (Browser)</li>
+        <li>Actual Server</li>
+        <li>Real Credentials</li>
+        <li>Actual Database</li>
+      </ul>
+      <h3>Examples</h3>
+      <ul>
+        <li>Entire application</li>
+      </ul>
+      <aside class="notes">
+        First up we have end to end tests. The goal is to emulate user behavior and confirm everything works together.
+        This means as much real life stuff as possible. Real browsers, real apis calls, and talking to the backend
+        properly.
+        While its not always possible to automate a production environment, especially since there's often tooling to
+        prevent bots and other abuse, you can get pretty close. Maybe add your ips to a allowlist so it doesn't get
+        caught by security. Its a slippery slope though since you can easily hide actual issues and not catch them.
+      </aside>
+    </section>
+    <section>
+      <h2>E2E Strengths</h2>
+      <ul>
+        <li>Makes sure everything works together</li>
+        <li>Closest to end-user behaviors</li>
+        <li>External changes get highlighted</li>
+      </ul>
+      <aside class="notes">
+        E2e Strengths... the goal is to test the whole system. So make sure everything works together. Api responses.
+        UI
+        responses. For example, if suddenly your login apis start requiring two factor auth, but you haven't enabled
+        it on the front end, the tests will fail. It can also highlight differences between browsers, and there are
+        tools to help you confirm behavior with limited network connections etc.
+      </aside>
+    </section>
+    <section>
+      <h2>E2E Weaknesses</h2>
+      <ul>
+        <li>Hard to setup and control state</li>
+        <li>Slowest</li>
+        <li>Flakey</li>
+      </ul>
+      <aside class="notes">
+        Weaknesses. Since you are doing everything with real behaviors, it can be tricker to create or reset states.
+        You can't just change runtime variables like having a user with an existing shopping cart from a previous
+        session. With e2e tests you'll have to either have a user kept around that has that state permanently, or go
+        through all the steps to populate a shopping cart, but that wont let you test a legacy format.
+        Also, there's so much stuff out of your control. If an error message from the backend slightly changes, that
+        can cause your tests to fail, and depending on what framework you use, you might not be able to tell why the
+        test is failing, just that it cant find the string you want.
+      </aside>
+    </section>
+    <section>
+      <h2>E2E Tools</h2>
+      <div class="row">
+        <div class="column">
+          <h3>Browser</h3>
+          <ul>
+            <li>Playwright</li>
+            <li>Cypress</li>
+            <li>Selenium</li>
+            <li>TestCafe</li>
+          </ul>
         </div>
-        <aside class="notes">
-          Okay, tools again. I'm trying my best to include tools from other languags and systems. They genearlly all
-          work the same.
-          <p>
-            Nock has always been an under utilalized tool. I don't know if it will work in browsers, but its great in
-            express and nodejs. You can just target specific http requests and mock out responses. It can yell if the
-            targets arn't found so can highlight when your systems start making calls you forgot about.
-          </p>
-          <p>
-            Jest is a pretty big industry standard these days. I'll talk about it more when I talk about testing
-            frameworks, but it can also provide mocks.
-          </p>
-          <p>Sinon has been around forever, and for good reasons. Its mocks are straight forward and reliable</p>
-          <p>
-            Mock service worker is one I just learned about, it sounds like its nock, but for browsers. It gives you
-            the ability to intercept http calls and inject responses.
-          </p>
-        </aside>
-      </section>
-      <section>
-        <h2>"Regular"/"Unit" tests</h2>
-        <p>Focus on small units of work.</p>
-        <p>Make them fast, and have a ton of them</p>
-        <h3>Examples</h3>
-        <ul>
-          <li>Sum function</li>
-          <li>Convert one data model to another</li>
-          <li>Password strength component</li>
-        </ul>
-        <aside class="notes">
-          Okay, last item from my pyramid is what I'm calling unit tests. Ideally you only ever test a single function
-          or single unit of work, but but with react that can get a bit complicated. The main thing is they shouldn't be
-          testing anything it doesn't own. So no database, rest, graphql or anything else.
-        </aside>
-      </section>
-      <section>
-        <h2>Unit Tests - Strengths</h2>
-        <ul>
-          <li>Fast</li>
-          <li>Just focus on input and output</li>
-          <li>Easy to write</li>
-          <li>Easy to maintain</li>
-          <li>Can be run in parallel (unless you use globals 😭)</li>
-          <li>Indirectly can lead to maintainable and understandable code</li>
-        </ul>
-        <aside class="notes">
-          Since unit tests are not interfacing with any other systems, they are usually the most fast. You pass in some
-          inputs, and you check the outputs, you don't need to wait.
-          Because of this, the more practice you get with them, the more you want your functions to work in that way. So
-          for normal functions you can probably figure out how that works, just have parameters. But for things like a
-          react component, that means you want to have attributes not hooks like useeffect which is often used to make
-          external api calls. Have the hooks outside the component at the
-          integration level.
-          Then quickly you start writing functions and units that are small and do like one thing. It takes a while, and
-          I'll def go over how to do that later, but it does help.
-        </aside>
-      </section>
-      <section>
-        <h2>Unit Tests - Cons</h2>
-        <ul>
-          <li>Doesnt break when external systems change</li>
-          <li>Devevelopment before testing often involves coming back and redoing development to make it testable</li>
-          <li>Globals can make it hard to isolate</li>
-        </ul>
-        <aside class="notes">
-          The main downside is because you are testing inputs and outputs, there's no indication when external systems
-          change the inputs. In truth it shouldn't matter because you should have other tests that test those things,
-          but it is a gap here.
-          Also globals can make things really hard to test. If you use like a window dot location, or a process dot env,
-          since they are not passed in as inputs, you can't really control them or parallelize without issues.
-          Both are probably good reasons to refactor though.
-        </aside>
-      </section>
-      <section>
-        <h2>Unit Tests - Tools</h2>
-        A very non exhaustive list
-        <div class="row">
-          <div class="column">
-            <h3>Javascript</h3>
-            <ul>
-              <li>Jest</li>
-              <li>Mocha</li>
-              <li>Jasmine</li>
-            </ul>
-          </div>
-          <div class="column">
-            <h3>Golang</h3>
-            <ul>
-              <li>Go test</li>
-            </ul>
-            <h3>Python</h3>
-            <ul>
-              <li>Py.test</li>
-              <li>pyunit</li>
-            </ul>
-          </div>
-          <div class="column">
-            <h3>Ruby</h3>
-            <ul>
-              <li>rspec</li>
-            </ul>
-          </div>
+        <div class="column">
+          <h3>Mobile</h3>
+          <ul>
+            <li>Appium</li>
+          </ul>
         </div>
-        <aside class="notes">
-          I tried to list all I could think of, but dont worry, they all more or less work the same
-          way.
-          I would go as far as to say none of these are unit test specific. You'd have to pull in additional systems to
-          test with browsers, but they are more about running tests in general rather than unit tests.
-          As mentioned, jest is kinda the industry standard these days. It runs each test file in isolation so one file
-          cant accidently break a different file.
-          Mocha and Jasmine have been around forever and have lots of tooling and reporting for them. I think jest is
-          actually based on jasmine.
-        </aside>
-      </section>
-      <section>
-        <h1>Getting Started</h1>
-        <aside class="notes">
-          So I got started with testing long before I knew what formal testing was. My first job was
-          working directly on clients servers, live, with no backups. It was awful. So i got in the habit of isolating
-          what I was working on so I could run a simplified version on my own computer first.
-        </aside>
-      </section>
-      <section>
-        <h2>Getting started pt2</h2>
-        <p>You don't need a formal framework</p>
-        <pre><code data-trim><script type="text/template">
+        <!-- <div class="column"> -->
+        <!--   <h3>Visual</h3> -->
+        <!--   <ul> -->
+        <!--     <li>Chromatic</li> -->
+        <!--   </ul> -->
+        <!-- </div> -->
+      </div>
+      <aside class="notes">
+        Tooling. I'm far from an expert here as I'm no longer doing frontend development full time but i've included a
+        few I've heard about.
+        Selenium is one of the oldest browser automation tools out there. You can find so much guides and tips for it,
+        but at the same time, it breaks the easiest. Playwright and Cypress are much newer and more reliable, and at
+        least to some degree, have backing of browser developers. Lastly there's testcafe. From my research it uses
+        client side javascript to trigger browser behavior, as such it can let you test on anything from modern
+        browsers, phones, to even smart tvs.
+        I'm also mentioning appium because some of friends created and maintain it. It lets you automate a phone, so
+        install apps, click on things, etc. Its really quite powerful.
+      </aside>
+    </section>
+    <section>
+      <h2>Mocked E2E Tests</h2>
+    </section>
+    <section>
+      <h2>Mocked E2E Tests</h2>
+      <p>A hybrid model between full e2e and isolated testing.</p>
+      <p>Call mocks or fake endpoints to emulate.</p>
+      <p>Bigger units of work, but also more control.</p>
+      <h3>Examples</h3>
+      <ul>
+        <li>Login Form</li>
+        <li>REST server endpoint</li>
+      </ul>
+      <aside class="notes">
+        Okay, Mocked E2e tests, or integration tests, that tends to be what I write more of now, even though I
+        probably shouldn't. I'll use a real database, but i might mock out external systems like stripe. Especially if
+        I know said system is pretty stable.
+      </aside>
+    </section>
+    <section>
+      <h2>Mocked - Strengths</h2>
+      <ul>
+        <li>Can control states</li>
+        <li>Easy to spot new dependencies</li>
+      </ul>
+      <aside class="notes">
+        Strengths...
+        <p>
+          With using mocks and stubs and factories and all the other terms, you have a lot more control. For example,
+          instead of setting up a new user, marking them as abuse, and then trying to login. With mocks you can just
+          tell the user service to return a user in the right state.
+        </p>
+        <p>
+          And with most mocking libraries, they can yell at you when your code starts to connect to unmocked systems
+          or endpoints
+        </p>
+      </aside>
+    </section>
+    <section>
+      <h2>Mocked - Cons</h2>
+      <ul>
+        <li>Have to implement and maintain mocks or sample data</li>
+        <li>Can lead to complex mocks that dont actually test things</li>
+        <li>Can easily break if your code uses globals</li>
+        <li>Can hide external systems changing</li>
+      </ul>
+      <aside class="notes">
+        Cons.. Anyone who has done tests for a while will tell you how dangerous mocks can be. If your mocks just
+        return simple states, like static json files, its pretty safe, but it becomes so easy for your mocks to become
+        more dynamic. Return different states based on inputs. Soon your tests will start testing your mocks instead
+        of testing the systems the mocks use.
+        In non typed systems, it can also not be obvious when the system you are mocking has changed. This can mean
+        something small like you are assuming an whole number integer, when the api now returns a float or string.
+        Injecting mocks can be hard too, there are tools to make it easier, but if for example your function makes an
+        http call, and you use a global http library, it'll be hard to isolate the client enough that it doesn't leak
+        to other tests, or a test could be run in parallel.
+      </aside>
+    </section>
+    <section>
+      <h2>Mocked - Tools</h2>
+      Probably can include most e2e and unit test suites too
+      <div class="row">
+        <div class="column">
+          <h3>Javascript</h3>
+          <ul>
+            <li>Nock</li>
+            <li>Jest</li>
+            <li>Sinon</li>
+            <li>Mock Service Worker</li>
+          </ul>
+        </div>
+        <div class="column">
+          <h3>Golang</h3>
+          <ul>
+            <li>Gomock</li>
+            <li>Counterfeiter</li>
+            <li>Mockery</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="notes">
+        Okay, tools again. I'm trying my best to include tools from other languages and systems. They generally all
+        work the same.
+        <p>
+          Nock has always been an under utilalized tool. I don't know if it will work in browsers, but its great in
+          express and nodejs. You can just target specific http requests and mock out responses. It can yell if the
+          targets arn't found so can highlight when your systems start making calls you forgot about.
+        </p>
+        <p>
+          Jest is a pretty big industry standard these days. I'll talk about it more when I talk about testing
+          frameworks, but it can also provide mocks.
+        </p>
+        <p>Sinon has been around forever, and for good reasons. Its mocks are straight forward and reliable</p>
+        <p>
+          Mock service worker is one I just learned about, it sounds like its nock, but for browsers. It gives you
+          the ability to intercept http calls and inject responses.
+        </p>
+      </aside>
+    </section>
+    <section>
+      <h2>"Regular"/"Unit" tests</h2>
+      <p>Focus on small units of work.</p>
+      <p>Make them fast, and have a ton of them</p>
+      <h3>Examples</h3>
+      <ul>
+        <li>Sum function</li>
+        <li>Convert one data model to another</li>
+        <li>Password strength component</li>
+      </ul>
+      <aside class="notes">
+        Okay, last item from my pyramid is what I'm calling unit tests. Ideally you only ever test a single function
+        or single unit of work, but but with react that can get a bit complicated. The main thing is they shouldn't be
+        testing anything it doesn't own. So no database, rest, graphql or anything else.
+      </aside>
+    </section>
+    <section>
+      <h2>Unit Tests - Strengths</h2>
+      <ul>
+        <li>Fast</li>
+        <li>Just focus on input and output</li>
+        <li>Easy to write</li>
+        <li>Easy to maintain</li>
+        <li>Can be run in parallel (unless you use globals 😭)</li>
+        <li>Indirectly can lead to maintainable and understandable code</li>
+      </ul>
+      <aside class="notes">
+        Since unit tests are not interfacing with any other systems, they are usually the most fast. You pass in some
+        inputs, and you check the outputs, you don't need to wait.
+        Because of this, the more practice you get with them, the more you want your functions to work in that way. So
+        for normal functions you can probably figure out how that works, just have parameters. But for things like a
+        react component, that means you want to have attributes not hooks like useeffect which is often used to make
+        external api calls. Have the hooks outside the component at the
+        integration level.
+        Then quickly you start writing functions and units that are small and do like one thing. It takes a while, and
+        I'll def go over how to do that later, but it does help.
+      </aside>
+    </section>
+    <section>
+      <h2>Unit Tests - Cons</h2>
+      <ul>
+        <li>Doesnt break when external systems change</li>
+        <li>Devevelopment before testing often involves coming back and redoing development to make it testable</li>
+        <li>Globals can make it hard to isolate</li>
+      </ul>
+      <aside class="notes">
+        The main downside is because you are testing inputs and outputs, there's no indication when external systems
+        change the inputs. In truth it shouldn't matter because you should have other tests that test those things,
+        but it is a gap here.
+        Also globals can make things really hard to test. If you use like a window dot location, or a process dot env,
+        since they are not passed in as inputs, you can't really control them or parallelize without issues.
+        Both are probably good reasons to refactor though.
+      </aside>
+    </section>
+    <section>
+      <h2>Unit Tests - Tools</h2>
+      A very non exhaustive list
+      <div class="row">
+        <div class="column">
+          <h3>Javascript</h3>
+          <ul>
+            <li>Jest</li>
+            <li>Mocha</li>
+            <li>Jasmine</li>
+          </ul>
+        </div>
+        <div class="column">
+          <h3>Golang</h3>
+          <ul>
+            <li>Go test</li>
+          </ul>
+          <h3>Python</h3>
+          <ul>
+            <li>Py.test</li>
+            <li>pyunit</li>
+          </ul>
+        </div>
+        <div class="column">
+          <h3>Ruby</h3>
+          <ul>
+            <li>rspec</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="notes">
+        I tried to list all I could think of, but dont worry, they all more or less work the same
+        way.
+        I would go as far as to say none of these are unit test specific. You'd have to pull in additional systems to
+        test with browsers, but they are more about running tests in general rather than unit tests.
+        As mentioned, jest is kinda the industry standard these days. It runs each test file in isolation so one file
+        cant accidentally break a different file.
+        Mocha and Jasmine have been around forever and have lots of tooling and reporting for them. I think jest is
+        actually based on jasmine.
+      </aside>
+    </section>
+    <section>
+      <h1>Getting Started</h1>
+      <aside class="notes">
+        So I got started with testing long before I knew what formal testing was. My first job was
+        working directly on clients servers, live, with no backups. It was awful. So i got in the habit of isolating
+        what I was working on so I could run a simplified version on my own computer first.
+      </aside>
+    </section>
+    <section>
+      <h2>Getting started pt2</h2>
+      <p>You don't need a formal framework</p>
+      <pre><code data-trim><script type="text/template">
             const Users = require('./models/users.js');
 
             Users.createUser({
@@ -516,213 +484,215 @@
             }).then(function(user) {
               console.log($user);
             });
-        </script></code></pre>
-        <aside class="notes">
-          You really don't need a formal framework. Its totally fine, especially for your own
-          projects. I often just have test scripts that runs my function, then i check the output by hand. Over time I
-          got more comfortable using testing frameworks, so i might use that instead, but for setups with no tests, I
-          might just do that. So start there. Get in the habit. See the benefits then grow.
-        </aside>
-      </section>
-      <section>
-        <h2>Getting started pt3</h2>
-        <p>
-          <s>Testing every scenario</s>
-        </p>
-        <aside class="notes">
-          I think the biggest pitfall to get testing started is that people try to do everything at once. Its okay that
-          your test only checks the "everything was done right" path.
-          There's nothing wrong with that. Testing is an investment in the future. You can and should add more over
-          time, but one test is so much better than no tests.
-        </aside>
-      </section>
-      <section>
-        <h2>Start with bugs</h2>
-        <ul>
-          <li>Already include reproduction steps</li>
-          <li>Already need to have a way to say its done</li>
-        </ul>
-        <aside class="notes">
-          So my suggestion, if you arn't going to do tests with development, is to setup tests when you get bug reports,
-          sure start with the simple ones, but start there.
-          A good bug report will have reproduction steps, so you can design the scenario, and by reproducing the bug,
-          you understand the bug. Ideally you start with your test failing in that scenario.
-          Then you fix the problem. Now your test should show the problem is fixed.
-          Yay! you just did test driven development (sorta).
-          But all you are saying is this very exact scenario won't happen again. You don't need to do more than that.
-          It'll come over time
-        </aside>
-      </section>
-      <section>
-        <h2>Getting Started for real</h2>
-        <h2>Aka frameworks and automation</h2>
-        <aside class="notes">
-          Okay, how do you get ready for real?
-        </aside>
-      </section>
-      <section>
-        <h2>Install tooling</h2>
-        <pre><code data-trim class="language-bash"><script type="text/template">
+      </script></code></pre>
+      <aside class="notes">
+        You really don't need a formal framework. Its totally fine, especially for your own
+        projects. I often just have test scripts that runs my function, then i check the output by hand. Over time I
+        got more comfortable using testing frameworks, so i might use that instead, but for setups with no tests, I
+        might just do that. So start there. Get in the habit. See the benefits then grow.
+      </aside>
+    </section>
+    <section>
+      <h2>Getting started pt3</h2>
+      <p>
+        <s>Testing every scenario</s>
+      </p>
+      <aside class="notes">
+        I think the biggest pitfall to get testing started is that people try to do everything at once. Its okay that
+        your test only checks the "everything was done right" path.
+        There's nothing wrong with that. Testing is an investment in the future. You can and should add more over
+        time, but one test is so much better than no tests.
+      </aside>
+    </section>
+    <section>
+      <h2>Start with bugs</h2>
+      <ul>
+        <li>Already include reproduction steps</li>
+        <li>Already need to have a way to say its done</li>
+      </ul>
+      <aside class="notes">
+        So my suggestion, if you arn't going to do tests with development, is to setup tests when you get bug reports,
+        sure start with the simple ones, but start there.
+        A good bug report will have reproduction steps, so you can design the scenario, and by reproducing the bug,
+        you understand the bug. Ideally you start with your test failing in that scenario.
+        Then you fix the problem. Now your test should show the problem is fixed.
+        Yay! you just did test driven development (sorta).
+        But all you are saying is this very exact scenario won't happen again. You don't need to do more than that.
+        It'll come over time
+      </aside>
+    </section>
+    <section>
+      <h2>Getting Started for real</h2>
+      <h2>Aka frameworks and automation</h2>
+      <aside class="notes">
+        Okay, how do you get ready for real?
+      </aside>
+    </section>
+    <section>
+      <h2>Install tooling</h2>
+      <pre><code data-trim class="language-bash"><script type="text/template">
             $ npm install --save-dev jest
-        </script></code></pre>
-        <aside class="notes">
-          So i'm going to be using jest for my examples. Its the tooling i've most recently used in the javascript
-          space, and most other tools will be more or less the same. I will say its from facebook and i've found its
-          really the easiest to get started.
-          So first step is install jest into your project.
-        </aside>
-      </section>
-      <section>
-        <h3>sum.test.js</h3>
-        <pre><code data-trim class="language-javascript"><script type="text/template">
+      </script></code></pre>
+      <aside class="notes">
+        So i'm going to be using jest for my examples. Its the tooling i've most recently used in the javascript
+        space, and most other tools will be more or less the same. I will say its from facebook and i've found its
+        really the easiest to get started.
+        So first step is install jest into your project.
+      </aside>
+    </section>
+    <section>
+      <h3>sum.test.js</h3>
+      <pre><code data-trim class="language-javascript"><script type="text/template">
           const sum = (a, b) => a+b;
 
           test('adds 1 + 2 to equal 3', () => {
             expect(sum(1, 2)).toBe(3);
           })
-        </script></code></pre>
-        <aside class="notes">
-          Second is to create a test function, run your function, and check the output.
-          Lots of unit testing frameworks try and make things readable as english. In this case, you are describing the
-          test, then running the function, and confirming the return value is what is expected.
-        </aside>
-      </section>
-      <section>
-        <h3>Success!</h3>
-        <pre><code data-trim class="language-bash"><script type="text/template">
+      </script></code></pre>
+      <aside class="notes">
+        Second is to create a test function, run your function, and check the output.
+        Lots of unit testing frameworks try and make things readable as english. In this case, you are describing the
+        test, then running the function, and confirming the return value is what is expected.
+      </aside>
+    </section>
+    <section>
+      <h3>Success!</h3>
+      <pre><code data-trim class="language-bash"><script type="text/template">
           $ jest sum.test.js
-        </script></code></pre>
-        <figure>
-          <img src="./jest-output.png" alt="Jest output showing the test passed" />
-        </figure>
-        <aside class="notes">
-          Lastly run the test. With jest it should just be jest and then your filename or directory. Most other
-          frameworks work the same way.
-        </aside>
-      </section>
-      <section>
-        <h2>Automate it!</h2>
-        <div class="row">
-          <div class="column">
-            <h3>Code Servers</h3>
-            <ul>
-              <li>Commit hooks</li>
-              <li>
-                <a href="https://github.com/halkeye/demo-jest-github-actions">Github</a> / Gitlab actions
-              </li>
-            </ul>
-          </div>
-          <div class="column">
-            <h3>SaaS</h3>
-            <ul>
-              <li>Circle CI</li>
-              <li>Cloudbees (Jenkins)</li>
-            </ul>
-          </div>
-          <div class="column">
-            <h3>Self-Hosted</h3>
-            <ul>
-              <li>Jenkins</li>
-              <li>Tekton</li>
-            </ul>
-          </div>
+      </script></code></pre>
+      <figure>
+        <img src="./jest-output.png" alt="Jest output showing the test passed" />
+      </figure>
+      <aside class="notes">
+        Lastly run the test. With jest it should just be jest and then your filename or directory. Most other
+        frameworks work the same way.
+      </aside>
+    </section>
+    <section>
+      <h2>Automate it!</h2>
+      <div class="row">
+        <div class="column">
+          <h3>Code Servers</h3>
+          <ul>
+            <li>Commit hooks</li>
+            <li>
+              <a href="https://github.com/halkeye/demo-jest-github-actions">Github</a> / Gitlab actions
+            </li>
+          </ul>
         </div>
-        <aside class="notes">
-          Again, just some of the tooling I know about. As I was employed by cloudbees and worked on jenkins, I've made
-          sure to include it, but I almost exclusively use github actions for my own things and at work these days.
-        </aside>
-      </section>
-      <section>
-        <h3>Github Actions</h3>
-        <figure>
-          <img src="./github-actions.png" alt="Github actions showing a test run" />
-          <figcaption>
-            <a href="https://github.com/halkeye/demo-jest-github-actions/actions/runs/16254522455/job/45888756590">https://github.com/halkeye/demo-jest-github-actions</a>
-          </figcaption>
-        </figure>
-        <aside class="notes">
-          As past me is super worried he'll be out of time by now, I've just included a screenshot, but if you download
-          a copy of the slides you can see the example scripts I used to take the screenshot.
-          I will say I only needed a little bit of common github actions code to download the code, install node, then
-          run the tests, directly out of the previous slides. It has a nice output, and there's actual integration to
-          highlight errors directly in your prs.
-        </aside>
-      </section>
-      <section>
-        <h2>Tools I didn't know where to put</h2>
-        <ul>
-          <li>Chromatic - Visual regression testing (SaaS but i've seen open source versions)</li>
-          <li>Storybook - Component library</li>
-        </ul>
-        <aside class="notes">
-          So storybook and chromatic are tools that overlap with eachother, but at the same time can be used
-          independently.
-        </aside>
-      </section>
-      <section>
-        <h3>Storybook - Component library</h3>
-        <img src="./storybook.webp"
-             alt="Storybook screenshot showing a component library" />
-        <a href="https://storybook.js.org/">https://storybook.js.org/</a>
-        <a href="https://jenkins-io-components.netlify.app/">https://jenkins-io-components.netlify.app/</a>
-        <aside class="notes">
-          Storybook is a component library which means it can list out all your components, and show them in different
-          states. If that sounds like testing, it honestly overlaps a lot. There's actually plugins to run tests right
-          inside storybook. I've also seen plugins for letting you toggle your browsers prefer dark or light mode. Or
-          give you accessibility reports.
-          I really liked having tooling so you can change all the input values and see what the state looks like. When I
-          used it for jenkins, I embedded all the tests in there so you could step through the states the tests ran
-          through. It was really cool, and its like 5 versions since I used it, so I can only assume its mind blowing
-          now.
-          I've included a link to the last open source project i setup storybook for. Its probably pretty out of date,
-          but can show you some examples. The storybook website has other examples too.
-        </aside>
-      </section>
-      <section>
-        <h3>Chromatic - Visual regression testing</h3>
-        <img src="./chromatic.webp"
-             alt="Chromatic screenshot showing a visual regression test" />
-        <aside class="notes">
-          I'll admit when i started researching Chromatic again, its slightly expanded from what I remember. It was
-          first setup as an automated way to run your storybooks through different browsers and record visual changes.
-          They then had tools to show you the difference, and fail a pr, or require approval, etc.
-          I didn't end up using it for my open source work as it did had a cost factor and we didn't need that level of
-          detail at the time.
-          From what I reasearched this week, Storybook can actually do lots of the same things, so chromatic seems to
-          have focused on the workflow side of things, of the visual difference side as setting up a test farm is a lot
-          of work... I know because i helped run a saas test farm
-        </aside>
-      </section>
-      <section>
-        <h1>The End</h1>
-        <aside class="notes">
-          So thats all I have for this. As mentioned a few times, all my slides and notes are available. They are
-          written in revealjs, so you can inspect source, or press s to get speaker notes.
-        </aside>
-      </section>
-      <section>
-        <h2>Gavin Mogan</h2>
-        <p>
-          Senior Software Engineer at Digital Ocean.
-          <img src="./Sammy08.png"
-               alt="Digital Ocean Mascot, Sammy the Shark, holding a heart ballon"
-               width="100"
-               style="vertical-align: middle" />
-        </p>
-        <p>
-          <a href="https://www.gavinmogan.com">https://www.gavinmogan.com</a>
-        </p>
-        <p>
-          <div style="position: relative">
-            <img class="r-stretch"
-                 src="./avatar.original.png"
-                 alt="Avatar"
-                 width="400"
-                 alt="photo of child gavin in 1982 sitting infront of a computer at the time" />
-          </div>
-        </p>
-      </section>
-      <!--
+        <div class="column">
+          <h3>SaaS</h3>
+          <ul>
+            <li>Circle CI</li>
+            <li>Cloudbees (Jenkins)</li>
+          </ul>
+        </div>
+        <div class="column">
+          <h3>Self-Hosted</h3>
+          <ul>
+            <li>Jenkins</li>
+            <li>Tekton</li>
+          </ul>
+        </div>
+      </div>
+      <aside class="notes">
+        Again, just some of the tooling I know about. As I was employed by cloudbees and worked on jenkins, I've made
+        sure to include it, but I almost exclusively use github actions for my own things and at work these days.
+      </aside>
+    </section>
+    <section>
+      <h3>Github Actions</h3>
+      <figure>
+        <img src="./github-actions.png" alt="Github actions showing a test run" />
+        <figcaption>
+          <a href="https://github.com/halkeye/demo-jest-github-actions/actions/runs/16254522455/job/45888756590">https://github.com/halkeye/demo-jest-github-actions</a>
+        </figcaption>
+      </figure>
+      <aside class="notes">
+        As past me is super worried he'll be out of time by now, I've just included a screenshot, but if you download
+        a copy of the slides you can see the example scripts I used to take the screenshot.
+        I will say I only needed a little bit of common github actions code to download the code, install node, then
+        run the tests, directly out of the previous slides. It has a nice output, and there's actual integration to
+        highlight errors directly in your prs.
+      </aside>
+    </section>
+    <section>
+      <h2>Tools I didn't know where to put</h2>
+      <ul>
+        <li>Chromatic - Visual regression testing (SaaS but i've seen open source versions)</li>
+        <li>Storybook - Component library</li>
+      </ul>
+      <aside class="notes">
+        So storybook and chromatic are tools that overlap with eachother, but at the same time can be used
+        independently.
+      </aside>
+    </section>
+    <section>
+      <h3>Storybook - Component library</h3>
+      <img src="./storybook.webp"
+           alt="Storybook screenshot showing a component library" />
+      <a href="https://storybook.js.org/">https://storybook.js.org/</a>
+      <a href="https://jenkins-io-components.netlify.app/">https://jenkins-io-components.netlify.app/</a>
+      <aside class="notes">
+        Storybook is a component library which means it can list out all your components, and show them in different
+        states. If that sounds like testing, it honestly overlaps a lot. There's actually plugins to run tests right
+        inside storybook. I've also seen plugins for letting you toggle your browsers prefer dark or light mode. Or
+        give you accessibility reports.
+        I really liked having tooling so you can change all the input values and see what the state looks like. When I
+        used it for jenkins, I embedded all the tests in there so you could step through the states the tests ran
+        through. It was really cool, and its like 5 versions since I used it, so I can only assume its mind blowing
+        now.
+        I've included a link to the last open source project i setup storybook for. Its probably pretty out of date,
+        but can show you some examples. The storybook website has other examples too.
+      </aside>
+    </section>
+    <section>
+      <h3>Chromatic - Visual regression testing</h3>
+      <img src="./chromatic.webp"
+           alt="Chromatic screenshot showing a visual regression test" />
+      <aside class="notes">
+        I'll admit when i started researching Chromatic again, its slightly expanded from what I remember. It was
+        first setup as an automated way to run your storybooks through different browsers and record visual changes.
+        They then had tools to show you the difference, and fail a pr, or require approval, etc.
+        I didn't end up using it for my open source work as it did had a cost factor and we didn't need that level of
+        detail at the time.
+        From what I reasearched this week, Storybook can actually do lots of the same things, so chromatic seems to
+        have focused on the workflow side of things, of the visual difference side as setting up a test farm is a lot
+        of work... I know because i helped run a saas test farm
+      </aside>
+    </section>
+    <section>
+      <h1>The End</h1>
+      <aside class="notes">
+        So thats all I have for this. As mentioned a few times, all my slides and notes are available. They are
+        written in revealjs, so you can inspect source, or press s to get speaker notes.
+      </aside>
+    </section>
+    <section>
+      <h2>Gavin Mogan</h2>
+      <p>
+        Senior Software Engineer at Digital Ocean.
+        <img src="./Sammy08.png"
+             alt="Digital Ocean Mascot, Sammy the Shark, holding a heart ballon"
+             width="100"
+             style="vertical-align: middle" />
+      </p>
+      <p>
+        <a href="https://www.gavinmogan.com">https://www.gavinmogan.com</a>
+      </p>
+      <p>
+        <div style="position: relative">
+          <img class="r-stretch"
+               src="./avatar.original.png"
+               alt="Avatar"
+               width="400"
+               alt="photo of child gavin in 1982 sitting infront of a computer at the time" />
+        </div>
+      </p>
+    </section>
+  </div>
+</div>
+<!--
 What is testing?
 ---
 What kinds of tests? - In my opinion there are only two types that matter, integration and non integration tests. Most people will call non integration tests unit tests, but thats not totally accurate.
@@ -766,28 +736,3 @@ Well..... kinda. I still do this kind of thing a lot, especially when i'm thinki
 --- Move comments about react vs rest vs cli etc earlier on, and say "Gonna use react as my examples as I would expect the majority of people here have heard of it if not touched it.
 If you check out the deck on my website, I'm going to try and have some examples or references but not really cover them.
 -->
-    </div>
-  </div>
-  <script src="/assets/reveal/reveal.js"></script>
-  <script src="/assets/reveal/plugin/highlight/highlight.js"></script>
-  <script src="/assets/reveal/plugin/notes/notes.js"></script>
-  <script src="/assets/reveal/plugin/markdown/markdown.js"></script>
-  <script>
-    Reveal.initialize({
-      // view: 'scroll',
-      // scrollProgress: true,
-      controls: true,
-      progress: true,
-      history: true,
-      slideNumber: false,
-      plugins: [RevealNotes, RevealHighlight, RevealMarkdown]
-    });
-  </script>
-  <script defer
-          src="https://u.g4v.dev/script.js"
-          data-website-id="4b48952f-9dd2-4164-823e-d1c16af3733d"></script>
-  <script defer
-          data-domain="presentations.gavinmogan.com"
-          src="https://p.g4v.dev/js/script.file-downloads.outbound-links.js"></script>
-</body>
-</html>

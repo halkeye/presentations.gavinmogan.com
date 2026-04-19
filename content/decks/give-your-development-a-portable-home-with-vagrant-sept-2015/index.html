@@ -1,370 +1,362 @@
-<!DOCTYPE html>
-<html lang="{{ metadata.language }}">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="/assets/reveal/reveal.css" />
-    <link rel="stylesheet" href="/assets/reveal/theme/dracula.css" />
-    <link rel="stylesheet" href="/assets/reveal/plugin/highlight/monokai.css">
-    <title>Give your development a portable home with Vagrant</title>
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <!-- Title Slide -->
-        <section data-transition="zoom">
-          <h1 class="r-fit-text">Give your development a portable home with Vagrant</h1>
-        </section>
-        <!-- Who Am I -->
-        <section>
-          <h2>Who Am I?</h2>
-          <div>
-            <a href="mailto:gavin@gavinmogan.com" rel="me">Gavin Mogan</a>
-          </div>
-          <div>
-            <a href="https://web.archive.org/web/20221218113549/https://twitter.com/halkeye"
-               target="_blank">@halkeye</a>
-          </div>
-          <div>
-            <a href="https://www.gavinmogan.com" rel="me" target="_blank">https://www.gavinmogan.com</a>
-          </div>
-          <img src="./img/a2ce6e58e297f8bdabe2dcbf01e49e3d_1_.png"
-               alt="Gavin Mogan"
-               style="max-width: 360px">
-          <div>Been using computers before it was cool</div>
-          <div class="fragment">(okay not really)</div>
-          <aside class="notes">
-            I mostly am found online by a very misspelt halkeye. Best places to find me are probably twitter or
-            github.
-            <br />
-            <br />
-            I've been using computers FOREVER
-            <br />
-            <br />
-            I really love to tinker.
-            <br />
-            <br />
-            I, like a lot of people, have a huge problem starting projects and not finishing them.
-            <br />
-            <br />
-            This is my first big presentation.
-            <br />
-          </aside>
-        </section>
-        <!-- So what am I talking about? -->
-        <section>
-          <h2>So what am I talking about?</h2>
-          <div class="fragment">
-            <img src="./img/vagrant_chilling.png"
-                 alt="Vagrant chilling"
-                 class="r-stretch">
-          </div>
-          <div class="fragment">No not that kind of vagrant</div>
-          <div class="fragment" style="font-size: 0.6em;">
-            <a href="https://lanotdesign.deviantart.com/art/homeless-characters-154275235"
-               target="_blank">homeless
-            characters by LanotDesign</a>
-          </div>
-          <aside class="notes">
-            Vagrants!
-            <br />
-            <br />
-            Well.. not that vagrants
-            <br />
-          </aside>
-        </section>
-        <!-- What is Vagrant? -->
-        <section>
-          <h2>What is Vagrant?</h2>
-          <p>Vagrant is a simple tool that makes it easy to setup Virtual Machines</p>
-          <p>Its a pretty powerful tool.</p>
-          <p>Only covering the basics</p>
-          <aside class="notes">
-            Vagrant is a simple tool that makes it easy to setup Virtual Machines.
-            <br />
-            <br />
-            Its pretty powerful but my plan tonight is to only cover the absolute basics.
-            <br />
-            <br />
-            Feel free to seek me out if you want to ask more questions.
-            <br />
-          </aside>
-        </section>
-        <!-- And why should I care? -->
-        <section>
-          <h2>And why should I care?</h2>
-          <ul>
-            <li>
-              Documentation
-              <ul class="fragment">
-                <li>Always out of date.</li>
-              </ul>
-            </li>
-            <li>
-              Mentoring
-              <ul class="fragment">
-                <li>People often forget things they have not used in a while.</li>
-              </ul>
-            </li>
-            <li>
-              Onboarding
-              <ul class="fragment">
-                <li>Pretty much the previous two combined.</li>
-              </ul>
-            </li>
-            <li class="fragment">Don't want to wait to get started.</li>
-          </ul>
-          <aside class="notes">
-            I’m sure everyone here at one point or another has downloaded a game, or app, or just about anything else only
-            to find out that you need a bunch of other things before you can get started.
-            <br />
-            <br />
-            This can get really tedious really quickly.
-            <br />
-            <br />
-            What are the solutions?
-            <br />
-          </aside>
-        </section>
-        <!-- Story Time -->
-        <section>
-          <img src="./img/maxresdefault.jpg" alt="Story time" class="r-stretch">
-          <h2 class="fragment">I mean Contrived Example Time!</h2>
-        </section>
-        <!-- Sam - Developer -->
-        <section>
-          <img src="./img/head_red1.png" alt="Sam" style="max-height: 300px;">
-          <h2>Sam - Developer</h2>
-          <ul>
-            <li class="fragment">Has been working on the project "forever"</li>
-            <li class="fragment">Lots of linux experience</li>
-            <li class="fragment">Likes to tinker with the build process</li>
-          </ul>
-          <p style="font-size: 0.6em;">
-            "Sam" by <a href="https://rheall.me/" target="_blank">Heather L. Gilbraith</a>
-          </p>
-          <aside class="notes">
-            Meet Sam.
-            <br />
-            <br />
-            Sam is a long term developer on the team and has quite a bit of linux experience.
-            <br />
-            <br />
-            Sam has a bad habit of updating the build process, so documentation always seems out of date.
-            <br />
-          </aside>
-        </section>
-        <!-- Alex - Designer -->
-        <section>
-          <img src="./img/head_blue1.png" alt="Alex" style="max-height: 300px;">
-          <h2>Alex - Designer</h2>
-          <ul>
-            <li class="fragment">Wants project to just work</li>
-            <li class="fragment">Wants focus on getting work done</li>
-            <li class="fragment">Often frustrated with Sam</li>
-          </ul>
-          <p style="font-size: 0.6em;">
-            "Alex" by <a href="https://rheall.me/" target="_blank">Heather L.
-          Gilbraith</a>
-        </p>
-        <aside class="notes">
-          Alex is a designer, and mostly doesn’t care about how the application is built, just wants to try out new art
-          or designs.
-          <br />
-          <br />
-          As Sam keeps updating how the product is built, alex is constantly needing to seek help to be able to do
-          work.
-          <br />
-        </aside>
-      </section>
-      <!-- You - ??? -->
-      <section>
-        <img src="./img/729ab3aeec08c735838c08bf76dcb2c8_large.jpg"
-             alt="You"
+---
+title: Give your development a portable home with Vagrant
+---
+
+<div class="reveal">
+  <div class="slides">
+    <!-- Title Slide -->
+    <section data-transition="zoom">
+      <h1 class="r-fit-text">Give your development a portable home with Vagrant</h1>
+    </section>
+    <!-- Who Am I -->
+    <section>
+      <h2>Who Am I?</h2>
+      <div>
+        <a href="mailto:gavin@gavinmogan.com" rel="me">Gavin Mogan</a>
+      </div>
+      <div>
+        <a href="https://web.archive.org/web/20221218113549/https://twitter.com/halkeye"
+           target="_blank">@halkeye</a>
+      </div>
+      <div>
+        <a href="https://www.gavinmogan.com" rel="me" target="_blank">https://www.gavinmogan.com</a>
+      </div>
+      <img src="./img/a2ce6e58e297f8bdabe2dcbf01e49e3d_1_.png"
+           alt="Gavin Mogan"
+           style="max-width: 360px">
+      <div>Been using computers before it was cool</div>
+      <div class="fragment">(okay not really)</div>
+      <aside class="notes">
+        I mostly am found online by a very misspelt halkeye. Best places to find me are probably twitter or
+        github.
+        <br />
+        <br />
+        I've been using computers FOREVER
+        <br />
+        <br />
+        I really love to tinker.
+        <br />
+        <br />
+        I, like a lot of people, have a huge problem starting projects and not finishing them.
+        <br />
+        <br />
+        This is my first big presentation.
+        <br />
+      </aside>
+    </section>
+    <!-- So what am I talking about? -->
+    <section>
+      <h2>So what am I talking about?</h2>
+      <div class="fragment">
+        <img src="./img/vagrant_chilling.png"
+             alt="Vagrant chilling"
              class="r-stretch">
-        <h2>You - ???</h2>
+      </div>
+      <div class="fragment">No not that kind of vagrant</div>
+      <div class="fragment" style="font-size: 0.6em;">
+        <a href="https://lanotdesign.deviantart.com/art/homeless-characters-154275235"
+           target="_blank">homeless
+        characters by LanotDesign</a>
+      </div>
+      <aside class="notes">
+        Vagrants!
+        <br />
+        <br />
+        Well.. not that vagrants
+        <br />
+      </aside>
+    </section>
+    <!-- What is Vagrant? -->
+    <section>
+      <h2>What is Vagrant?</h2>
+      <p>Vagrant is a simple tool that makes it easy to setup Virtual Machines</p>
+      <p>Its a pretty powerful tool.</p>
+      <p>Only covering the basics</p>
+      <aside class="notes">
+        Vagrant is a simple tool that makes it easy to setup Virtual Machines.
+        <br />
+        <br />
+        Its pretty powerful but my plan tonight is to only cover the absolute basics.
+        <br />
+        <br />
+        Feel free to seek me out if you want to ask more questions.
+        <br />
+      </aside>
+    </section>
+    <!-- And why should I care? -->
+    <section>
+      <h2>And why should I care?</h2>
+      <ul>
+        <li>
+          Documentation
+          <ul class="fragment">
+            <li>Always out of date.</li>
+          </ul>
+        </li>
+        <li>
+          Mentoring
+          <ul class="fragment">
+            <li>People often forget things they have not used in a while.</li>
+          </ul>
+        </li>
+        <li>
+          Onboarding
+          <ul class="fragment">
+            <li>Pretty much the previous two combined.</li>
+          </ul>
+        </li>
+        <li class="fragment">Don't want to wait to get started.</li>
+      </ul>
+      <aside class="notes">
+        I’m sure everyone here at one point or another has downloaded a game, or app, or just about anything else only
+        to find out that you need a bunch of other things before you can get started.
+        <br />
+        <br />
+        This can get really tedious really quickly.
+        <br />
+        <br />
+        What are the solutions?
+        <br />
+      </aside>
+    </section>
+    <!-- Story Time -->
+    <section>
+      <img src="./img/maxresdefault.jpg" alt="Story time" class="r-stretch">
+      <h2 class="fragment">I mean Contrived Example Time!</h2>
+    </section>
+    <!-- Sam - Developer -->
+    <section>
+      <img src="./img/head_red1.png" alt="Sam" style="max-height: 300px;">
+      <h2>Sam - Developer</h2>
+      <ul>
+        <li class="fragment">Has been working on the project "forever"</li>
+        <li class="fragment">Lots of linux experience</li>
+        <li class="fragment">Likes to tinker with the build process</li>
+      </ul>
+      <p style="font-size: 0.6em;">
+        "Sam" by <a href="https://rheall.me/" target="_blank">Heather L. Gilbraith</a>
+      </p>
+      <aside class="notes">
+        Meet Sam.
+        <br />
+        <br />
+        Sam is a long term developer on the team and has quite a bit of linux experience.
+        <br />
+        <br />
+        Sam has a bad habit of updating the build process, so documentation always seems out of date.
+        <br />
+      </aside>
+    </section>
+    <!-- Alex - Designer -->
+    <section>
+      <img src="./img/head_blue1.png" alt="Alex" style="max-height: 300px;">
+      <h2>Alex - Designer</h2>
+      <ul>
+        <li class="fragment">Wants project to just work</li>
+        <li class="fragment">Wants focus on getting work done</li>
+        <li class="fragment">Often frustrated with Sam</li>
+      </ul>
+      <p style="font-size: 0.6em;">
+        "Alex" by <a href="https://rheall.me/" target="_blank">Heather L.
+      Gilbraith</a>
+    </p>
+    <aside class="notes">
+      Alex is a designer, and mostly doesn’t care about how the application is built, just wants to try out new art
+      or designs.
+      <br />
+      <br />
+      As Sam keeps updating how the product is built, alex is constantly needing to seek help to be able to do
+      work.
+      <br />
+    </aside>
+  </section>
+  <!-- You - ??? -->
+  <section>
+    <img src="./img/729ab3aeec08c735838c08bf76dcb2c8_large.jpg"
+         alt="You"
+         class="r-stretch">
+    <h2>You - ???</h2>
+    <ul>
+      <li class="fragment">New to the project</li>
+      <li class="fragment">Different Location?</li>
+      <li class="fragment">Often frustrated with Sam</li>
+    </ul>
+    <aside class="notes">
+      You. Well you know who you are.
+      <br />
+      <br />
+      You are new to the project.
+      <br />
+      Maybe you are at a different location. Working from home.
+      <br />
+      <br />
+      But still frustrated with sam
+      <br />
+    </aside>
+  </section>
+  <!-- Scene! -->
+  <section>
+    <h2>Scene!</h2>
+    <ol style="font-size: 0.8em;">
+      <li>Sam adds a new image compression tool to the builds</li>
+      <li>Sam pushes the code</li>
+      <li>
+        Sam forgot to update the documentation to include instructions
         <ul>
-          <li class="fragment">New to the project</li>
-          <li class="fragment">Different Location?</li>
-          <li class="fragment">Often frustrated with Sam</li>
+          <li>Windows - Good luck</li>
+          <li>Linux - apt-get install libpng-dev</li>
+          <li>OSX - brew install libpng</li>
         </ul>
-        <aside class="notes">
-          You. Well you know who you are.
-          <br />
-          <br />
-          You are new to the project.
-          <br />
-          Maybe you are at a different location. Working from home.
-          <br />
-          <br />
-          But still frustrated with sam
-          <br />
-        </aside>
-      </section>
-      <!-- Scene! -->
-      <section>
-        <h2>Scene!</h2>
-        <ol style="font-size: 0.8em;">
-          <li>Sam adds a new image compression tool to the builds</li>
-          <li>Sam pushes the code</li>
-          <li>
-            Sam forgot to update the documentation to include instructions
-            <ul>
-              <li>Windows - Good luck</li>
-              <li>Linux - apt-get install libpng-dev</li>
-              <li>OSX - brew install libpng</li>
-            </ul>
-          </li>
-          <li>Alex pulls down new code</li>
-          <li>Alex's build brakes, and is now blocked. Yells for Sam</li>
-          <li>FIGHT!</li>
-        </ol>
-        <img src="./img/giphy__1_.gif" alt="Fight" style="max-height: 200px;">
-        <aside class="notes">
-          Can you guess what happens next?
-        </aside>
-      </section>
-      <!-- Now with vagrant! -->
-      <section>
-        <h2>Now with vagrant!</h2>
-        <ol>
-          <li>Sam adds a new image compression tool to the builds</li>
-          <li>Sam adds "apt-get install libpng-dev" to Vagrantfile</li>
-          <li>Alex pulls down new code</li>
-          <li>Alex runs vagrant provision</li>
-          <li>Alex keeps working</li>
-        </ol>
-        <img src="./img/giphy__2_.gif" alt="Happy" class="r-stretch">
-      </section>
-      <!-- Real Life Example -->
-      <section>
-        <h2>Real Life Example</h2>
-        <p>
-          <a href="https://github.com/jquery/jquery-wp-content/blob/master/README.md"
-             target="_blank">jQuery
-          Documentation Site</a>
-        </p>
-        <img src="./img/Capture.PNG" alt="jQuery docs" class="fragment r-stretch">
-        <aside class="notes">
-          Jquery has a setup so you can download a vagrant setup, and suddenly have webservers that run all the jquery
-          sites... api.. docs.. etc
-          <br />
-          <br />
-          I found this nice quote of some of the frustrations of open source work.
-          <br />
-        </aside>
-      </section>
-      <!-- So what is vagrant? (summary) -->
-      <section>
-        <h2>So what is vagrant?</h2>
+      </li>
+      <li>Alex pulls down new code</li>
+      <li>Alex's build brakes, and is now blocked. Yells for Sam</li>
+      <li>FIGHT!</li>
+    </ol>
+    <img src="./img/giphy__1_.gif" alt="Fight" style="max-height: 200px;">
+    <aside class="notes">
+      Can you guess what happens next?
+    </aside>
+  </section>
+  <!-- Now with vagrant! -->
+  <section>
+    <h2>Now with vagrant!</h2>
+    <ol>
+      <li>Sam adds a new image compression tool to the builds</li>
+      <li>Sam adds "apt-get install libpng-dev" to Vagrantfile</li>
+      <li>Alex pulls down new code</li>
+      <li>Alex runs vagrant provision</li>
+      <li>Alex keeps working</li>
+    </ol>
+    <img src="./img/giphy__2_.gif" alt="Happy" class="r-stretch">
+  </section>
+  <!-- Real Life Example -->
+  <section>
+    <h2>Real Life Example</h2>
+    <p>
+      <a href="https://github.com/jquery/jquery-wp-content/blob/master/README.md"
+         target="_blank">jQuery
+      Documentation Site</a>
+    </p>
+    <img src="./img/Capture.PNG" alt="jQuery docs" class="fragment r-stretch">
+    <aside class="notes">
+      Jquery has a setup so you can download a vagrant setup, and suddenly have webservers that run all the jquery
+      sites... api.. docs.. etc
+      <br />
+      <br />
+      I found this nice quote of some of the frustrations of open source work.
+      <br />
+    </aside>
+  </section>
+  <!-- So what is vagrant? (summary) -->
+  <section>
+    <h2>So what is vagrant?</h2>
+    <ul>
+      <li>A way to quickly setup a consistent environment</li>
+      <li>It doesn't care what you are running, its only job is to setup a working environment</li>
+      <li>Re-creatable</li>
+      <li>Great tool for getting everyone to have a consistent environment</li>
+    </ul>
+  </section>
+  <!-- Did I mention consistent? -->
+  <section>
+    <h2>Did I mention consistent?</h2>
+    <img src="./img/whm75Vh_-_Imgur.gif" alt="Consistent" class="r-stretch">
+  </section>
+  <!-- How does it work? -->
+  <section>
+    <h2>How does it work?</h2>
+    <ul>
+      <li>
+        Uses virtual machine software, at this point almost everything is available
         <ul>
-          <li>A way to quickly setup a consistent environment</li>
-          <li>It doesn't care what you are running, its only job is to setup a working environment</li>
-          <li>Re-creatable</li>
-          <li>Great tool for getting everyone to have a consistent environment</li>
+          <li>Virtual Box, VMWare, Hyper-V (windows), Docker, Probably more</li>
         </ul>
-      </section>
-      <!-- Did I mention consistent? -->
-      <section>
-        <h2>Did I mention consistent?</h2>
-        <img src="./img/whm75Vh_-_Imgur.gif" alt="Consistent" class="r-stretch">
-      </section>
-      <!-- How does it work? -->
-      <section>
-        <h2>How does it work?</h2>
+      </li>
+    </ul>
+    <ul class="fragment">
+      <li>Downloads a VM image</li>
+      <li>Applies steps</li>
+      <li>Success!</li>
+      <li>Profit</li>
+    </ul>
+    <img src="./img/giphy.gif"
+         alt="Profit"
+         class="fragment"
+         style="max-height: 200px">
+  </section>
+  <!-- No really, How does it work? -->
+  <section>
+    <h2>No really, How does it work?</h2>
+    <ol style="font-size: 0.7em; text-align: left;">
+      <li>
+        Install your favourite Virtual Machine System
+        <ul>
+          <li>I suggest virtualbox</li>
+          <li>Don't install (or at least don't run) multiple</li>
+        </ul>
+      </li>
+      <li>
+        Install Vagrant
+        <ul>
+          <li>Very easy installer for most platforms</li>
+          <li>
+            <a href="https://www.vagrantup.com/downloads.html" target="_blank">https://www.vagrantup.com/downloads.html</a>
+          </li>
+        </ul>
+      </li>
+      <li>Launch terminal/command prompt</li>
+      <li>Change to project directory</li>
+      <li>
+        vagrant init ubuntu/trusty64
         <ul>
           <li>
-            Uses virtual machine software, at this point almost everything is available
-            <ul>
-              <li>Virtual Box, VMWare, Hyper-V (windows), Docker, Probably more</li>
-            </ul>
+            Lots of options - <a href="https://atlas.hashicorp.com/boxes/search" target="_blank">https://atlas.hashicorp.com/boxes/search</a>
           </li>
         </ul>
-        <ul class="fragment">
-          <li>Downloads a VM image</li>
-          <li>Applies steps</li>
-          <li>Success!</li>
-          <li>Profit</li>
-        </ul>
-        <img src="./img/giphy.gif"
-             alt="Profit"
-             class="fragment"
-             style="max-height: 200px">
-      </section>
-      <!-- No really, How does it work? -->
-      <section>
-        <h2>No really, How does it work?</h2>
-        <ol style="font-size: 0.7em; text-align: left;">
-          <li>
-            Install your favourite Virtual Machine System
-            <ul>
-              <li>I suggest virtualbox</li>
-              <li>Don't install (or at least don't run) multiple</li>
-            </ul>
-          </li>
-          <li>
-            Install Vagrant
-            <ul>
-              <li>Very easy installer for most platforms</li>
-              <li>
-                <a href="https://www.vagrantup.com/downloads.html" target="_blank">https://www.vagrantup.com/downloads.html</a>
-              </li>
-            </ul>
-          </li>
-          <li>Launch terminal/command prompt</li>
-          <li>Change to project directory</li>
-          <li>
-            vagrant init ubuntu/trusty64
-            <ul>
-              <li>
-                Lots of options - <a href="https://atlas.hashicorp.com/boxes/search" target="_blank">https://atlas.hashicorp.com/boxes/search</a>
-              </li>
-            </ul>
-          </li>
-          <li>vagrant up</li>
-          <li>vagrant ssh</li>
-        </ol>
-      </section>
-      <!-- Screenshot -->
-      <section>
-        <img src="./img/vagrant.png" alt="Vagrant screenshot" class="r-stretch">
-      </section>
-      <!-- Well that's not super useful -->
-      <section>
-        <h2>Well that's not super useful.</h2>
-        <h2>Now what?</h2>
+      </li>
+      <li>vagrant up</li>
+      <li>vagrant ssh</li>
+    </ol>
+  </section>
+  <!-- Screenshot -->
+  <section>
+    <img src="./img/vagrant.png" alt="Vagrant screenshot" class="r-stretch">
+  </section>
+  <!-- Well that's not super useful -->
+  <section>
+    <h2>Well that's not super useful.</h2>
+    <h2>Now what?</h2>
+    <ul>
+      <li>Config file (Vagrantfile) is really well documented</li>
+      <li>Can setup port forwards</li>
+      <li>Shared directories</li>
+      <li>
+        Provisioning
         <ul>
-          <li>Config file (Vagrantfile) is really well documented</li>
-          <li>Can setup port forwards</li>
-          <li>Shared directories</li>
-          <li>
-            Provisioning
-            <ul>
-              <li>Simple Shell scripts</li>
-              <li>Puppet</li>
-              <li>Chef</li>
-              <li>Ansible</li>
-              <li>More</li>
-            </ul>
-          </li>
+          <li>Simple Shell scripts</li>
+          <li>Puppet</li>
+          <li>Chef</li>
+          <li>Ansible</li>
+          <li>More</li>
         </ul>
-        <aside class="notes">
-          Provisioning - Fancy word for setting up
-          <br />
-          <br />
-          ---
-          <br />
-          <br />
-          At work we use it to test our Change Management tooling, as well make sure all developers can work on any
-          project easily.
-          <br />
-        </aside>
-      </section>
-      <!-- Bonus -->
-      <section>
-        <h1>Bonus</h1>
-        <pre><code data-trim><script type="text/template">
+      </li>
+    </ul>
+    <aside class="notes">
+      Provisioning - Fancy word for setting up
+      <br />
+      <br />
+      ---
+      <br />
+      <br />
+      At work we use it to test our Change Management tooling, as well make sure all developers can work on any
+      project easily.
+      <br />
+    </aside>
+  </section>
+  <!-- Bonus -->
+  <section>
+    <h1>Bonus</h1>
+    <pre><code data-trim><script type="text/template">
           # Vagrantfile
 
           # Real file is super commented
@@ -378,46 +370,28 @@
               sudo apt-get install -y libpng-dev
             SHELL
           end
-        </script></code></pre>
-      </section>
-      <!-- Thanks -->
-      <section>
-        <h1>Thanks!</h1>
-        <p>
-          <a href="mailto:gavin@gavinmogan.com">Gavin Mogan</a>
-        </p>
-        <p>
-          <a href="https://web.archive.org/web/20221218113549/https://twitter.com/halkeye"
-             target="_blank">@halkeye</a>
-        </p>
-        <p>
-          <a href="https://www.gavinmogan.com" target="_blank">https://www.gavinmogan.com</a>
-        </p>
-        <img src="./img/a2ce6e58e297f8bdabe2dcbf01e49e3d_1_.png"
-             alt="Gavin Mogan"
-             style="max-width: 360px">
-        <p>
-          <a href="https://yvrdev.herokuapp.com/" target="_blank">YVR Developers Slack</a> -
-          https://yvrdev.herokuapp.com/
-        </p>
-      </section>
-    </div>
-  </div>
-  <script src="/assets/reveal/reveal.js"></script>
-  <script src="/assets/reveal/plugin/highlight/highlight.js"></script>
-  <script src="/assets/reveal/plugin/notes/notes.js"></script>
-  <script src="/assets/reveal/plugin/markdown/markdown.js"></script>
-  <script>
-    Reveal.initialize({
-      controls: true,
-      progress: true,
-      history: true,
-      slideNumber: false,
-      plugins: [RevealNotes, RevealHighlight, RevealMarkdown]
-    });
-  </script>
-  <script defer
-          src="https://u.g4v.dev/script.js"
-          data-website-id="4b48952f-9dd2-4164-823e-d1c16af3733d"></script>
-</body>
-</html>
+    </script></code></pre>
+  </section>
+  <!-- Thanks -->
+  <section>
+    <h1>Thanks!</h1>
+    <p>
+      <a href="mailto:gavin@gavinmogan.com">Gavin Mogan</a>
+    </p>
+    <p>
+      <a href="https://web.archive.org/web/20221218113549/https://twitter.com/halkeye"
+         target="_blank">@halkeye</a>
+    </p>
+    <p>
+      <a href="https://www.gavinmogan.com" target="_blank">https://www.gavinmogan.com</a>
+    </p>
+    <img src="./img/a2ce6e58e297f8bdabe2dcbf01e49e3d_1_.png"
+         alt="Gavin Mogan"
+         style="max-width: 360px">
+    <p>
+      <a href="https://yvrdev.herokuapp.com/" target="_blank">YVR Developers Slack</a> -
+      https://yvrdev.herokuapp.com/
+    </p>
+  </section>
+</div>
+</div>

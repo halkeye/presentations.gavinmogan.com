@@ -1,125 +1,118 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ metadata.language or "en" }}">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title or metadata.title }}</title>
-  <meta name="description" content="{{ description or metadata.description }}">
-  <meta name="generator" content="{{ eleventy.generator }}">
-  <meta name="title" content="{{ title or metadata.title }}">
-
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ page.url | absoluteUrl }}">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="{{ title or metadata.title }}">
-  {%- if image %}
-  <meta property="og:image" content="{{ image | absoluteUrl }}">
-  {%- endif %}
-  <meta property="og:image:alt" content="{{ title or metadata.title }}">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:url" content="{{ page.url | absoluteUrl }}">
-  <meta name="twitter:title" content="{{ title or metadata.title }}">
-  {%- if image %}
-  <meta name="twitter:image" content="{{ image | absoluteUrl }}">
-  {%- endif %}
-  <meta name="twitter:image:alt" content="{{ title or metadata.title }}">
-  <link rel="canonical" href="{{ page.url | absoluteUrl }}">
-
-  {% set css %}
-  {% include "../tailwind.css" %}
-  {% endset %}
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&family=Space+Grotesk:wght@400;700&family=Sora:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-
-  <{{ "style" }}>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or metadata.title }}</title>
+    <meta name="description"
+          content="{{ description or metadata.description }}">
+    <meta name="generator" content="{{ eleventy.generator }}">
+    <meta name="title" content="{{ title or metadata.title }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ page.url | absoluteUrl }}">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:title" content="{{ title or metadata.title }}">
+    {%- if image %}<meta property="og:image" content="{{ image | absoluteUrl }}">{%- endif %}
+    <meta property="og:image:alt" content="{{ title or metadata.title }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="{{ page.url | absoluteUrl }}">
+    <meta name="twitter:title" content="{{ title or metadata.title }}">
+    {%- if image %}<meta name="twitter:image" content="{{ image | absoluteUrl }}">{%- endif %}
+    <meta name="twitter:image:alt" content="{{ title or metadata.title }}">
+    <link rel="canonical" href="{{ page.url | absoluteUrl }}">
+    {% set css %}
+      {% include "../tailwind.css" %}
+    {% endset %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&family=Space+Grotesk:wght@400;700&family=Sora:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+    <{{ "style" }}>
     {{ css | postcss | safe }}
-  </{{ "style" }}>
-</head>
-
-<body class="flex flex-col min-h-screen">
-  <header class="flex justify-center py-8 px-4 relative">
-    <nav>
-      <ul class="menu menu-horizontal bg-base-200 rounded-full text-secondary">
-        <li>
-          <a href="https://www.gavinmogan.com" class="rounded-full p-3" title="Main Website" rel="me atproto">
-            {% svg 'icon-website-main', "size-6" %}
-          </a>
-        </li>
-        <li>
-          <a href="https://apps.gavinmogan.com/" class="rounded-full p-3" title="Applications and Demos">
-            {% svg 'icon-website-apps', "size-6" %}
-          </a>
-        </li>
-        <li>
-          <a href="https://blog.gavinmogan.com/" class="rounded-full p-3" title="Blog">
-            {% svg 'icon-website-blog', "size-6" %}
-          </a>
-        </li>
-        <li>
-          <a href="/" class="menu-active rounded-full p-3" title="Presentations">
-            {% svg 'icon-website-presentations', "size-6" %}
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-    <label class="swap swap-rotate text-primary absolute right-2 md:right-8" title="Light/Dark Theme Selector">
-      <!-- this hidden checkbox controls the state -->
-      <input type="checkbox" class="theme-controller" value="customlight" />
-
-      {% svg 'icon-theme-light', "swap-off h-8 w-8 md:h-10 md:w-10 fill-current" %}
-      {% svg 'icon-theme-dark', "swap-on h-8 w-8 md:h-10 md:w-10 fill-current" %}
-    </label>
-  </header>
-
-  <main id="skip" class="max-w-7xl m-auto flex flex-col gap-12 py-12 px-4 grow-1">
-    {{ content | safe }}
-  </main>
-
-  <footer class="bg-base-200">
-    <div class="max-w-7xl m-auto py-8 px-4 flex gap-4">
-      <a rel="me" href="https://www.linkedin.com/in/halkeye/" target="_blank" title="LinkedIn" class="bg-base-100/40 text-secondary p-1
-        rounded-xl">
-        {% svg 'icon-linkedin', "size-10" %}
-      </a>
-
-      <a rel="me" href="https://bsky.app/profile/halkeye.net" target="_blank" title="Blue Sky"
-        class="bg-base-100/40 text-info p-1 rounded-xl">
-        {% svg 'icon-bluesky', "size-10" %}
-      </a>
-
-      <a hrel="me" ref="https://www.instagram.com/whyamigavin/" target="_blank" title="Instagram" class="bg-base-100/40 text-primary p-1
-        rounded-xl">
-        {% svg 'icon-instagram', "size-10" %}
-      </a>
-
-      <a hrel="me" ref="https://toot.cafe/@halkeye" target="_blank" title="Mastodon" class="bg-base-100/40 text-[color:var(--color-accent-alt)]
-        p-1
-        rounded-xl">
-        {% svg 'icon-fediverse', "size-10" %}
-      </a>
-
-      <a hrel="me" ref="https://matrix.to/#/@halkeye:g4v.dev" target="_blank" title="Direct Matrix Chat"
-        class="bg-base-100/40 text-accent p-1 rounded-xl">
-        {% svg 'icon-matrix', "size-10" %}
-      </a>
-
-      <a hrel="me" ref="https://github.com/halkeye" target="_blank" title="Github"
-        class="bg-base-100/40 text-accent p-1 rounded-xl">
-        {% svg 'icon-github', "size-10 fill-(--color-secondary) " %}
-      </a>
-    </div>
-  </footer>
-  <script src="/assets/lite-youtube-embed/src/lite-yt-embed.js"></script>
-
-  <script defer src="https://u.g4v.dev/script.js" data-website-id="4b48952f-9dd2-4164-823e-d1c16af3733d"></script>
-  <!-- Current page: {{ page.url | htmlBaseUrl }} -->
-  {% svgsprite %}
-</body>
-
+    </{{ "style" }}>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <header class="flex justify-center py-8 px-4 relative">
+      <nav>
+        <ul class="menu menu-horizontal bg-base-200 rounded-full text-secondary">
+          <li>
+            <a href="https://www.gavinmogan.com"
+               class="rounded-full p-3"
+               title="Main Website"
+               rel="me atproto">{% svg 'icon-website-main', "size-6" %}</a>
+          </li>
+          <li>
+            <a href="https://apps.gavinmogan.com/"
+               class="rounded-full p-3"
+               title="Applications and Demos">{% svg 'icon-website-apps', "size-6" %}</a>
+          </li>
+          <li>
+            <a href="https://blog.gavinmogan.com/"
+               class="rounded-full p-3"
+               title="Blog">{% svg 'icon-website-blog', "size-6" %}</a>
+          </li>
+          <li>
+            <a href="/" class="menu-active rounded-full p-3" title="Presentations">
+              {% svg 'icon-website-presentations', "size-6" %}
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <label class="swap swap-rotate text-primary absolute right-2 md:right-8"
+             title="Light/Dark Theme Selector">
+        <!-- this hidden checkbox controls the state -->
+        <input type="checkbox" class="theme-controller" value="customlight" />
+        {% svg 'icon-theme-light', "swap-off h-8 w-8 md:h-10 md:w-10 fill-current" %}
+        {% svg 'icon-theme-dark', "swap-on h-8 w-8 md:h-10 md:w-10 fill-current" %}
+      </label>
+    </header>
+    <main id="skip"
+          class="max-w-7xl m-auto flex flex-col gap-12 py-12 px-4 grow-1">
+      {{ content | safe }}
+    </main>
+    <footer class="bg-base-200">
+      <div class="max-w-7xl m-auto py-8 px-4 flex gap-4">
+        <a rel="me"
+           href="https://www.linkedin.com/in/halkeye/"
+           target="_blank"
+           title="LinkedIn"
+           class="bg-base-100/40 text-secondary p-1 rounded-xl">{% svg 'icon-linkedin', "size-10" %}</a>
+        <a rel="me"
+           href="https://bsky.app/profile/halkeye.net"
+           target="_blank"
+           title="Blue Sky"
+           class="bg-base-100/40 text-info p-1 rounded-xl">{% svg 'icon-bluesky', "size-10" %}</a>
+        <a hrel="me"
+           ref="https://www.instagram.com/whyamigavin/"
+           target="_blank"
+           title="Instagram"
+           class="bg-base-100/40 text-primary p-1 rounded-xl">{% svg 'icon-instagram', "size-10" %}</a>
+        <a hrel="me"
+           ref="https://toot.cafe/@halkeye"
+           target="_blank"
+           title="Mastodon"
+           class="bg-base-100/40 text-[color:var(--color-accent-alt)] p-1 rounded-xl">
+          {% svg 'icon-fediverse', "size-10" %}
+        </a>
+        <a hrel="me"
+           ref="https://matrix.to/#/@halkeye:g4v.dev"
+           target="_blank"
+           title="Direct Matrix Chat"
+           class="bg-base-100/40 text-accent p-1 rounded-xl">{% svg 'icon-matrix', "size-10" %}</a>
+        <a hrel="me"
+           ref="https://github.com/halkeye"
+           target="_blank"
+           title="Github"
+           class="bg-base-100/40 text-accent p-1 rounded-xl">
+          {% svg 'icon-github', "size-10 fill-(--color-secondary) " %}
+        </a>
+      </div>
+    </footer>
+    <script src="/assets/lite-youtube-embed/src/lite-yt-embed.js"></script>
+    <script defer
+            src="https://u.g4v.dev/script.js"
+            data-website-id="4b48952f-9dd2-4164-823e-d1c16af3733d"></script>
+    <!-- Current page: {{ page.url | htmlBaseUrl }} -->
+    {% svgsprite %}
+  </body>
 </html>
