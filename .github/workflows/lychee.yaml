@@ -42,7 +42,7 @@ jobs:
         id: lychee
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
-          args: --no-progress --base _site --exclude https://fonts.gstatic.com/ --exclude https://fonts.googleapis.com/ '_site'
+          args: --no-progress --root-dir _site --exclude https://fonts.gstatic.com/ --exclude https://fonts.googleapis.com/ '_site'
           output: "${{ env.LYCHEE_OUTPUT }}"
           debug: true
 
