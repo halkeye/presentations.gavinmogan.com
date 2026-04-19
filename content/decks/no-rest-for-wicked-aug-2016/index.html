@@ -1,14 +1,14 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ metadata.language }}">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" href="/assets/reveal/reveal.css" />
-  <link rel="stylesheet" href="/assets/reveal/theme/dracula.css" />
-  <link rel="stylesheet" href="/assets/reveal/plugin/highlight/monokai.css">
-  <title>No REST for the wicked</title>
-  <style>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/assets/reveal/reveal.css" />
+    <link rel="stylesheet" href="/assets/reveal/theme/dracula.css" />
+    <link rel="stylesheet" href="/assets/reveal/plugin/highlight/monokai.css">
+    <title>No REST for the wicked</title>
+    <style>
     ul[aria-label]:before {
       content: attr(aria-label);
       color: rgb(255, 153, 0);
@@ -22,28 +22,32 @@
       font-size: 80%;
       margin-left: -35px;
     }
-  </style>
-</head>
-
-<body>
-  <div class="reveal">
-    <div class="slides">
-      <section data-transition="zoom">
-        <h1 class="r-fit-text">No REST for the wicked</h1>
-        <img src="./img/giphy__1_.gif" alt="" class="r-stretch" /></a>
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-transition="zoom">
+          <h1 class="r-fit-text">No REST for the wicked</h1>
+          <img src="./img/giphy__1_.gif" alt="" class="r-stretch" />
+        </a>
         <p class="fragment">Howtos, Tricks and Tips to build REST Servers</p>
       </section>
       <section>
         <h2>Gavin Mogan</h2>
         <p>Code Monkey @ Sauce Labs</p>
-        <p><a href="https://web.archive.org/web/20221218113549/https://twitter.com/halkeye" target="_blank">@halkeye</a></p>
-        <p><a href="https://www.gavinmogan.com" target="_blank">https://www.gavinmogan.com</a></p>
-        <img src="./img/2011-07-15_13.png">
+        <p>
+          <a href="https://web.archive.org/web/20221218113549/https://twitter.com/halkeye"
+             target="_blank">@halkeye</a>
+        </p>
+        <p>
+          <a href="https://www.gavinmogan.com" target="_blank">https://www.gavinmogan.com</a>
+        </p>
+        <img src="./img/2011-07-15_13.png"
+             alt="profile photo of gavin with hair in a mess">
         <aside class="notes">
           Hi
-
           I'm Gavin and I work as a code monkey at Sauce Labs here in vancouver.
-
           So a little about myself. I'm kinda a goofball at the best of times. I'm very much a generalist and as such, I
           know enough to get me in trouble about a lot of topics. And as such, I love sharing and learning as much as
           possible.
@@ -59,7 +63,6 @@
         </ul>
         <aside class="notes">
           Tonight I'm going to cover a little bit how HTTP and REST Services work.
-
           Tonight is my third talk at code and coffee, and since I'm someone who loves to learn and experiment, I'm
           going to try at least one new thing. With that, I'm going to need a volunteer.
         </aside>
@@ -97,27 +100,23 @@
         <aside class="notes">
           HTTP is actually a super simple protocol. Its probably why its been around for so long. Generally what people
           think of HTTP as is the current version, HTTP/1.1, HTTP/1.0 still works, and 0.9 is very hit or miss
-
           When your browser starts talking to a server, thats a request, and when it responses its a ... response. Yea I
           know.
-
           The cool thing about HTTP is it really allows for a lot of expandability. You really only need the first line
           of the request to do anything.
         </aside>
       </section>
       <section>
         <p>Request</p>
-        <pre>
-          <code data-trim data-noescape>
-            GET /index.html HTTP/1.1
-            Host: www.example.com
-            Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
-            Accept-Language: en-CA,en;q=0.8
-            Cache-Control: max-age=0
-            User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103
-            Safari/537.36
-          </code>
-        </pre>
+        <pre><code data-trim><script type="text/template">
+          GET /index.html HTTP/1.1
+          Host: www.example.com
+          Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+          Accept-Language: en-CA,en;q=0.8
+          Cache-Control: max-age=0
+          User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103
+          Safari/537.36
+        </script></code></pre>
         <aside class="notes">
           The request is made up of a method, a path and a protocol version. In this case, the method is GET, the path
           is slash index and the version is 1.1.
@@ -131,25 +130,23 @@
       </section>
       <section>
         <p>Response</p>
-        <pre>
-          <code data-trim data-noescape>
-            HTTP/1.1 200 OK
-            Date: Mon, 23 May 2005 22:38:34 GMT
-            Content-Type: text/html; charset=UTF-8
-            Content-Encoding: UTF-8
-            Content-Length: 138
-            Last-Modified: Wed, 08 Jan 2003 23:11:55 GMT
-            Server: Apache/1.3.3.7 (Unix) (Red-Hat/Linux)
-            ETag: "3f80f-1b6-3e1cb03b"
+        <pre><code data-trim><script type="text/template">
+          HTTP/1.1 200 OK
+          Date: Mon, 23 May 2005 22:38:34 GMT
+          Content-Type: text/html; charset=UTF-8
+          Content-Encoding: UTF-8
+          Content-Length: 138
+          Last-Modified: Wed, 08 Jan 2003 23:11:55 GMT
+          Server: Apache/1.3.3.7 (Unix) (Red-Hat/Linux)
+          ETag: "3f80f-1b6-3e1cb03b"
 
-            &lt;html&gt;
-            &lt;head&gt;
-            &lt;title&gt;An Example Page&lt;/title&gt;
-            &lt;/head&gt;
-            &lt;body&gt;Hello World, this is a very simple HTML document.&lt;/body&gt;
-            &lt;/html&gt;
-          </code>
-        </pre>
+          <html>
+          <head>
+          <title>An Example Page</title>
+          </head>
+          <body>Hello World, this is a very simple HTML document.</body>
+          </html>
+        </script></code></pre>
         <aside class="notes">
           The response follows the same sort of pattern. Http version, followed by status code and status string.
           <br />
@@ -196,17 +193,24 @@
           </section>
         </section>
         <aside class="notes">
-          tab1:<br />
-          webbie<br />
+          tab1:
           <br />
-          tab2:<br />
-          telnet localhost 8000<br />
-          GET / HTTP/1.0<br />
+          webbie
           <br />
           <br />
+          tab2:
           <br />
-          telnet google.com 80<br />
-          GET / HTTP/1.0<br />
+          telnet localhost 8000
+          <br />
+          GET / HTTP/1.0
+          <br />
+          <br />
+          <br />
+          <br />
+          telnet google.com 80
+          <br />
+          GET / HTTP/1.0
+          <br />
         </aside>
       </section>
       <section>
@@ -256,9 +260,7 @@
         </div>
         <aside class="notes">
           Really a HTTP Verb can be anything. These are just standardized behavior.
-
           The only really common ones from this list is PUT and DELETE.
-
           Both should be idempotent, meaning it should have the same effect if you repeat the request. Like most things
           HTTP, this is just a guideline.
         </aside>
@@ -288,7 +290,8 @@
         <img src="./img/giphy__5_.gif" alt="" class="r-stretch" />
         <aside class="notes">
           Don't worry, you don't have to do any of it by hand, there's so many tools out there. I'm just going to use a
-          few I've used.<br />
+          few I've used.
+          <br />
           <br />
           Some of you might have gotten ahead of me and noticed express for node is on both sides. I debated with myself
           a bunch where to put it, but I'll get to that.
@@ -299,48 +302,42 @@
         <div style="display: grid; grid-template-columns: auto auto;">
           <div>
             Sinatra (ruby)
-            <pre>
-              <code data-trim data-noescape>
-                require 'sinatra'
+            <pre><code data-trim><script type="text/template">
+            require 'sinatra'
 
-                get '/hi' do
-                &nbsp;&nbsp;"Hello World!"
-                end
-              </code>
-            </pre>
+            get '/hi' do
+              "Hello World!"
+            end
+            </script></code></pre>
           </div>
           <div>
             Express (node)
-            <pre>
-              <code data-trim data-noescape>
+            <pre><code data-trim><script type="text/template">
                 var express = require('express');
                 var app = express();
 
                 app.get('/', function (req, res) {
-                &nbsp;&nbsp;res.send('Hello World!');
+                  res.send('Hello World!');
                 });
 
                 app.listen(3000, function () {
-                &nbsp;&nbsp;console.log('Example app listening on port 3000!');
+                  console.log('Example app listening on port 3000!');
                 });
-              </code>
-            </pre>
+            </script></code></pre>
           </div>
           <div>
             Flask (python)
-            <pre>
-              <code data-trim data-noescape>
+            <pre><code data-trim><script type="text/template">
                 from flask import Flask
                 app = Flask(__name__)
 
                 @app.route("/")
                 def hello():
-                &nbsp;&nbsp;return "Hello World!"
+                  return "Hello World!"
 
                 if __name__ == "__main__":
                 app.run()
-              </code>
-            </pre>
+            </script></code></pre>
           </div>
           <div>
             PHP
@@ -351,36 +348,34 @@
             </pre>
           </div>
         </div>
-
         <aside class="notes">
         </aside>
       </section>
       <section>
         <h4>Rails (ruby)</h4>
-        <pre class="r-stretch">
-          <code data-trim data-noescape>
+        <pre class="r-stretch"><code data-trim><script type="text/template">
             $ rails new blog
             # it does some stuff
             $ cd blog
             $ ls
             app bin config config.ru db Gemfile Gemfile.lock lib log public Rakefile README.rdoc test tmp vendor
             $ bin/rails generate controller Welcome index
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create&nbsp;&nbsp;app/controllers/welcome_controller.rb
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;route&nbsp;&nbsp;get&nbsp;"welcome/index"
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invoke&nbsp;&nbsp;erb
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create&nbsp;&nbsp;&nbsp;&nbsp;app/views/welcome
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create&nbsp;&nbsp;&nbsp;&nbsp;app/views/welcome/index.html.erb
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invoke&nbsp;&nbsp;test_unit
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create&nbsp;&nbsp;&nbsp;&nbsp;test/controllers/welcome_controller_test.rb
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invoke&nbsp;&nbsp;helper
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create&nbsp;&nbsp;&nbsp;&nbsp;app/helpers/welcome_helper.rb
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invoke&nbsp;&nbsp;&nbsp;&nbsp;test_unit
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;test/helpers/welcome_helper_test.rb
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invoke&nbsp;&nbsp;assets
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invoke&nbsp;&nbsp;&nbsp;&nbsp;coffee
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;app/assets/javascripts/welcome.js.coffee
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;invoke&nbsp;&nbsp;&nbsp;&nbsp;scss
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;create&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;app/assets/stylesheets/welcome.css.scss
+                  create  app/controllers/welcome_controller.rb
+                   route  get "welcome/index"
+                  invoke  erb
+                  create    app/views/welcome
+                  create    app/views/welcome/index.html.erb
+                  invoke  test_unit
+                  create    test/controllers/welcome_controller_test.rb
+                  invoke  helper
+                  create    app/helpers/welcome_helper.rb
+                  invoke    test_unit
+                  create      test/helpers/welcome_helper_test.rb
+                  invoke  assets
+                  invoke    coffee
+                  create      app/assets/javascripts/welcome.js.coffee
+                  invoke    scss
+                  create      app/assets/stylesheets/welcome.css.scss
             $ rails server
             => Booting WEBrick
             => Rails 4.0.4 application starting in development on http://0.0.0.0:3000
@@ -389,13 +384,14 @@
             [2016-07-18 22:06:05] INFO WEBrick 1.3.1
             [2016-07-18 22:06:05] INFO ruby 2.0.0 (2014-11-13) [x86_64-linux]
 
-          </code>
-        </pre>
+        </script></code></pre>
         <aside class="notes">
           Rails, Django, and others give you everything you could need out of the box. They are a lot more strict, but
-          way more structured.<br />
+          way more structured.
           <br />
-          They pretty much are saying "Our sandbox, our rules".<br />
+          <br />
+          They pretty much are saying "Our sandbox, our rules".
+          <br />
           <br />
           That being said, they have a massive community of awesome people. Lots of plugins and extensions. Lots of
           help.
@@ -420,16 +416,22 @@
           <br />
           <li>DELETE /resource/id - should delete one</li>
         </ul>
-
-
         <aside class="notes">
-          REST resources generally follow a practice like files on your disk<br />.
+          REST resources generally follow a practice like files on your disk
           <br />
-          GET would be the same as load. If you get a folder or directory, you get a listing of files<br />.
-          If you GET a specific file, you get the contents<br />.
+          .
+          <br />
+          GET would be the same as load. If you get a folder or directory, you get a listing of files
+          <br />
+          .
+          If you GET a specific file, you get the contents
+          <br />
+          .
           <br />
           POST and PUT is kinda where that analogy falls apart, but it still is similar. You want to save a new file,
-          Its a POST to a folder. If you want to overwrite, its PUT to a file<br />.
+          Its a POST to a folder. If you want to overwrite, its PUT to a file
+          <br />
+          .
           <br />
           DELETE is simplest, it'll just delete what you tell it to. Generally REST interfaces just stick with deleting
           files.
@@ -449,57 +451,87 @@
           <li>500 - PANIC ERROR HAS HAPPENED</li>
         </ul>
         <br />
-        <a
-          href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">https://en.wikipedia.org/wiki/List_of_HTTP_status_codes</a>
+        <a href="https://en.wikipedia.org/wiki/List_of_HTTP_status_codes">https://en.wikipedia.org/wiki/List_of_HTTP_status_codes</a>
         <aside class="notes">
-          There are many many response codes. <br />
+          There are many many response codes.
+          <br />
           <br />
           I've tried to list a few that I see pretty often, these are not the official titles, just sorta my fun way of
-          remembering them.<br />
+          remembering them.
           <br />
-          They are segmented into blocks.<br />
-          100s are informational, not often seen unless you are writing a server like apache or nginx<br />
-          200s are various forms of good<br />
-          300s are redirections<br />
-          400s are errors (expected)<br />
-          500s are server errors (bad)<br />
           <br />
-          Yes, there's a http code for being a little tea pot. Not making it up.<br />
+          They are segmented into blocks.
+          <br />
+          100s are informational, not often seen unless you are writing a server like apache or nginx
+          <br />
+          200s are various forms of good
+          <br />
+          300s are redirections
+          <br />
+          400s are errors (expected)
+          <br />
+          500s are server errors (bad)
+          <br />
+          <br />
+          Yes, there's a http code for being a little tea pot. Not making it up.
+          <br />
         </aside>
       </section>
       <section>
         <h2>
-          JSON<br />vs<br />XML<br />vs<br />YAML
+          JSON
+          <br />
+          vs
+          <br />
+          XML
+          <br />
+          vs
+          <br />
+          YAML
         </h2>
         <aside class="notes">
-          The short answer is who cares. Just be consistent. <br />
+          The short answer is who cares. Just be consistent.
           <br />
-          Java and microsoft world originally used XML a whole lot. Lots of libraries and tools exist for it.<br />
           <br />
-          Open source world jumped on JSON a lot, most APIs I work with use json.<br />
+          Java and microsoft world originally used XML a whole lot. Lots of libraries and tools exist for it.
           <br />
-          YAML? I can't say I've seen too many apis use it, but its an option too.<br />
           <br />
-          Generally conistency is key<br />
+          Open source world jumped on JSON a lot, most APIs I work with use json.
+          <br />
+          <br />
+          YAML? I can't say I've seen too many apis use it, but its an option too.
+          <br />
+          <br />
+          Generally conistency is key
+          <br />
         </aside>
       </section>
       <section>
         <h2>Tooling</h2>
         <ul>
           <li>Chrome/Firefox/IE Web Dev Tools</li>
-          <li><a href="https://mitmproxy.org/">mitmproxy</a></li>
+          <li>
+            <a href="https://mitmproxy.org/">mitmproxy</a>
+          </li>
           <li>tcpdump (linux/mac)</li>
-          <li><a href="https://www.telerik.com/download/fiddler/fiddler2">fiddler2</a> (windows)</li>
+          <li>
+            <a href="https://www.telerik.com/download/fiddler/fiddler2">fiddler2</a> (windows)
+          </li>
           <li>curl (linux/mac)</li>
-          <li><a href="https://www.getpostman.com/">Postman</a></li>
+          <li>
+            <a href="https://www.getpostman.com/">Postman</a>
+          </li>
         </ul>
         <aside class="notes">
-          I use a mix of a lot of tools. I don't have any solid recommendations. <br />
+          I use a mix of a lot of tools. I don't have any solid recommendations.
           <br />
-          Fiddler2 was amazing when I was working in windows.<br />
+          <br />
+          Fiddler2 was amazing when I was working in windows.
+          <br />
           <br />
           I just looked into Postman again for this talk, and it looks super polished and awesome. I'm sure many here
-          have other suggestions.<br />
+          have other suggestions.
+          <br />
         </aside>
       </section>
       <section>
@@ -511,18 +543,20 @@
       <section>
         <h2>Documentation</h2>
         <ul>
-          <li>Github self documents all their urls
+          <li>
+            Github self documents all their urls
             <ul>
-              <li> See https://api.github.com/repos/appium/appium</li>
+              <li>See https://api.github.com/repos/appium/appium</li>
             </ul>
           </li>
           <li>Swagger, Blueprint, Probably more</li>
           <li>Lots of companies roll their own.</li>
           <li>Documentation is hard</li>
-          <li>Provide Examples
+          <li>
+            Provide Examples
             <ul>
-              <li> Snippets</li>
-              <li> Downloadable examples</li>
+              <li>Snippets</li>
+              <li>Downloadable examples</li>
             </ul>
           </li>
         </ul>
@@ -531,12 +565,10 @@
       </section>
     </div>
   </div>
-
   <script src="/assets/reveal/reveal.js"></script>
   <script src="/assets/reveal/plugin/highlight/highlight.js"></script>
   <script src="/assets/reveal/plugin/notes/notes.js"></script>
   <script src="/assets/reveal/plugin/markdown/markdown.js"></script>
-
   <script>
     Reveal.initialize({
       controls: true,
@@ -546,7 +578,8 @@
       plugins: [RevealNotes, RevealHighlight, RevealMarkdown]
     });
   </script>
-  <script defer src="https://u.g4v.dev/script.js" data-website-id="4b48952f-9dd2-4164-823e-d1c16af3733d"></script>
+  <script defer
+          src="https://u.g4v.dev/script.js"
+          data-website-id="4b48952f-9dd2-4164-823e-d1c16af3733d"></script>
 </body>
-
 </html>

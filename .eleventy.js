@@ -11,6 +11,11 @@ const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 
 module.exports = (eleventyConfig) => {
+  eleventyConfig.setServerOptions({
+    // Whether DOM diffing updates are applied where possible instead of page reloads
+    domDiff: false,
+  });
+
   eleventyConfig.addPassthroughCopy({
     "node_modules/reveal.js/dist": "assets/reveal/",
     "node_modules/reveal.js/plugin": "assets/reveal/plugin",
@@ -35,8 +40,6 @@ module.exports = (eleventyConfig) => {
     "./static/assets/": "/assets/",
     // "./node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css"
   });
-
-  eleventyConfig.addPassthroughCopy("decks");
 
   eleventyConfig.addAsyncShortcode("svgIcon", async (src, options = {}) => {
     let metadata = await Image(src, {

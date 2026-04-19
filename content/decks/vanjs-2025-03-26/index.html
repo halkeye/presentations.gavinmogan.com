@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="{{ metadata.language }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="/assets/reveal/reveal.css" />
+    <link rel="stylesheet" href="/assets/reveal/theme/dracula.css" />
+    <link rel="stylesheet" href="/assets/reveal/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="./kbd.min.css" />
+    <title>The CLI isn't as scary as you think - VanJS - April 16th, 2025</title>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1 class="r-fit-text">The CLI isn't as scary as you think</h1>
+          <img src="./1bd2d86f29eaf9194a8a2d5d72001efd.png"
+               alt="easter egg"
+               width="300" />
+          <img src="./Title%20Screen%20Generated%20by%20ChatGPT.png"
+               alt="a title screen of someone learning the cli in a classic 90s hacking style"
+               width="300" />
+        </a>
+        <h2>VanJS</h2>
+        <h3>April 16th, 2025</h3>
+      </section>
+      <section>
+        <h2>Gavin Mogan</h2>
+        <p>
+          Senior Software Engineer at Digital Ocean.
+          <img src="./Sammy08.png"
+               alt="Digital Ocean Mascot, Sammy the Shark, holding a heart ballon"
+               width="100"
+               style="vertical-align: middle" />
+        </p>
+        <p>
+          <a href="https://www.gavinmogan.com">https://www.gavinmogan.com</a>
+        </p>
+        <p>
+          <div style="position: relative">
+            <img src="./avatar.original.png" alt="Avatar" width="400" />
+            <img src="./7ea8c5f825a565577854af73c8dac2ea.png"
+                 alt="Easter Egg"
+                 width="100"
+                 style="position: absolute;
+                        width: 60px;
+                        top: 45px;
+                        left: 343px;
+                        opacity: 0.50" />
+          </div>
+        </p>
+        <aside class="notes">
+          Hey everyone,
+          I'm Gavin. I am a Senior Software Developer at Digital Ocean, currently on the billing team. I've been there
+          just over 5 years now.
+          Today I'm planning on covering the basics of the command line and linux, so it becomes a lot less
+          intimidating. Dont worry about about remembering everything, as this is more about exposing to ideas, and my
+          slides are downloadable. Don't worry if you know everything about linux already, as I guarentee with no money
+          back, that you will still learn one thing new. I know this because when I looked at my past presentations, I
+          learned some things I forgot about.
+        </aside>
+      </section>
+      <section>
+        <h2>Upfront notes</h2>
+        <ul>
+          <li class="fragment">Talking about linux. Rest are similar</li>
+          <li class="fragment">$ is usually a shell prompt</li>
+          <li class="fragment">Generally, Linux doesn't care what order CLI parameters are in.</li>
+          <li class="fragment">Linux tools, like npm packages, like to do one thing and do them well.</li>
+        </ul>
+        <aside class="notes">
+          Okay, a few notes before we get started.
+          While I know most developers these days, at least front end ones, will end up using an apple laptop, I'm going
+          to cover linux as I know it the best, and but the apple cli, and windows with wsl, and even to some degrees
+          powershell all have overlaps so it shouldn't be hard to adapt things.
+          Firstly, whenever you see a dollar sign followed by a command, its usually to indicate a command prompt. I've
+          stuck with that convention here.
+          Upfront linux usually doesn't care about order of arguments, though some older apple versions do. So if
+          something I cover doesn't work, try switching the order of the arguments.
+          Classicly linux like node packages, like to try and do one thing well, so you can combine the best tools for
+          the job.
+        </aside>
+      </section>
+      <section>
+        <h2>Getting Help</h2>
+        <p>Offline version</p>
+        <ul>
+          <li class="fragment">
+            Most commands have a man(ual) pages
+            <pre><code data-trim data-noescape>$ man find</code></pre>
+          </li>
+          <li class="fragment">
+            Shell functions only have help
+            <pre><code data-trim data-noescape>$ help for</code></pre>
+          </li>
+          <li class="fragment">
+            Sometimes --help will return things
+            <pre><code data-trim data-noescape>$ ls --help</code></pre>
+          </li>
+        </ul>
+        <aside class="notes">
+          First things first. Getting help. There are a bunch of built in solutions but don't underestimate talking to
+          other people.
+        </aside>
+      </section>
+      <section>
+        <h2>Keyboard Shortcuts</h2>
+        <ul>
+          <li>
+            <b><kbd>Ctrl</kbd>+<kbd>r</kbd></b> - Reverse search through your bash history (My fav)
+          </li>
+          <li>
+            <b><kbd>Up</kbd> / <kbd>Down</kbd></b> - Prev/next in history
+          </li>
+          <li>
+            <b><kbd>Ctrl</kbd>+<kbd>w</kbd></b> - Delete previous word
+          </li>
+          <li>
+            <b><kbd>Ctrl</kbd>+<kbd>k</kbd></b> - Delete rest of line
+          </li>
+          <li>
+            <b><kbd>Ctrl</kbd>+<kbd>u</kbd></b> - Delete entire line
+          </li>
+          <li>
+            <b><kbd>Ctrl</kbd>+<kbd>a</kbd></b> - Move to start of line
+          </li>
+          <li>
+            <b><kbd>Ctrl</kbd>+<kbd>e</kbd></b> - Move to end of line
+          </li>
+        </ul>
+        <aside class="notes">
+          Next up. Some of my fav keyboard shortcuts. They should all work in the default terminal as bash and zsh is in
+          emacs modes.
+          The biggest life changer for me was reverse search. Most people get started in the terminal by typing out
+          everything every time. Then you quickly realize that if you hit up or down, you can go back through previously
+          typed out commands.
+          But ctrl+r, thats where speed starts to kick in.
+        </aside>
+      </section>
+      <section>
+        <h2>Keyboard Shortcuts</h2>
+        <p>
+          <kbd>Ctrl</kbd>+<kbd>r</kbd> - Reverse search through your bash history
+        </p>
+        <video data-autoplay src="./ctrl-r.mp4" alt="Ctrl R screencast">
+        </video>
+        <aside class="notes">
+          So on my little contrived demo here, you can see some past commands. Then I hit ctrl+r, and type out npm, to
+          search back through my history, and run the same command as before. In this case, since its the last command,
+          its probably easier to just hit up, but for when you have a larger history, this is way easier than trying to
+          think about how many commands ago you ran something.
+          There are tools out there to make this even better though.
+        </aside>
+      </section>
+      <section>
+        <h2>Where am I?</h2>
+        <div>
+          <div style="float: right">
+            <img src="./northeastern.png"
+                 width="150"
+                 alt="image of northeastern universeity building" />
+          </div>
+          <div style="width: 80%">
+            <pre><code data-trim><script type="text/template">
+              $ pwd
+              /home/gavinm
+
+              $ echo $PWD
+              /home/gavinm
+            </script></code></pre>
+          </div>
+        </div>
+        <aside class="notes">
+          Okay next up.
+          You can't really do anything if you don't know where you are. Most terminals will start you off in your home
+          directory. On linux that is slash home, on apple its slash users, but you can configure it differently. I have
+          some friends that have different terminal profiles that start them in different directories to make working on
+          different projects easier. Vscode would be another one that drops you somewhere else, so its worth knowing
+          where you are.
+          <br />
+          There is the pwd command, and the PWD variable.
+          <br />
+          pwd stands for print working directory, so i'm not sure why there's a variable for it. Outside of the cli, it
+          also might be called cwd, which is current working directory.
+        </aside>
+      </section>
+      <section>
+        <h2>How to Change Directory</h2>
+        <p>
+          Most OSes uses forward slash - <code>/</code> as folder separator
+        </p>
+        <pre class="fragment"><code data-trim><script type="text/template">
+            $ cd git
+            $ pwd
+            /home/gavinm/git
+            $ cd /home/gavinm/git2
+            $ pwd
+            /home/gavinm/git2
+        </script></code></pre>
+        <div class="fragment">
+          Spaces and other characters should be escaped or quoted
+          <pre><code data-trim data-noescape>
+              $ cd /home/gavinm/Project\ Dir
+              $ cd "/home/gavinm/Project Dir"
+            </code></pre>
+        </div>
+      </ul>
+      <aside class="notes">
+        Now that you know where you are, you need to get to where you want to go.
+        Just like with urls, there are relative and absolute paths.
+        If it starts with a slash, its an absolute path.
+        If it doesn't, then its probably a relative path.
+        And finally, if your path contains special characters like spaces, you'll want to add backslash, or wrap
+        everything in quotes.
+      </aside>
+    </section>
+    <section>
+      <h2>Get back there</h2>
+      <pre><code data-trim data-noescape>
+            $ pwd
+            /home/gavinm
+
+            $ cd /home/gavinm/Develop
+            $ pwd
+            /home/gavinm/Develop
+
+            $ cd -
+            $ pwd
+            /home/gavinm
+</pre></code>
+      <aside class="notes">
+        Now that you got in the habbit of moving around, its time to go back.
+        cd minus will get you back to the last directory you are in.
+        I often used it when I'm working in a large mono repo. I want to switch to a directory, run a command, then go
+        back to the root of the project.
+      </aside>
+    </section>
+    <section>
+      <h2>What is in this directory?</h2>
+      <img src="./dir.png"
+           style="width: 40%;
+                  float: right"
+           alt="directory listing with a easter egg in the background for the easter egg hunt" />
+      <div style="width: 60%">
+        <p>
+          Simple Directory Listing
+        </h3>
+        <pre><code data-trim data-noescape>$ ls</code></pre>
+        <p>
+          Long Listing
+        </h3>
+        <pre><code data-trim data-noescape>$ ls -l</pre></code>
+      <p>
+        Descending(r) by Time(t)
+      </h3>
+      <pre><code data-trim data-noescape>$ ls -ltr</pre></code>
+    <p>
+      Hidden files
+    </h3>
+    <pre><code data-trim data-noescape>$ ls -a</pre></code>
+</div>
+<aside class="notes">
+  Note, I'm using some customizations to make this more colorful.
+  <br />
+  First off you got the basic ls command. It'll show the files in the directory. I've used a couple of the
+  common flags I use most often. You can add dash l to get details about files. Dash r will reverse the order.
+  Dash t will sort by time. And dash a will show all hidden files.
+</aside>
+</section>
+<section>
+  <h2>When am I?</h2>
+  <div>
+    <div style="float: right">
+      <img src="./Pink_Easter_Egg_PNG_Clipart-removebg-preview.png"
+           width="150"
+           alt="pink easter egg" />
+    </div>
+    <div style="width: 80%">
+      <pre><code data-trim data-noescape>
+                $ TZ=America/Vancouver date
+                Sun Apr 20 12:00:00 PDT 2025
+              </code></pre>
+    </div>
+    <div style="width: 80%" class="fragment">
+      <p>Note: time command times a command, not time of day</p>
+      <pre><code data-trim data-noescape>
+                $ time sleep 30s
+                sleep 30s 0.00s user 0.00s system 0% cpu 28.108 total
+              </code></pre>
+    </div>
+  </div>
+  <aside class="notes">
+    When am i? The date command is very useful. I've used it to print out the date before and after a command so i
+    kno how long it takes. There's also the built in time command which can tell you how long a command takes on
+    your computer.
+    <br />
+    Knowing how to set the timezone temporarily is very useful too. Lots of commands will accept the TZ setting,
+    but I've used TZ a lot to switch the date command to UTC since all our servers are running UTC time.
+  </aside>
+</section>
+<section>
+  <h2>Testing HTTP</h2>
+  <p>Curl and wget work kinda the same, but under different designs.</p>
+  <p>Wget is great at downloading files.</p>
+  <pre><code data-trim data-noescape>$ wget http://i.imgur.com/Ia48QDR.jpg</code></pre>
+  <p>Curl is better at retrieving content.</p>
+  <pre><code data-trim data-noescape>$ curl https://httpcodes-8pkfp.ondigitalocean.app/json/404</code></pre>
+  <p>Note: probably less true these days</p>
+  <aside class="notes">
+    Testing HTTP. Another random set of tools. Most systems will have wget or curl installed. Both will work, but
+    generally I use wget for downloading files, and curl for hitting APIs.
+  </aside>
+</section>
+<section>
+  <h3>What's happened recently?</h3>
+  <p>Head will give you the first n lines</p>
+  <pre><code data-trim class="language-bash"><script type="text/template">
+    $ head -n 2 /var/log/nginx/presentations.gavinmogan.com.access.log
+    presentations.gavinmogan.com:80 108.172.217.87 - - [24/Jun/2015:07:02:03 +0000] "GET /stats/ HTTP/1.1" 200 5566 "http://odin.kodekoan.com:4080/halkeye/gavinmogan.com/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36" "108.172.217.87"
+    presentations.gavinmogan.com:80 108.172.217.87 - - [24/Jun/2015:07:02:03 +0000] "GET /stats/css/reveal.css HTTP/1.1" 200 48591 "http://presentations.gavinmogan.com/stats/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.124 Safari/537.36" "108.172.217.87"
+  </script></code></pre>
+  <p>Tail will give you the last n lines</p>
+  <pre><code data-trim class="language-bash"><script type="text/template">
+    $ tail -n 2 /var/log/nginx/presentations.gavinmogan.com.access.log
+    presentations.gavinmogan.com:80 162.158.64.218 - - [27/Jun/2015:03:35:46 +0000] "HEAD / HTTP/1.1" 403 166 "-" "Mozilla/5.0 (compatible; CloudFlare-AlwaysOnline/1.0; +http://www.cloudflare.com/always-online)" "162.158.64.218"
+    presentations.gavinmogan.com:80 162.158.64.218 - - [27/Jun/2015:03:35:46 +0000] "GET / HTTP/1.1" 403 345 "-" "Mozilla/5.0 (compatible; CloudFlare-AlwaysOnline/1.0; +http://www.cloudflare.com/always-online) AppleWebKit/534.34" "162.158.64.218"
+  </script></code></pre>
+  <p>Common Options</p>
+  <ul>
+    <li>
+      <b>-f</b> will keep tailing
+    </li>
+    <li>
+      <b>-F</b> will restart tailing if file is truncated
+    </li>
+    <li>
+      <b>-n #num#</b> will only print out #num# number of lines
+    </li>
+  </ul>
+  <aside class="notes">
+    Next up. Tail and Head. Tail will take a stream, commonly a file, and give you the last few lines. Head will
+    do the opposite, the start of the steam.
+  </aside>
+</section>
+<section>
+  <h2>Redirection output</h2>
+  <p>Output to file</p>
+  <pre><code data-trim data-noescape>$ echo "hi" > file.txt</code></pre>
+  <p>Errors to file</p>
+  <pre><code data-trim data-noescape>$ curl http://fake.server 2> errors.txt</code></pre>
+  <p>Output to file and console</p>
+  <pre><code data-trim data-noescape>$ echo "hi" | tee file.txt</code></pre>
+  <aside class="notes">
+    Redirection is very useful start for less manual commands. A single arrow to the right will take the output of
+    a command and write it to a file. By default this is stdout. You can also be specific, like stream number 2,
+    which is errors. Lastly there's the tee command which lets you save the output and print the output. I will
+    talk about pipes soon.
+  </aside>
+</section>
+<section>
+  <h2>Redirection input</h2>
+  <p>Input from file</p>
+  <pre><code data-trim data-noescape>$ mysql < import.sql </code>
+        </pre>
+  <aside class="notes">
+    Next up is the redirect the other way. A single arrow to the left will let you take the contents of a file and
+    use it as input for a command. Mysql for example, you can send the contents of a sql file and run them with
+    the mysql command.
+  </aside>
+</section>
+<section>
+  <h2>Wildcards (glob)</h2>
+  <p>Will look find all directories that have a logs directory underneath it.</p>
+  <pre><code data-trim data-noescape>$ tail -F ~/Develop/*/logs/development.log</code></pre>
+  <p>Will find all log files under all directories that have a log directory (one level deep)</p>
+  <pre><code data-trim data-noescape>$ tail -F ~/Develop/*/logs/*.log</code></pre>
+  <p>Will find all log files under all directories that have a log directory (infinite levels deep)</p>
+  <pre><code data-trim data-noescape>$ tail -F ~/Develop/**/logs/*.log</code></pre>
+  <aside class="notes">
+    So in shell, there's actually a lot of different kinds of wildcards. At the most basic level, the star is easy
+    to understand. A star will essentially just match things. So star dot log will match anything that ends with
+    dot log. Star by itself will match anything. This only works in a single directory though. You also have the
+    ability to use double stars. They will match any number of sub directories. This is all called glob patterns
+    if you want to look them up more.
+  </aside>
+</section>
+<section>
+  <h2>Chaining</h2>
+  <pre><code data-trim data-noescape>true && echo true</code></pre>
+  <pre><code data-trim data-noescape>false || echo false</code></pre>
+  <pre><code data-trim data-noescape>false; echo always</code></pre>
+  <aside class="notes">
+    So at a basic level, bash has boolean operators live javascript. So you can do two ampersands and only run the
+    second command if the first one succeeds. Two ors if it fails, and a semicolon that just splits up two
+    statements. And yes, before someone corrects me to say its not actually success based, I'm not going cover
+    error codes today.
+  </aside>
+</section>
+<section>
+  <h2>if and while statements</h2>
+  <pre><code data-trim data-noescape>if true; then echo "its-a-me-truethy"; fi</code></pre>
+  <pre><code data-trim data-noescape>while true; do echo "its-a-me-truethy"; done</code></pre>
+  <pre><code data-trim data-noescape>for i in a b c; do echo $i; done</code></pre>
+  <aside class="notes">
+    Bash does have a lot of control statements. The ones I use the most are really if, while and for. I'll be
+    covering for in detail in later slides. And if shouldn't really be a surprise to people. While loops are
+    actually really useful in bash. The one i've seen the most is wait for something to startup. So while sql
+    server isn't running, sleep and check again.
+  </aside>
+</section>
+<section>
+  <h2>Serious wildcards</h2>
+  <p>Find all directories</p>
+  <pre><code data-trim data-noescape>$ find -type d</code></pre>
+  <p>Find all files</p>
+  <pre><code data-trim data-noescape>$ find -type f</code></pre>
+  <p>Find all files ending in log</p>
+  <pre><code data-trim data-noescape>
+            $ find -name '*.log' # find all files ending in .log
+            $ find -name '*.log' -exec ls {} \; # executes a command for each file
+            $ find -name '*.log' -exec ls {} + # appends all files to one command
+          </code></pre>
+  <p>Run something in a directory with logs</p>
+  <pre><code data-trim data-noescape>$ find /var/log -name '*.log' -execdir pwd \;</code></pre>
+  <aside class="notes">
+    Find can do a crazy amount of Stuff. The most common usages for me are finding files or directories with
+    specific names, and running commands on the files you found. While researching this, I have found there's a
+    new execdir which lets you run a command in the directory containing the files.
+  </aside>
+</section>
+<section>
+  <h2>Create Edit Update Destroy</h2>
+  <pre><code data-trim>
+            cat &lt;file&gt; # outputs contents
+            tac &lt;file&gt; # outputs contents in reverse order
+            less &lt;file&gt; # outputs content (controlled)
+          </code></pre>
+  <pre><code data-trim>
+            rm &lt;file&gt; # Remove a file
+            rmdir &lt;dir&gt; # Remove an empty directory
+            mkdir &lt;dir&gt; # Create a directory (mkdir -p as bonus)
+            # Create all the directories required to make the full path
+            # (and doesn't error if already exists)
+            mkdir -p &lt;dir/subdir/subdir2&gt;
+          </code></pre>
+  <pre><code data-trim>
+            touch &lt;file&gt; # update timestamp/create empty file
+          </code></pre>
+  <aside class="notes">
+    Okay, just before I start to show you all how to combine things, I have the final list of things I couldn't
+    figure out how to put elsewhere. Cat takes one or more files and outputs them. Great for looking at logs or
+    source code. Tac does the same thing but in reverse order. I've not once ever found a use for this knowledge,
+    but now you all have it to. Less ad More will output files, but let you control the output, usually one page
+    at a time. rm and rmdir remove files and direcotries. mkdir lets you create a directory, with dash -p super
+    useful to make sub directories too. And lastly touch. Touch will create empty files, as well as update the
+    last updated time. I mention all these because its often useful for the more advanced pipes and loops.
+  </aside>
+</section>
+<section>
+  <h2>Power of pipes</h2>
+  <img src="./mario-go-down-in-tube-wave.gif"
+       alt="Mario going down a pipe and waving"
+       width="300" />
+  <p>With a few combos you can do anything</p>
+  <aside class="notes">
+    Pipes is where you can start combing things you've learned so far. Essentially they work left to right. First
+    command pipe second command will take the output of the first one, and input it to the next command.
+  </aside>
+</section>
+<!--
+      <section>
+        <h2>Some Good Pipes</h2>
+        <p>Filter out text</p>
+        <pre><code data-trim data-noescape>grep</code></pre>
+        <p>Pull out parts of a line</p>
+        <pre><code data-trim data-noescape>ack / cut</code></pre>
+        <p>Reorder items</p>
+        <pre><code data-trim data-noescape>uniq / sort</code></pre>
+        <p>Loops</p>
+        <pre><code data-trim data-noescape>for</code></pre>
+      </section>
+-->
+<section>
+  <h2>Grep and Awk Can Do anything</h2>
+  <pre class="fragment"><code data-trim data-noescape>
+            $ grep /favicon.ico access.log
+            # long output
+          </code></pre>
+  <pre class="fragment"><code data-trim data-noescape>
+            $ grep /favicon.ico access.log | awk '{print $17}'
+            AppleWebKit/537.36
+          </code></pre>
+  <pre class="fragment"><code data-trim data-noescape>
+            $ grep /favicon.ico access.log | awk -F'"' '{print $6}'
+            Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.111
+            Safari/537.36
+          </code></pre>
+  <aside class="notes">
+    For example. Lets say you have a web server access log. It has a line every time someone hits your server. You
+    don't want to look through every line yourself, thats crazy. But you can narrow it down and look for anyone
+    grabbing the fav icon. Thats still a lot of output. but from there, we can just grab one field. By default awk
+    splits on spaces, so you can just grab part of the user agent, but with just one flag, you can grab the entire
+    user agent.
+    If you pipe that into sort and uniq, you can actually start doing a bit of analysis, like finding out how many
+    unique browsers hit your server and grabbed the favicon.
+  </aside>
+</section>
+<section>
+  <h2>For Loops</h2>
+  <pre><code data-trim data-noescape>
+            $ for i in gavin likes pie; do mkdir $i; done
+            $ ls -l
+            drwxr-xr-x 2 1000 1000 4096 Apr 15 04:23 gavin
+            drwxr-xr-x 2 1000 1000 4096 Apr 15 04:23 likes
+            drwxr-xr-x 2 1000 1000 4096 Apr 15 04:23 pie
+          </code></pre>
+  <aside class="notes">
+    Next up is for loops. For takes in a variable, and then a list of values. So for this example, I make 3
+    directories. Gavin. Likes. Pie....cause I do. I've used things like this when I want to run the same command
+    on multiple servers. But for can take in data from other sources too
+  </aside>
+</section>
+<section>
+  <h2>For Loops - wildcards</h2>
+  <pre class="fragment"><code data-trim data-noescape>
+            $ for i in *; do mv $i $i.bak; done
+            $ ls -l
+            drwxr-xr-x 2 1000 1000 4096 Apr 15 04:23 gavin.bak
+            drwxr-xr-x 2 1000 1000 4096 Apr 15 04:23 likes.bak
+            drwxr-xr-x 2 1000 1000 4096 Apr 15 04:23 pie.bak
+          </code></pre>
+  <aside class="notes">
+    And one option for that is just straight up shell wildcards. So for example, I can say for each file in this
+    directory, rename the file to file dot bak. Yes there are better ways to do it, but they don't show off the
+    power of for loops.
+  </aside>
+</section>
+<section>
+  <h2>For Loops - subshells</h2>
+  <pre class="fragment"><code data-trim data-noescape>
+            $ for i in $(seq 1 10); do echo $i; done
+            1
+            2
+            3
+            4
+            5
+            6
+            7
+            8
+            9
+            10
+          </code></pre>
+  <aside class="notes">
+    You can also use sub shells. Sub shells are wrapped in dollar sign and parentheses. Seq is a cool command that
+    just outputs numbers from start to finish. There's actually a bunch of options like padding it with 0s, but
+    not really the point here.
+  </aside>
+</section>
+<section>
+  <h2>Search and Replace</h2>
+  <p>Sed, perl, python, etc</p>
+  <p>I prefer perl pie</p>
+  <pre><code data-trim data-noescape>
+            $ echo "Gavin likes pie" > file.txt
+            $ cat file.txt
+            Gavin likes pie
+            $ perl -pi -e 's/Gavin/Bibi/' file.txt
+            $ cat file.txt
+            Bibi likes pie
+          </code></pre>
+</section>
+<section>
+  <h2>Real world example</h2>
+  <pre class="fragment"><code data-trim data-noescape>
+            for i in $(git ls-files -m); do
+            jsonlint $i && git add $i;
+            done
+          </code></pre>
+  <aside class="notes">
+    Real example time.
+    I was making changes to a lot of json files, and when i do that, i often will forget to add or remove a comma.
+    Instead of commiting, creating a pr, having tests fail, and repeating, I decided to only stage the files in
+    git if they were valid.
+    :click:
+    So I created a little for loop that looped through all git files that were modified. Run them through
+    jsonlint. And if they are considered valid, git add them.
+    After that I could look at files that were left and go in and fix them.
+    Just shows that you can build on the basics real quick.
+  </aside>
+</section>
+<section>
+  <h2>Real World Example - Find and Replace multiple files</h2>
+  <pre><code data-trim data-noescape>
+            grep -r onedr0p . | \
+            awk -F: '{print $1}' | \
+            xargs perl -pi -e 's#ghcr.io/onedr0p#ghcr.io/home-operations#g'
+          </code></pre>
+  <aside class="notes">
+    for the last few weeks I've been trying to remember to write down various oneliners I end up using over and
+    over again. Every time I do there's more and more things I felt I should have covered.
+    I included this one because xargs is so powerful.
+    So in this case. Search all files for the phrase onedrop.
+    split on the colon so I just get the filename.
+    then using xargs, pass each filename into perl pie.
+    <br />
+    Yes apparently I could have used grep dash l, which would have just given me the filename, but for whatever
+    reason I always remember this pattern, and I can apply it in all kinds of ways.
+  </aside>
+</section>
+<section>
+  <h2>Non standard tools - JQ</h2>
+  <p>
+    <a href="https://jqlang.org/">https://jqlang.org/</a>
+  </p>
+  <pre><code data-trim data-noescape>
+            $ curl -qs 'https://jsonplaceholder.typicode.com/todos/1' | jq '.'
+            {
+            "userId": 1,
+            "id": 1,
+            "title": "delectus aut autem",
+            "completed": false
+            }
+            $ curl -qs 'https://jsonplaceholder.typicode.com/todos/1' | jq '.id'
+            1
+            $ curl -qs 'https://jsonplaceholder.typicode.com/todos/1' | jq '.completed'
+            false
+          </code></pre>
+  <aside class="notes">
+    JQ is something I probably end up using every day in one way or another. I would say the most common is to
+    pretty print json text. You can, as shown here, curl and pipe to jq.
+    Next most common for me has to be pulling out specific info. It can handle properties, as shown, but so much
+    more, like arrays both numeric index, or filtering by other criteria.
+    Its also really great at producing content that can go into a for loop.
+  </aside>
+</section>
+<section>
+  <h2>Non standard tools - gron</h2>
+  <p>
+    <a href="https://github.com/tomnomnom/gron">https://github.com/tomnomnom/gron</a>
+  </p>
+  <pre><code data-trim data-noescape>
+            $ curl -qs 'https://jsonplaceholder.typicode.com/todos/1' | gron
+            json = {};
+            json.completed = false;
+            json.id = 1;
+            json.title = "delectus aut autem";
+            json.userId = 1;
+          </code></pre>
+  <aside class="notes">
+    Gron is a tool I really want to use more. It tries to make json more grepable by flattening everything out.
+  </aside>
+</section>
+<section>
+  <h2>Eg curl + jq + gron</h2>
+  <pre><code data-trim data-noescape>
+            $ curl -qs 'https://jsonplaceholder.typicode.com/todos' | jq '[.[] | select(.completed == true)][0]' | gron
+            json = {};
+            json.completed = true;
+            json.id = 4;
+            json.title = "et porro tempora";
+            json.userId = 1;
+          </code></pre>
+  <aside class="notes">
+    so you can start combining them. Filter through jq, then flatten with gron.
+  </aside>
+</section>
+<section>
+  <h1>The End</h1>
+  <img src="./colorful-painted-easter-eggs-3.png"
+       width="150"
+       alt="colorful painted easter egg" />
+  <p class="fragment">
+    <a href="https://www.digitalocean.com/?refcode=7d6859326b6a&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge">
+      https://m.do.co/c/7d6859326b6a
+      <img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg"
+           alt="DigitalOcean Referral Badge" />
+    </a>
+  </p>
+  <aside class="notes">
+    As promised. If you want to try things out in a safe environment, feel free to use my referral code and create
+    a droplet. If you already have an account, come talk to me or rodrigo and we can help you out.
+    I also had to cut so many things to make room for other things I really wanted to bring up such as git
+    techniques, or fzf, or even the jump command. Some of which are fully fleshed out slides, some are just point
+    form notes. Feel free to poke around the deck or ask me more.
+  </aside>
+</section>
+<section>
+  <h1>Extra Stuffsssss</h1>
+  <p>Slides that were already done but decided against bringing them up</p>
+</section>
+<section>
+  <h2>Debugging</h2>
+  <p>Run a script in debug mode</p>
+  <pre><code data-trim data-noescape>$ bash -x script.sh</code></pre>
+  <p>Enable debugging right now</p>
+  <pre><code data-trim data-noescape>$ set -x</code></pre>
+</section>
+<section>
+  <h2>SSH</h2>
+  <p>What are ssh keys?</p>
+  <p>Why would you want them?</p>
+  <p>How do you use them?</p>
+  <pre><code data-trim data-noescape>man ssh_config</code></pre>
+</section>
+<section>
+  <h2>Whats going on?</h2>
+  <ul>
+    <li>ps xf -A (My Favourite)</li>
+    <li>
+      ps aux (Very portable)
+      <ul>
+        <li>More w's with ps = more wide</li>
+        <li>ps auxwww</li>
+      </ul>
+    </li>
+    <li>pstree</li>
+    <li>top</li>
+  </ul>
+</section>
+<section>
+  <h2>Home Directories</h2>
+  <pre><code data-trim data-noescape>
+            $ cd
+            /home/gavinm
+          </code></pre>
+  <pre><code data-trim data-noescape>
+            $ cd ~
+            /home/gavinm
+</pre></code>
+  <pre><code data-trim data-noescape>
+            $ cd $HOME
+            /home/gavinm
+</pre></code>
+  Another users home dir
+  <pre><code data-trim data-noescape>
+            $ cd ~halkeye
+            /home/halkeye
+</pre></code>
+</section>
+<section>
+  <h2>How to get there? - Apple</h2>
+  <ul>
+    <li class="fragment">Terminal.app</li>
+    <li class="fragment">Iterm2</li>
+  </ul>
+  <aside class="notes">
+    I'm one of those weird backend developers that uses windows full time, and its been years since I used a
+    apple, but from what I read online, most people are pretty comfortable with the built in Terminal app. When I
+    was a apple user, iterm2 was the goto app.
+    --
+    I have a slide in a bit that covers ones that work on all oses.
+  </aside>
+</section>
+<section data-markdown>
+  <textarea data-template>
+          ## apple
+          ## Linux
+          * So many terminals are built in
+          * My fav is xfce4-terminal
+          ## Windows
+          * Windows Terminal is surprisingly awesome.
+          ## Globals
+          * Wezterm -
+          * VSCode
+          * Hyper.is
+        </textarea>
+</section>
+</div>
+</div>
+<script src="/assets/reveal/reveal.js"></script>
+<script src="/assets/reveal/plugin/highlight/highlight.js"></script>
+<script src="/assets/reveal/plugin/notes/notes.js"></script>
+<script src="/assets/reveal/plugin/markdown/markdown.js"></script>
+<script>
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      history: true,
+      slideNumber: false,
+      plugins: [RevealNotes, RevealHighlight, RevealMarkdown]
+    });
+</script>
+<script defer
+        src="https://u.g4v.dev/script.js"
+        data-website-id="4b48952f-9dd2-4164-823e-d1c16af3733d"></script>
+<script defer
+        data-domain="presentations.gavinmogan.com"
+        src="https://p.g4v.dev/js/script.file-downloads.outbound-links.js"></script>
+</body>
+</html>
