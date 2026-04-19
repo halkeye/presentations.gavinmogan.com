@@ -1,20 +1,21 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json", // up to date schema with all supported properties
-  "timezone": "America/Vancouver",
-  "extends": [
-    "config:js-app",       // base on the recommended config for JS applications
-    "schedule:monthly",    // can be schedule:weekly, schedule:weekends, etc
-    "npm:unpublishSafe",   // the release must be at least 3 days old
-    ":approveMajorUpdates",// require explicit update approval on the dashboard before opening PR
-    ":maintainLockFilesWeekly", // regenerates lock file to update all indirect deps
-    ":timezone(America/Vancouver)",
-    "github>halkeye/home-k8s//.github/renovate/grafanaDashboards.json"
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  timezone: 'America/Vancouver',
+  extends: [
+    'config:js-app',
+    'schedule:monthly',
+    'security:minimumReleaseAgeNpm',
+    ':approveMajorUpdates',
+    ':maintainLockFilesWeekly',
+    ':timezone(America/Vancouver)',
+    'github>halkeye/home-k8s//.github/renovate/grafanaDashboards.json',
   ],
-  "transitiveRemediation": true, // apply security updates for indirect (transitive) NPM dependencies
-  "packageRules": [
+  packageRules: [
     {
-      "matchPackagePatterns": ["^@11ty/"],
-      "groupName": "Eleventy packages"
-    }
-  ]
+      groupName: 'Eleventy packages',
+      matchPackageNames: [
+        '/^@11ty//',
+      ],
+    },
+  ],
 }
