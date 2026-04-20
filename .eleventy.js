@@ -17,6 +17,7 @@ module.exports = (eleventyConfig) => {
   });
 
   eleventyConfig.addPassthroughCopy({
+    "content/decks/vanjs-2025-03-26/ctrl-r.mp4": "decks/vanjs-2025-03-26/ctrl-r.mp4",
     "node_modules/reveal.js/dist": "assets/reveal/",
     "node_modules/reveal.js/plugin": "assets/reveal/plugin",
     "node_modules/lite-youtube-embed/src": "assets/lite-youtube-embed/src",
