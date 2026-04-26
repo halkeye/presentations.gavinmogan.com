@@ -38,14 +38,14 @@ jobs:
         run: npm run build
 
       - name: Scan for broken links
-        uses: lycheeverse/lychee-action@v2
+        uses: lycheeverse/lychee-action@faea714062690f6c2e6f7f388469ec4fa6d9c4e1
         id: lychee
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           output: "${{ env.LYCHEE_OUTPUT }}"
           lycheeVersion: v0.24.1
           fail: false
-          debug: true
+          debug: false
 
       - name: Find Link Checker Issue
         id: find-issue
