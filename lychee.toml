@@ -9,6 +9,6 @@ exclude = [
   '^https://fonts\.gstatic\.com/',
   '^https://fonts\.googleapis\.com',
   'https://www.deviantart.com/lanotdesign/art/homeless-characters-154275235',
-  'https://www.linkedin.com/in/stephentiu/',
-  'https://www.npmjs.com/~halkeye',
+  'https://www.linkedin.com/in/',
+  'https://www.npmjs.com/~',
 ]

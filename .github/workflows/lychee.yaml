@@ -14,7 +14,7 @@ permissions:
   issues: write
 
 env:
-  LYCHEE_OUTPUT: lychee/out.md
+  LYCHEE_OUTPUT: out.md
   WORKFLOW_ISSUE_TITLE: "Link Checker Dashboard 🔗"
 
 jobs:
@@ -43,6 +43,7 @@ jobs:
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           output: "${{ env.LYCHEE_OUTPUT }}"
+          args: _site --config lychee.toml
           lycheeVersion: v0.24.1
           fail: false
           debug: false
