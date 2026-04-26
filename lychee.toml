@@ -1,4 +1,4 @@
-root-dir = _site
+root-dir = "_site"
 
 # When links are available using HTTPS, treat HTTP links as errors.
 require_https = true
