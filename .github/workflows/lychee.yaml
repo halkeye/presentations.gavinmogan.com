@@ -43,7 +43,8 @@ jobs:
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           output: "${{ env.LYCHEE_OUTPUT }}"
-          debug: true
+          fail: false
+          debug: false
 
       - name: Find Link Checker Issue
         id: find-issue
