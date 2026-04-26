@@ -45,7 +45,7 @@ jobs:
           output: "${{ env.LYCHEE_OUTPUT }}"
           lycheeVersion: v0.24.1
           fail: false
-          debug: false
+          debug: true
 
       - name: Find Link Checker Issue
         id: find-issue
