@@ -43,6 +43,7 @@ jobs:
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
           output: "${{ env.LYCHEE_OUTPUT }}"
+          lycheeVersion: v0.24.1
           fail: false
           debug: false
 
