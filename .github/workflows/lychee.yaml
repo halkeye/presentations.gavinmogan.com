@@ -42,7 +42,6 @@ jobs:
         id: lychee
         with:
           token: "${{ secrets.GITHUB_TOKEN }}"
-          args: --no-progress '_site'
           output: "${{ env.LYCHEE_OUTPUT }}"
           debug: true
 
