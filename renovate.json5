@@ -7,8 +7,7 @@
     'security:minimumReleaseAgeNpm',
     ':approveMajorUpdates',
     ':maintainLockFilesWeekly',
-    ':timezone(America/Vancouver)',
-    'github>halkeye/home-k8s//.github/renovate/grafanaDashboards.json',
+    ':timezone(America/Vancouver)'
   ],
   packageRules: [
     {
