@@ -30,7 +30,7 @@
     "eleventy-plugin-svg-sprite": "2.4.6",
     "live-server": "1.2.2",
     "luxon": "3.7.2",
-    "markdown-it-anchor": "9.2.0",
+    "markdown-it-anchor": "9.2.1",
     "markdown-it-eleventy-img": "0.10.2",
     "postcss": "8.5.6",
     "tailwindcss": "4.2.2"
